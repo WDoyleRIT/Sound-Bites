@@ -1,9 +1,8 @@
 # Sound-Bites
-Hi! - Will
 
 Project Team
 - Joseph Staria
+- Will Doyle
 -
 -
--
--
+- Will Forbes
