@@ -65,6 +65,7 @@ public class FrequencyInEditor : MonoBehaviour
                 scale.x = barWidth;
 
                 Bars[Bars.Count - 1].transform.localScale = scale;
+                Bars[Bars.Count - 1].transform.name = string.Format("Frequency Bar #{0:0000}", Bars.Count);
             }
         }
 
