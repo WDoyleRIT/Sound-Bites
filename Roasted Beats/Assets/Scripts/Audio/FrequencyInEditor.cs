@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Spaghetti code for InEditMode concept for frequency graph, 
+/// not particulary useful for the game, just for debugging and beat mapping
+/// </summary>
 [ExecuteInEditMode]
 public class FrequencyInEditor : MonoBehaviour
 {
+    [HeaderAttribute("Dependencies")]
     [SerializeField] private FrequencyData frequencyData;
     [SerializeField] private FrequencyGraph frequencyGraph;
+    [SerializeField] private GameObject frequencyBar;
 
+    [HeaderAttribute("InEditMode FFT Graphing Tools")]
     [SerializeField][Range(0, 1)] private float barSpacing = .025f;
     [SerializeField][Range(0, 1000)] private float barScale = 50;
     [SerializeField][Range(0, 1)] private float barWidth = .005f;
     [SerializeField][Range(0, .1f)] private float barMin = .01f;
 
-    [SerializeField] private GameObject frequencyBar;
-
-    [SerializeField] private bool ChangeSampleSize;
     [SerializeField] private bool GenerateBars;
 
     [SerializeField] private float halves = 16;
@@ -27,19 +31,6 @@ public class FrequencyInEditor : MonoBehaviour
     private void Update()
     {
         int sampleLength = frequencyData.sampleLength;
-
-        if (ChangeSampleSize)
-        {
-            ChangeSampleSize = false;
-
-            if (Bars != null)
-            {
-                for (int i = 0; i < Bars.Count; i++)
-                {
-                    GameObject.DestroyImmediate(Bars[i]);
-                }
-            }
-        }
 
         if (GenerateBars)
         {

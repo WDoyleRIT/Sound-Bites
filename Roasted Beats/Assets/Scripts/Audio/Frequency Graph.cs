@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+/// <summary>
+/// Graphs frequencies from Frequency Data
+/// </summary>
 [ExecuteAlways]
 [RequireComponent(typeof(FrequencyData), typeof(AudioSource), typeof(FrequencyInEditor))]
 public class FrequencyGraph : MonoBehaviour
@@ -22,9 +25,11 @@ public class FrequencyGraph : MonoBehaviour
 
     void Update()
     {
+        sampleLength = frequencyData.sampleLength;
         samples = frequencyData.sampleData;
         bars = frequencyInEditor.Bars;
 
+        // Scales frequency bars based on sample frequencies level
         for (int i = 0; i < bars.Count; i++)
         {
             GameObject bar = frequencyInEditor.Bars[i];

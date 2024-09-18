@@ -61,6 +61,7 @@ public class SongSO
 {
     [SerializeField] public AudioClip audio;
     [SerializeField] public String Name;
+    [SerializeField] public int sampleSize; // must be multiple of 64 between 64-8192
     [SerializeField] public VectorInt FreqMapEasy;
     [SerializeField] public VectorInt FreqMapMedium;
     [SerializeField] public VectorInt FreqMapHard;
