@@ -13,6 +13,8 @@ public class FrequencyData : MonoBehaviour
 {
     [SerializeField] private AudioSource audio;
 
+    private SongSO currentSongObj;
+
     public List<float> sampleData;
     private float[] frequencies;
 
@@ -34,7 +36,11 @@ public class FrequencyData : MonoBehaviour
     /// <param name="song"></param>
     public void UpdateSong(SongSO song)
     {
+        currentSongObj = song;
+
         audio.clip = song.audio;
-        sampleLength = song.sampleSize;
+        sampleLength = song.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].sampleSize;
+
+        audio.Play();
     }
 }

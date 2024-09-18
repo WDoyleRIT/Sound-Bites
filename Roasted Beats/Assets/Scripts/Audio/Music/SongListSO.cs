@@ -10,9 +10,11 @@ using UnityEngine;
  /// Something just to store integers without using array that uses VectorInt naem bc I think it looks nice
  /// </summary>
 [Serializable]
-public struct VectorInt
+public struct SampleInt
 {
+    public int sampleSize; // Must be multiple of 64 between 64-8192, some songs/difficulties may map better with different sample sizes
     public List<int> Ints;
+
     public void Add(int value)
     {
         Ints.Add(value);
@@ -61,8 +63,5 @@ public class SongSO
 {
     [SerializeField] public AudioClip audio;
     [SerializeField] public String Name;
-    [SerializeField] public int sampleSize; // must be multiple of 64 between 64-8192
-    [SerializeField] public VectorInt FreqMapEasy;
-    [SerializeField] public VectorInt FreqMapMedium;
-    [SerializeField] public VectorInt FreqMapHard;
+    [SerializeField] public List<SampleInt> FreqMapDifficulties;
 }
