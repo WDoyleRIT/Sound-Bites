@@ -15,8 +15,9 @@ MonoBehaviour:
   songSOs:
   - audio: {fileID: 8300000, guid: 4ac9bab9213f1e542a439cdd95cdc46d, type: 3}
     Name: EthernightClub
-    FrequencyMapping1: {x: 0, y: 70}
-    FrequencyMapping2: {x: 71, y: 0}
-    FrequencyMapping3: {x: 0, y: 0}
-    FrequencyMapping4: {x: 0, y: 0}
-    FrequencyMapping5: {x: 0, y: 0}
+    FreqMapEasy:
+      Ints: 46000000be000000f500000056010000
+    FreqMapMedium:
+      Ints: 
+    FreqMapHard:
+      Ints: 

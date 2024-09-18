@@ -1,8 +1,23 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+
+ /// <summary>
+ /// Something just to store integers without using array that uses VectorInt naem bc I think it looks nice
+ /// </summary>
+[Serializable]
+public struct VectorInt
+{
+    public List<int> Ints;
+    public void Add(int value)
+    {
+        Ints.Add(value);
+    }
+}
 
 [CreateAssetMenu]
 public class SongListSO : ScriptableObject
@@ -23,23 +38,16 @@ public class SongListSO : ScriptableObject
     }
 
     /// <summary>
-    /// Return song scriptable object from dictionary
-    /// </summary>
-    /// <param name="songName"></param>
-    /// <returns></returns>
-    public SongSO GetSongSO(string songName)
-    {
-        return songSODict[songName];
-    }
-
-    /// <summary>
     /// Return song scriptable object from list
     /// </summary>
     /// <param name="songID"></param>
     /// <returns></returns>
-    public SongSO GetSongSO(int songID)
+    public SongSO GetSongSO<T>(T song)
     {
-        return songSOs[songID];
+        if (song is string) return songSODict[song.ToString()];
+        if (song is int) return songSOs[Convert.ToInt32(song)];
+
+        throw new Exception("Song value was not int or string");
     }
 }
 
@@ -53,9 +61,7 @@ public class SongSO
 {
     [SerializeField] public AudioClip audio;
     [SerializeField] public String Name;
-    [SerializeField] public Vector2Int FrequencyMapping1;
-    [SerializeField] public Vector2Int FrequencyMapping2;
-    [SerializeField] public Vector2Int FrequencyMapping3;
-    [SerializeField] public Vector2Int FrequencyMapping4;
-    [SerializeField] public Vector2Int FrequencyMapping5;
+    [SerializeField] public VectorInt FreqMapEasy;
+    [SerializeField] public VectorInt FreqMapMedium;
+    [SerializeField] public VectorInt FreqMapHard;
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FrequencyAveraging : MonoBehaviour
 {
+
+    [SerializeField] private SongListSO SongListSO;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,12 @@ public class FrequencyAveraging : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ChangeSong<T>(T song)
+    {
+        if (!(song is string || song is int)) throw new System.Exception("Value must be string(song name) or int(song ID)");
+
+        SongSO song = SongListSO.GetSongSO(song);
     }
 }
