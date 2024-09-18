@@ -2085,7 +2085,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnChangeSong:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2077649883}
+        m_TargetAssemblyTypeName: FrequencyData, Assembly-CSharp
+        m_MethodName: UpdateSong
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   SongListSO: {fileID: 11400000, guid: f58d0679678e9b24fbd468ea9fe11a08, type: 2}
 --- !u!4 &164319030
 Transform:

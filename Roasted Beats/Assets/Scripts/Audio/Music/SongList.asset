@@ -15,13 +15,6 @@ MonoBehaviour:
   songSOs:
   - audio: {fileID: 8300000, guid: 4ac9bab9213f1e542a439cdd95cdc46d, type: 3}
     Name: EthernightClub
-    sampleSize: 8192
-    FreqMapEasy:
-      sampleSize: 8192
+    FreqMapDifficulties:
+    - sampleSize: 8192
       Ints: 46000000be000000f500000056010000
-    FreqMapMedium:
-      sampleSize: 0
-      Ints: 
-    FreqMapHard:
-      sampleSize: 0
-      Ints: 
