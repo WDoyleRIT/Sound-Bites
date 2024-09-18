@@ -19,10 +19,10 @@ public class FrequencyAveraging : MonoBehaviour
         
     }
 
-    public void ChangeSong<T>(T song)
+    public void ChangeSong<T>(T songID)
     {
-        if (!(song is string || song is int)) throw new System.Exception("Value must be string(song name) or int(song ID)");
+        if (!(songID is string || songID is int)) throw new System.Exception("Value must be string(song name) or int(song ID)");
 
-        SongSO song = SongListSO.GetSongSO(song);
+        SongSO song = SongListSO.GetSongSO(songID);
     }
 }
