@@ -33,6 +33,8 @@ public class SongListSO : ScriptableObject
     /// </summary>
     private void Awake()
     {
+        if (songSOs != null) return;
+
         foreach (SongSO song in songSOs)
         {
             songSODict.Add(song.Name, song);
