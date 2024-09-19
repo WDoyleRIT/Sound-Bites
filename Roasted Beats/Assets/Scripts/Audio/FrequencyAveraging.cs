@@ -9,12 +9,44 @@ public class FrequencyAveraging : MonoBehaviour
     /// Observer pattern to let song depedent scripts know of song change
     /// </summary>
     [SerializeField] private UnityEvent<SongSO> OnChangeSong;
+    [SerializeField] private UnityEvent<List<bool>> OnSpawnBeat;
 
     [SerializeField] private SongListSO SongListSO;
+    [SerializeField] private FrequencyData FrequencyData;
+
+    [SerializeField][Range(0, .005f)] private float beatSpawnThreshold;
+
+    private SongSO currentSong;
 
     void Start()
     {
         ChangeSong<int>(0);
+    }
+
+    private void Update()
+    {
+        List<float> samples = FrequencyData.sampleData;
+        List<bool> bools = new List<bool>();
+
+        List<int> sampleRanges = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].Ints;
+
+        for (int i = -1; i < sampleRanges.Count - 1; i++)
+        {
+            bools.Add(false);
+
+            float avg = 0;
+
+            for (int j = (i == -1 ? 0 : sampleRanges[i]); j < sampleRanges[i + 1]; j++ )
+            {
+                avg += samples[j];
+            }
+
+            avg /= sampleRanges[i + 1] - (i == -1 ? 0 : sampleRanges[i]);
+
+            if (avg >= beatSpawnThreshold) bools[bools.Count - 1] = true; 
+        }
+
+        OnSpawnBeat.Invoke(bools);
     }
 
     /// <summary>
@@ -27,8 +59,8 @@ public class FrequencyAveraging : MonoBehaviour
     {
         if (!(songID is string || songID is int)) throw new System.Exception("Value must be string(song name) or int(song ID)");
 
-        SongSO song = SongListSO.GetSongSO(songID);
+        currentSong = SongListSO.GetSongSO(songID);
 
-        OnChangeSong.Invoke(song);
+        OnChangeSong.Invoke(currentSong);
     }
 }
