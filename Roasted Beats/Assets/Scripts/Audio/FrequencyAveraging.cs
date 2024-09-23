@@ -16,6 +16,8 @@ public class FrequencyAveraging : MonoBehaviour
 
     [SerializeField][Range(0, .005f)] private float beatSpawnThreshold;
 
+    [SerializeField] private bool Testing;
+
     private SongSO currentSong;
 
     void Start()
@@ -28,7 +30,8 @@ public class FrequencyAveraging : MonoBehaviour
         List<float> samples = FrequencyData.sampleData;
         List<bool> bools = new List<bool>();
 
-        List<int> sampleRanges = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].Ints;
+        List<int> sampleRanges = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].SampleRanges;
+        List<float> beatThreshholds = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].BeatThreshholds;
 
         for (int i = -1; i < sampleRanges.Count - 1; i++)
         {
@@ -43,7 +46,7 @@ public class FrequencyAveraging : MonoBehaviour
 
             avg /= sampleRanges[i + 1] - (i == -1 ? 0 : sampleRanges[i]);
 
-            if (avg >= beatSpawnThreshold) bools[bools.Count - 1] = true; 
+            if (avg >= (!Testing ? beatThreshholds[i + 1] : beatSpawnThreshold)) bools[bools.Count - 1] = true; 
         }
 
         OnSpawnBeat.Invoke(bools);

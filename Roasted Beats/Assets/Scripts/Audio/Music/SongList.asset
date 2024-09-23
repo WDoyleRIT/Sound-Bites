@@ -17,4 +17,9 @@ MonoBehaviour:
     Name: EthernightClub
     FreqMapDifficulties:
     - sampleSize: 8192
-      Ints: 46000000be000000f500000056010000
+      SampleRanges: 46000000be000000f500000056010000
+      BeatThreshholds:
+      - 0.005
+      - 0.002
+      - 0.002
+      - 0.002
