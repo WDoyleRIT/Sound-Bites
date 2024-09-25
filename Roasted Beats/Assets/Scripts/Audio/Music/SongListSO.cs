@@ -13,7 +13,7 @@ using UnityEngine;
 public struct SampleInt
 {
     public int sampleSize; // Must be multiple of 64 between 64-8192, some songs/difficulties may map better with different sample sizes
-    public List<int> SampleRanges;
+    public List<Vector2Int> SampleRanges;
     public List<float> BeatThreshholds;
 }
 

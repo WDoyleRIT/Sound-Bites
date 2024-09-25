@@ -30,21 +30,21 @@ public class FrequencyAveraging : MonoBehaviour
         List<float> samples = FrequencyData.sampleData;
         List<bool> bools = new List<bool>();
 
-        List<int> sampleRanges = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].SampleRanges;
+        List<Vector2Int> sampleRanges = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].SampleRanges;
         List<float> beatThreshholds = currentSong.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].BeatThreshholds;
 
-        for (int i = -1; i < sampleRanges.Count - 1; i++)
+        for (int i = 0; i < sampleRanges.Count - 1; i++)
         {
             bools.Add(false);
 
             float avg = 0;
 
-            for (int j = (i == -1 ? 0 : sampleRanges[i]); j < sampleRanges[i + 1]; j++ )
+            for (int j = sampleRanges[i][0]; j < sampleRanges[i][1]; j++ )
             {
                 avg += samples[j];
             }
 
-            avg /= sampleRanges[i + 1] - (i == -1 ? 0 : sampleRanges[i]);
+            avg /= sampleRanges[i][0] - sampleRanges[i][1];
 
             if (avg >= (!Testing ? beatThreshholds[i + 1] : beatSpawnThreshold)) bools[bools.Count - 1] = true; 
         }
