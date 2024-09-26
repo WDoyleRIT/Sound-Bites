@@ -505,7 +505,7 @@ Transform:
   m_GameObject: {fileID: 638187576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5, z: -0.2}
+  m_LocalPosition: {x: 0, y: -2.5, z: -0.1}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,8 +520,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949682123}
-  - component: {fileID: 949682124}
   - component: {fileID: 949682125}
+  - component: {fileID: 949682126}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -541,22 +541,9 @@ Transform:
   m_LocalPosition: {x: -0.26594394, y: 1.3168488, z: -0.13883975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 498435353013679347}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &949682124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949682122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68df1d549cbec59459ef5a3ddb4d320f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &949682125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +571,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 949682124}
+      - m_Target: {fileID: 949682126}
         m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
         m_MethodName: CreateNote
         m_Mode: 0
@@ -599,7 +586,19 @@ MonoBehaviour:
     m_ActionId: 2a2a294f-db5c-406a-b0ba-2fe83f0e8ae2
     m_ActionName: Player/Create Note[/Keyboard/leftShift]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 949682126}
+        m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
+        m_MethodName: HitNote
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6b8c9b68-d3e5-402a-849c-cdaa4f90b218
     m_ActionName: Player/Hit Note[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -607,6 +606,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &949682126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949682122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68df1d549cbec59459ef5a3ddb4d320f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notePrefab: {fileID: 436112129983736550, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
+  hitMarker: {fileID: 638187576}
+  notes: []
 --- !u!1 &1128830896
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,68 +705,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &498435353013679346
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 949682123}
-    m_Modifications:
-    - target: {fileID: 436112129983736550, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_Name
-      value: WillNote
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.73405606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.8168488
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.13883975
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
---- !u!4 &498435353013679347 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4410065580627331063, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-  m_PrefabInstance: {fileID: 498435353013679346}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
