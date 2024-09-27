@@ -4,6 +4,7 @@ using System;
 //using System.Diagnostics; Commented out because of weird Debug error
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class NoteTest : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public class NoteTest : MonoBehaviour
     [SerializeField] private GameObject hitMarker;
 
     // List of notes
-    [SerializeField] private List<GameObject> notes = new List<GameObject>();
+    private List<GameObject> notes = new List<GameObject>();
+    // List of text boxes
+    private List<TextMeshPro> texts = new List<TextMeshPro>();
     // Number of notes hit each time the button is pressed
     private int notesHit;
 

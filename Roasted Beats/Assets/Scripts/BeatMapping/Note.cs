@@ -15,11 +15,11 @@ public class Note : MonoBehaviour
     void Start()
     {
         // Initialize note speed
-        noteSpeed = 0.01f;
+        this.noteSpeed = GlobalVar.Instance.noteSpeed;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Lower the note from its starting point
         transform.position = new Vector3(transform.position.x, transform.position.y - noteSpeed, transform.position.z);
