@@ -4,6 +4,7 @@ using System;
 //using System.Diagnostics; Commented out because of weird Debug error
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class NoteTest : MonoBehaviour
 {
@@ -11,13 +12,17 @@ public class NoteTest : MonoBehaviour
     // Consider just instantiate a set number of notes and repeatedly disabling
     // and enabling them using SetActive()
 
+    // To do: Find out how to create TMP elements in this script, and how to change their text and position.
+
     // Note Prefab
     [SerializeField] private GameObject notePrefab;
     // Circle at bottom of HUD
     [SerializeField] private GameObject hitMarker;
 
     // List of notes
-    [SerializeField] private List<GameObject> notes = new List<GameObject>();
+    private List<GameObject> notes = new List<GameObject>();
+    // List of text boxes
+    private List<TextMeshPro> texts = new List<TextMeshPro>();
     // Number of notes hit each time the button is pressed
     private int notesHit;
 
