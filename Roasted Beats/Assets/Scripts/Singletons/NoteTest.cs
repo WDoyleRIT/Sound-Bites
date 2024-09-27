@@ -12,6 +12,8 @@ public class NoteTest : MonoBehaviour
     // Consider just instantiate a set number of notes and repeatedly disabling
     // and enabling them using SetActive()
 
+    // To do: Find out how to create TMP elements in this script, and how to change their text and position.
+
     // Note Prefab
     [SerializeField] private GameObject notePrefab;
     // Circle at bottom of HUD

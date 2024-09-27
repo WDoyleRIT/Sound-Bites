@@ -360,7 +360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &404350387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -856,7 +856,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 436112129983736550, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
   hitMarker: {fileID: 638187576}
-  notes: []
 --- !u!1 &1128830896
 GameObject:
   m_ObjectHideFlags: 0

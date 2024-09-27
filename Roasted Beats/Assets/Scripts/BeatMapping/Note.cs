@@ -18,17 +18,10 @@ public class Note : MonoBehaviour
         this.noteSpeed = GlobalVar.Instance.noteSpeed;
     }
 
-    // Update is called once per frame
+    // Update is called once per fixed frame
     void FixedUpdate()
     {
         // Lower the note from its starting point
         transform.position = new Vector3(transform.position.x, transform.position.y - noteSpeed, transform.position.z);
-
-        // If the note goes too low, destroy it
-        /*if(transform.position.y <= -4)
-        {
-            Destroy(gameObject);
-            Debug.Log("Miss");
-        }*/
     }
 }
