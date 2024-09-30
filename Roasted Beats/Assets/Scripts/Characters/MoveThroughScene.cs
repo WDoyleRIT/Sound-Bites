@@ -33,7 +33,9 @@ public class MoveIntoScene : MonoBehaviour
         charPosition += velocity;
         transform.position = charPosition;
 
-        
+        // Joe's notes
+        // I suggest using an animator for character movement up and down
+        // while just moving x with code
 
         if (charPosition.x >= 0)
         {

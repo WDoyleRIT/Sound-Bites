@@ -76,8 +76,22 @@ public class NoteTest : MonoBehaviour
             // Determines the quality of the hit, if there was one
             for (int i = 0; i < notes.Count; i++)
             {
+                // Joe's notes
+                // Try using Vector3.Distance between note and the goal to get a float and use (boolean value) ? (if true) : (if false),
+                // this can be chained to look something like this 
+
+                // (boolean value) ? (action if true) :
+                // (boolean value) ? (action if true) :
+                // (boolean value) ? (action if true) :
+                // (boolean value) ? (action if true) :
+                // (boolean value) ? (action if true) :
+                // (action if false);
+
+                // If you want more accurate than just distance since we don't want to substract points from the player if they are just pressing them with no notes in front
+                // You could add an extra layer of checking then like if "y > (some threshhold) { Don't count this as a miss; } 
+
                 // Checks if the note should be scored
-                if(notes[i].transform.position.y >= -3.5f && notes[i].transform.position.y <= -1.5f)
+                if (notes[i].transform.position.y >= -3.5f && notes[i].transform.position.y <= -1.5f)
                 {
                     // Perfect
                     if(notes[i].transform.position.y >= -2.6f && notes[i].transform.position.y <= -2.4f)
