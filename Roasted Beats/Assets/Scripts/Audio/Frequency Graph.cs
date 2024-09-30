@@ -27,6 +27,7 @@ public class FrequencyGraph : MonoBehaviour
     {
         sampleLength = frequencyData.sampleLength;
         samples = frequencyData.sampleData;
+
         bars = frequencyInEditor.Bars;
 
         // Scales frequency bars based on sample frequencies level

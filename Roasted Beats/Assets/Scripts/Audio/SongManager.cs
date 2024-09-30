@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FrequencyData), typeof(FrequencyAveraging))]
+[RequireComponent(typeof(AudioSource))]
 public class SongManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float songDelay;
+    [SerializeField] private SongSO currentSong;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private AudioSource frequencySource;
+    [SerializeField] private AudioSource songSource;
 }
