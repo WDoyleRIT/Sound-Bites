@@ -15,9 +15,12 @@ public class NoteTest : MonoBehaviour
     // To do: Find out how to create TMP elements in this script, and how to change their text and position.
 
     // Note Prefab
-    [SerializeField] private GameObject notePrefab;
-    // Circle at bottom of HUD
-    [SerializeField] private GameObject hitMarker;
+    [SerializeField] private GameObject notePrefab4;
+    // Circles at bottom of HUD
+    [SerializeField] private GameObject hitMarker1;
+    [SerializeField] private GameObject hitMarker2;
+    [SerializeField] private GameObject hitMarker3;
+    [SerializeField] private GameObject hitMarker4;
 
     // List of notes
     private List<GameObject> notes = new List<GameObject>();
@@ -53,7 +56,7 @@ public class NoteTest : MonoBehaviour
         if (context.started)
         {
             // Create a note
-            GameObject note = Instantiate(notePrefab, new Vector3(0,2.5f,-0.2f), Quaternion.identity);
+            GameObject note = Instantiate(notePrefab4, new Vector3(0,2.5f,-0.2f), Quaternion.identity);
             notes.Add(note);
             //Debug.Log(notes.Count);
             //Debug.Log("Note Created");
@@ -72,7 +75,7 @@ public class NoteTest : MonoBehaviour
 
         if (context.started)
         {
-            hitMarker.SetActive(false);
+            hitMarker4.SetActive(false);
             // Determines the quality of the hit, if there was one
             for (int i = 0; i < notes.Count; i++)
             {
@@ -140,7 +143,7 @@ public class NoteTest : MonoBehaviour
         {
             // Reserts hit counter and hides hit marker
             notesHit = 0;
-            hitMarker.SetActive(true);
+            hitMarker4.SetActive(true);
         }
     }
 }
