@@ -21,7 +21,7 @@ public class FrequencyData : MonoBehaviour
     public int sampleLength; 
 
     // Update is called once per frame
-    void Update()
+    public void UpdateData()
     {
         float[] samples = new float[sampleLength]; // = new float[audio.clip.samples * audio.clip.channels];
 

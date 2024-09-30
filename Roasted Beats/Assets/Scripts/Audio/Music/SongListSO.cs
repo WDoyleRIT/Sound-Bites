@@ -29,7 +29,9 @@ public class SongListSO : ScriptableObject
     /// </summary>
     private void Awake()
     {
-        if (songSOs != null) return;
+        if (songSOs == null) return;
+
+        songSODict = new Dictionary<string, SongSO>();
 
         foreach (SongSO song in songSOs)
         {

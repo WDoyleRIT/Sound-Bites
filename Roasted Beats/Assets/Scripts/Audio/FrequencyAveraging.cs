@@ -20,12 +20,7 @@ public class FrequencyAveraging : MonoBehaviour
 
     private SongSO currentSong;
 
-    void Start()
-    {
-        ChangeSong<int>(0);
-    }
-
-    private void Update()
+    public void UpdateData()
     {
         List<float> samples = FrequencyData.sampleData;
         List<bool> bools = new List<bool>();
@@ -64,6 +59,12 @@ public class FrequencyAveraging : MonoBehaviour
 
         currentSong = SongListSO.GetSongSO(songID);
 
+        OnChangeSong.Invoke(currentSong);
+    }
+
+    public void ChangeSong(SongSO song)
+    {
+        currentSong = song;
         OnChangeSong.Invoke(currentSong);
     }
 }
