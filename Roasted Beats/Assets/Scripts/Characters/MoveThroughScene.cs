@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveIntoScene : MonoBehaviour
 {
@@ -14,6 +15,19 @@ public class MoveIntoScene : MonoBehaviour
     Vector3 charPosition= Vector3.zero;
     Vector3 vertical = Vector3.up;
 
+    bool exit = false;
+
+    int notesPassed = 0;
+    GlobalVar gv;
+
+
+    public void HitNote(InputAction.CallbackContext context)
+    {
+        if(context.started && charPosition.x >= 0)
+        {
+            exit = true;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +38,13 @@ public class MoveIntoScene : MonoBehaviour
         charPosition.x = -(width / 2);
         transform.position= charPosition;
         speed = 2;
+        gv = GlobalVar.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
+        notesPassed = gv.notesPassed;
         velocity = direction * speed * Time.deltaTime;
         charPosition += velocity;
         transform.position = charPosition;
@@ -37,9 +53,13 @@ public class MoveIntoScene : MonoBehaviour
         // I suggest using an animator for character movement up and down
         // while just moving x with code
 
-        if (charPosition.x >= 0)
+        if (charPosition.x >= 0 && !exit)
         {
             speed = 0;
+        }
+        else
+        {
+            speed = 2;
         }
         if(charPosition.y >= 1)
         {
