@@ -36,6 +36,7 @@ public class MoveIntoScene : MonoBehaviour
         height= 2f * mainCam.orthographicSize;
         width = height * mainCam.aspect;
         charPosition.x = -(width / 2);
+        charPosition.y = 4;
         transform.position= charPosition;
         speed = 2;
         gv = GlobalVar.Instance;
@@ -53,7 +54,7 @@ public class MoveIntoScene : MonoBehaviour
         // I suggest using an animator for character movement up and down
         // while just moving x with code
 
-        if (charPosition.x >= 0 && !exit)
+        if (charPosition.x >= 0 && notesPassed<10)
         {
             speed = 0;
         }
@@ -61,12 +62,12 @@ public class MoveIntoScene : MonoBehaviour
         {
             speed = 2;
         }
-        if(charPosition.y >= 1)
+        if(charPosition.y >= 4.5)
         {
             vertical = Vector3.down;
             direction = Vector3.right + vertical;
         }
-        else if (charPosition.y <= 0)
+        else if (charPosition.y <= 3.5)
         {
             vertical = Vector3.up;
             direction = Vector3.right + vertical;
