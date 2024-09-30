@@ -9,4 +9,5 @@ public class GlobalVar : Singleton<GlobalVar>
 {
     public int songDifficulty;
     public float noteSpeed = 0.1f;
+    public int notesPassed = 0;
 }
