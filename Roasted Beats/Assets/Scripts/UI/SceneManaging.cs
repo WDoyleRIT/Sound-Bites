@@ -5,8 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneManaging : MonoBehaviour
 {
-    public void OpenLvl1(string name)
+    
+    [SerializeField] private Animator transition;
+    [SerializeField] private float waitTime = 1;
+    
+    public void OpenLvl(string name)
     {
-        SceneManager.LoadScene("ForbesLvl1");
+        StartCoroutine(LoadLevel(name));
     }
+        
+    IEnumerator LoadLevel(string scene)
+    {
+        // Play animation
+        //transition.SetTrigger("start");
+
+        // Wait
+        yield return new WaitForSeconds(waitTime);
+
+        // LoadScene
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene);
+    }
+    
 }

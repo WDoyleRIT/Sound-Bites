@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/RestaurantSelect.unity
     guid: 1596fa34008ba8f4e8bc48b5d1a1969a
   - enabled: 1
     path: Assets/Scenes/Cafe_Orders.unity
     guid: 8aa3247a24268274bba1a96db82f2ac9
+  - enabled: 1
+    path: Assets/Scenes/Cafe_Cooking.unity
+    guid: 5625405e9c67d7542b899613c6a40bd7
   m_configObjects: {}
