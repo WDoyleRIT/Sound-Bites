@@ -46,6 +46,8 @@ public class NoteTest : MonoBehaviour
                 Destroy(notes[i].gameObject);
                 notes.RemoveAt(i);
                 Debug.Log("Miss");
+                // Increment number of notes passed
+                GlobalVar.Instance.notesPassed++;
             }
         }
     }
@@ -58,6 +60,7 @@ public class NoteTest : MonoBehaviour
             // Create a note
             GameObject note = Instantiate(notePrefab4, new Vector3(0,2.5f,-0.2f), Quaternion.identity);
             notes.Add(note);
+
             //Debug.Log(notes.Count);
             //Debug.Log("Note Created");
         }
@@ -129,6 +132,8 @@ public class NoteTest : MonoBehaviour
                     notesHit++;
                     Destroy(notes[i].gameObject);
                     notes.RemoveAt(i);
+                    // Increment number of notes passed
+                    GlobalVar.Instance.notesPassed++;
                 }
             }
 
