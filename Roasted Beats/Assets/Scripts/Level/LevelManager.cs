@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnStart()
     {
-        int songIndex= songIndicesForThisLevel[Random.Range(0, songIndicesForThisLevel.Count)];
+        int songIndex = songIndicesForThisLevel[Random.Range(0, songIndicesForThisLevel.Count)];
 
         sm.SetCurrentSong(songList.GetSongSO<int>(songIndex));
 

@@ -11,7 +11,7 @@ using UnityEngine;
 [ExecuteAlways]
 public class FrequencyData : MonoBehaviour
 {
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audioSource;
 
     private SongSO currentSongObj;
 
@@ -25,7 +25,7 @@ public class FrequencyData : MonoBehaviour
     {
         float[] samples = new float[sampleLength]; // = new float[audio.clip.samples * audio.clip.channels];
 
-        if (Application.isPlaying) audio.GetSpectrumData(samples, 0, FFTWindow.Hanning);
+        if (Application.isPlaying) audioSource.GetSpectrumData(samples, 0, FFTWindow.Hanning);
         
         sampleData = samples.ToList();
     }
@@ -38,9 +38,9 @@ public class FrequencyData : MonoBehaviour
     {
         currentSongObj = song;
 
-        audio.clip = song.audio;
+        audioSource.clip = song.audio;
         sampleLength = song.FreqMapDifficulties[GlobalVar.Instance.songDifficulty].sampleSize;
 
-        audio.Play();
+        audioSource.Play();
     }
 }
