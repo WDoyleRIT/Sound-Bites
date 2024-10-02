@@ -29,6 +29,7 @@ public class BoardGeneration : MonoBehaviour
 
             if (action != null)
             {
+                action.Enable();
                 action.performed += HitNotes;
             }
         }
@@ -36,7 +37,7 @@ public class BoardGeneration : MonoBehaviour
 
     public void HitNotes(InputAction.CallbackContext context)
     {
-        Debug.Log("Space pressed");
+        //Debug.Log("Space pressed");
         if (context.started)
         {
             CheckCollision();
