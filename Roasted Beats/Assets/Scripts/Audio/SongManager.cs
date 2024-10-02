@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.U2D.IK;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +18,7 @@ public class SongManager : MonoBehaviour
     [SerializeField] private FrequencyAveraging frequencyAveraging;
     [SerializeField] private FrequencyData frequencyData;
 
-    public UnityEvent Update;
+    public UnityEvent OnUpdate;
 
     public void OnSongStart()
     {
@@ -34,7 +35,8 @@ public class SongManager : MonoBehaviour
 
     private IEnumerator StartMusic()
     {
-        
+        songDelay = GlobalVar.Instance.noteSpdInSec;
+
         switch (songDelay)
         {
             case 0:
@@ -45,7 +47,7 @@ public class SongManager : MonoBehaviour
             default:
                 frequencySource.Play();
 
-                yield return new WaitForSeconds(songDelay);
+                yield return new WaitForSecondsRealtime(songDelay);
 
                 songSource.Play();
                 break;
@@ -58,7 +60,7 @@ public class SongManager : MonoBehaviour
         {
             yield return new WaitForNextFrameUnit();
 
-            Update.Invoke();
+            OnUpdate.Invoke();
         }
     }
 

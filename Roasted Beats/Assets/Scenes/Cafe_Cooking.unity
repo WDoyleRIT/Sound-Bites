@@ -784,7 +784,7 @@ MonoBehaviour:
   songSource: {fileID: 716727980}
   frequencyAveraging: {fileID: 716727979}
   frequencyData: {fileID: 716727978}
-  Update:
+  OnUpdate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 716727978}

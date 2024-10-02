@@ -9,6 +9,7 @@ public class BoardBar : MonoBehaviour
     [SerializeField] private Transform StartPos;
     [SerializeField] private Transform EndPos;
 
+    private float noteCooldown;
     private float speed;
     private float travelDistance;
 
@@ -24,6 +25,8 @@ public class BoardBar : MonoBehaviour
 
     private void Update()
     {
+        noteCooldown -= Time.deltaTime;
+
         // We calculate speed each frame just because its easier if we need to change it in global
         if (travelDistance == 0) return;
 
@@ -42,8 +45,10 @@ public class BoardBar : MonoBehaviour
 
     public void CreateNote(int prefabIndex)
     {
+        if (noteCooldown > 0) return; 
         notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position, Quaternion.identity, transform));
         notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed);
+        noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
     public void CheckNoteCollision()
