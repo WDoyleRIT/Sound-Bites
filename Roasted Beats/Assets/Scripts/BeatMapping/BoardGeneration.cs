@@ -19,31 +19,59 @@ public class BoardGeneration : MonoBehaviour
     {
         GenerateBars(4);
         
-        InputManager.Instance.LoadInputs();
-
-        var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
+        //InputManager.Instance.LoadInputs();
         
-        if (input != null )
+        //var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
+        
+        /*if (input != null )
         {
-            var action = input.FindAction("Hit Note");
+            var action = input.FindAction("Hit Note1");
 
             if (action != null)
             {
                 action.Enable();
                 action.performed += HitNotes;
             }
-        }
+        }*/
     }
 
-    public void HitNotes(InputAction.CallbackContext context)
+    public void HitNote1(InputAction.CallbackContext context)
     {
-        Debug.Log("Space pressed");
         if (context.started)
         {
-            CheckCollision();
+            Debug.Log("Bar 1 Press");
+            // CheckCollision();
         }
     }
 
+    public void HitNote2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("Bar 2 Press");
+            // CheckCollision();
+        }
+    }
+
+    public void HitNote3(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("Bar 3 Press");
+            // CheckCollision();
+        }
+    }
+
+    public void HitNote4(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Debug.Log("Bar 4 Press");
+            // CheckCollision();
+        }
+    }
+
+    // To consider: change Check Collision to only check the appropriate bar instead of all bars every time
     private void CheckCollision()
     {
         foreach (GameObject bar in bars)

@@ -15,9 +15,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hit Note",
+                    "name": "Hit Note1",
                     "type": "Button",
                     "id": "6b8c9b68-d3e5-402a-849c-cdaa4f90b218",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Hit Note2",
+                    "type": "Button",
+                    "id": "57fce058-2a95-4507-a395-b5fe5ffe642f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hit Note3",
+                    "type": "Button",
+                    "id": "fdb0dfe6-7733-4360-adb9-eb376ff1e9e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hit Note4",
+                    "type": "Button",
+                    "id": "66696d84-2837-40b3-a7e3-4ff2fe6eb9e4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -39,11 +66,44 @@
                 {
                     "name": "",
                     "id": "3775578d-d66e-4c55-8f37-b5b90c1b90db",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Hit Note",
+                    "action": "Hit Note1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba56b1c2-5dff-40de-8883-5641d4c3082a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hit Note2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e269e0d-9052-4463-b542-943e1dd6008f",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hit Note3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "80f8661e-93b4-42be-939b-9e3a81747045",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hit Note4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

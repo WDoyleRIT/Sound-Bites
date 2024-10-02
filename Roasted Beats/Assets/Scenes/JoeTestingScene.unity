@@ -15497,26 +15497,14 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
-        m_MethodName: CreateNote
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 2a2a294f-db5c-406a-b0ba-2fe83f0e8ae2
     m_ActionName: Player/Create Note[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
-        m_MethodName: HitNote
+      - m_Target: {fileID: 1001525107}
+        m_TargetAssemblyTypeName: BoardGeneration, Assembly-CSharp
+        m_MethodName: HitNote1
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15528,6 +15516,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6b8c9b68-d3e5-402a-849c-cdaa4f90b218
     m_ActionName: Player/Hit Note[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1001525107}
+        m_TargetAssemblyTypeName: BoardGeneration, Assembly-CSharp
+        m_MethodName: HitNote2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 57fce058-2a95-4507-a395-b5fe5ffe642f
+    m_ActionName: Player/Hit Note2[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1001525107}
+        m_TargetAssemblyTypeName: BoardGeneration, Assembly-CSharp
+        m_MethodName: HitNote3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fdb0dfe6-7733-4360-adb9-eb376ff1e9e9
+    m_ActionName: Player/Hit Note3[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1001525107}
+        m_TargetAssemblyTypeName: BoardGeneration, Assembly-CSharp
+        m_MethodName: HitNote4
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 66696d84-2837-40b3-a7e3-4ff2fe6eb9e4
+    m_ActionName: Player/Hit Note4[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
