@@ -17,7 +17,9 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textPrefab.text = score.ToString();
+        score = GlobalVar.Instance.currentLvlPoints;
+
+        textPrefab.text = score.ToString("Score: " + score);
     }
 
     public void BeatPressed(float points)
