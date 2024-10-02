@@ -31,5 +31,8 @@ public class LevelManager : MonoBehaviour
         GlobalVar.Instance.songIsPlaying = true;
 
         OnSceneStart.Invoke();
+
+        // Dropping variable to wake up playerInput;
+        var input = InputManager.Instance.playerInput;
     }
 }

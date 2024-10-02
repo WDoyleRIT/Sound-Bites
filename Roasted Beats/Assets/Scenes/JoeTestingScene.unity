@@ -15450,7 +15450,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1001525110}
   - component: {fileID: 1001525109}
-  - component: {fileID: 1001525108}
   - component: {fileID: 1001525107}
   m_Layer: 0
   m_Name: GameManager
@@ -15472,24 +15471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barPrefab: {fileID: 1029259536827728120, guid: 31b899b96216eb642acc99f9aeea918a, type: 3}
-  gameManager: {fileID: 1001525108}
---- !u!114 &1001525108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001525106}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68df1d549cbec59459ef5a3ddb4d320f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notePrefab4: {fileID: 436112129983736550, guid: 8f4b2db236d0f1746a3b271eb7cae03b, type: 3}
-  hitMarker1: {fileID: 0}
-  hitMarker2: {fileID: 0}
-  hitMarker3: {fileID: 0}
-  hitMarker4: {fileID: 0}
 --- !u!114 &1001525109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15517,7 +15498,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1001525108}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
         m_MethodName: CreateNote
         m_Mode: 0
@@ -15533,7 +15514,7 @@ MonoBehaviour:
     m_ActionName: Player/Create Note[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1001525108}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NoteTest, Assembly-CSharp
         m_MethodName: HitNote
         m_Mode: 0

@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BoardGeneration : MonoBehaviour
 {
     // Prefab for note bar
     [SerializeField] private GameObject barPrefab;
-    [SerializeField] private NoteTest gameManager;
+    //[SerializeField] private NoteTest gameManager;
 
     // List of bar objects
     private List<GameObject> bars = new List<GameObject>();
@@ -16,6 +18,37 @@ public class BoardGeneration : MonoBehaviour
     void Start()
     {
         GenerateBars(4);
+        
+        InputManager.Instance.LoadInputs();
+
+        var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
+        
+        if (input != null )
+        {
+            var action = input.FindAction("Hit Note");
+
+            if (action != null)
+            {
+                action.performed += HitNotes;
+            }
+        }
+    }
+
+    public void HitNotes(InputAction.CallbackContext context)
+    {
+        Debug.Log("Space pressed");
+        if (context.started)
+        {
+            CheckCollision();
+        }
+    }
+
+    private void CheckCollision()
+    {
+        foreach (GameObject bar in bars)
+        {
+            bar.GetComponent<BoardBar>().CheckNoteCollision();
+        }
     }
 
     private void GenerateBars(int numBars) {

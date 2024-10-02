@@ -27,7 +27,7 @@ public class BoardBar : MonoBehaviour
         // We calculate speed each frame just because its easier if we need to change it in global
         if (travelDistance == 0) return;
 
-        speed = GlobalVar.Instance.noteSpdInSec / travelDistance;
+        speed = travelDistance / GlobalVar.Instance.noteSpdInSec;
     }
 
     public void OnUpdate()
@@ -44,5 +44,63 @@ public class BoardBar : MonoBehaviour
     {
         notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position, Quaternion.identity, transform));
         notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed);
+    }
+
+    public void CheckNoteCollision()
+    {
+        for (int i = 0; i < notes.Count; i++)
+        {
+            float distance = Vector3.Distance(notes[i].transform.position, EndPos.position);
+
+            // Joe's notes
+            // Try using Vector3.Distance between note and the goal to get a float and use (boolean value) ? (if true) : (if false),
+            // this can be chained to look something like this 
+
+            // (boolean value) ? (action if true) :
+            // (boolean value) ? (action if true) :
+            // (boolean value) ? (action if true) :
+            // (boolean value) ? (action if true) :
+            // (boolean value) ? (action if true) :
+            // (action if false);
+
+            // If you want more accurate than just distance since we don't want to substract points from the player if they are just pressing them with no notes in front
+            // You could add an extra layer of checking then like if "y > (some threshhold) { Don't count this as a miss; } 
+
+            // Checks if the note should be scored
+            if (notes[i].transform.position.y >= -3.5f && notes[i].transform.position.y <= -1.5f)
+            {
+                // Perfect
+                if (notes[i].transform.position.y >= -2.6f && notes[i].transform.position.y <= -2.4f)
+                {
+                    Debug.Log("Perfect!!");
+                }
+                // Great
+                else if (notes[i].transform.position.y > -2.4f && notes[i].transform.position.y <= -2.25f ||
+                    notes[i].transform.position.y < -2.6f && notes[i].transform.position.y >= -2.75f)
+                {
+                    Debug.Log("Great!");
+                }
+                // Good
+                else if (notes[i].transform.position.y > -2.25f && notes[i].transform.position.y <= -2 ||
+                    notes[i].transform.position.y < -2.75f && notes[i].transform.position.y >= -3)
+                {
+                    Debug.Log("Good");
+                }
+                // Meh
+                else if (notes[i].transform.position.y > -2 && notes[i].transform.position.y <= -1.75 ||
+                    notes[i].transform.position.y < -3 && notes[i].transform.position.y >= -3.25)
+                {
+                    Debug.Log("Meh");
+                }
+                // On near miss (Between 0 and 25 accuracy), destroy the note anyway (Like everything else is subject to change)
+                else if (notes[i].transform.position.y > -1.75 && notes[i].transform.position.y <= -1.5 ||
+                    notes[i].transform.position.y < -3.25 && notes[i].transform.position.y >= -3.5)
+                {
+                    Debug.Log("Miss");
+                }
+
+
+            }
+        }
     }
 }
