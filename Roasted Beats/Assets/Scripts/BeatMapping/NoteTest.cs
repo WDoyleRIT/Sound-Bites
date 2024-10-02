@@ -33,6 +33,10 @@ public class NoteTest : MonoBehaviour
     void Start()
     {
         notesHit = 0;
+        //hitMarker1.SetActive(true);
+        //hitMarker2.SetActive(true);
+        //hitMarker3.SetActive(true);
+        hitMarker4.SetActive(true);
     }
 
     // Update is called once per frame
@@ -58,12 +62,19 @@ public class NoteTest : MonoBehaviour
         if (context.started)
         {
             // Create a note
-            GameObject note = Instantiate(notePrefab4, new Vector3(0,2.5f,-0.2f), Quaternion.identity);
+            GameObject note = Instantiate(notePrefab4, new Vector3(1.5f,2.5f,-0.2f), Quaternion.identity);
             notes.Add(note);
 
             //Debug.Log(notes.Count);
             //Debug.Log("Note Created");
         }
+    }
+
+    public void CreateNote(Vector3 position, int notePrefab)
+    {
+        // Create a note
+        GameObject note = Instantiate(notePrefab4, position, Quaternion.identity);
+        notes.Add(note);
     }
 
     // Currently only changes color of marker at bottom when pressed or held down

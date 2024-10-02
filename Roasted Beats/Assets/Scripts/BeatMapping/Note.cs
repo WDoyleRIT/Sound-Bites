@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Note : MonoBehaviour
 {
@@ -24,4 +25,6 @@ public class Note : MonoBehaviour
         // Lower the note from its starting point
         transform.position = new Vector3(transform.position.x, transform.position.y - noteSpeed, transform.position.z);
     }
+
+    
 }
