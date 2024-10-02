@@ -37,14 +37,22 @@ public class BoardGeneration : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        for (int i = 0;i < bars.Count;i++)
+        {
+            bars[i].GetComponent<BoardBar>().OnUpdate();
+        }
+    }
+
     // Update is called once per frame
     public void OnBeatUpdate(List<bool> notes)
     {
-        for (int i = 0; i < notes.Count; i++)
+        for (int i = 0; i < bars.Count; i++)
         {
             if (notes[i])
             {
-                gameManager.CreateNote(bars[i].transform.position, i);
+                bars[i].GetComponent<BoardBar>().CreateNote(i);
             }
         } 
     }

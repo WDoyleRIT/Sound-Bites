@@ -32,11 +32,17 @@ public class BoardBar : MonoBehaviour
 
     public void OnUpdate()
     {
-        foreach (var item in notes)
+        foreach (GameObject item in notes)
         {
-            // notes.Update();
+            item.GetComponent<Note>().OnUpdate();
         }
 
         // Check collision for each note
+    }
+
+    public void CreateNote(int prefabIndex)
+    {
+        notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position, Quaternion.identity, transform));
+        notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed);
     }
 }
