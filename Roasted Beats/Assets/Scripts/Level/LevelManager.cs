@@ -35,4 +35,9 @@ public class LevelManager : MonoBehaviour
         // Dropping variable to wake up playerInput;
         var input = InputManager.Instance.playerInput;
     }
+
+    private void Update()
+    {
+        GlobalVar.Instance.currentLvlPoints = levelScore;
+    }
 }
