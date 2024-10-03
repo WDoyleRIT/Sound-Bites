@@ -79,47 +79,80 @@ public class BoardGeneration : MonoBehaviour
 
     public void HitNote1(InputAction.CallbackContext context)
     {
+        GameObject ring = bars[0].transform.GetChild(2).gameObject;
         if (context.started)
         {
             Debug.Log("Bar 1 Press");
-            // CheckCollision();
+            // Checks collision of first bar
+            CheckCollision(0);
+            ring.SetActive(false);
+        }
+
+        if (context.canceled)
+        {
+            ring.SetActive(true);
         }
     }
 
     public void HitNote2(InputAction.CallbackContext context)
     {
+        GameObject ring = bars[1].transform.GetChild(2).gameObject;
         if (context.started)
         {
             Debug.Log("Bar 2 Press");
-            // CheckCollision();
+            // Checks collision of second bar
+            CheckCollision(1);
+            ring.SetActive(false);
+        }
+
+        if (context.canceled)
+        {
+            ring.SetActive(true);
         }
     }
 
     public void HitNote3(InputAction.CallbackContext context)
     {
+        GameObject ring = bars[2].transform.GetChild(2).gameObject;
         if (context.started)
         {
             Debug.Log("Bar 3 Press");
-            // CheckCollision();
+            // Checks collision of third bar
+            CheckCollision(2);
+            ring.SetActive(false);
+        }
+
+        if (context.canceled)
+        {
+            ring.SetActive(true);
         }
     }
 
     public void HitNote4(InputAction.CallbackContext context)
     {
+        GameObject ring = bars[3].transform.GetChild(2).gameObject;
         if (context.started)
         {
             Debug.Log("Bar 4 Press");
-            // CheckCollision();
+            // Checks collision of fourth bar
+            CheckCollision(3);
+            ring.SetActive(false);
+        }
+
+        if (context.canceled)
+        {
+            ring.SetActive(true);
         }
     }
 
-    // To consider: change Check Collision to only check the appropriate bar instead of all bars every time
-    private void CheckCollision()
+    // Will Doyle: Temporarily reworked this method so that it only checks the bar at a certain index
+    private void CheckCollision(int index)
     {
-        foreach (GameObject bar in bars)
+        bars[index].GetComponent<BoardBar>().CheckNoteCollision();
+        /*foreach (GameObject bar in bars)
         {
             bar.GetComponent<BoardBar>().CheckNoteCollision();
-        }
+        }*/
     }
 
 
