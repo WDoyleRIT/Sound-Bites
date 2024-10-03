@@ -14,7 +14,7 @@ public class FrequencyAveraging : MonoBehaviour
     [SerializeField] private SongListSO SongListSO;
     [SerializeField] private FrequencyData FrequencyData;
 
-    [SerializeField][Range(0, .005f)] private float beatSpawnThreshold;
+    [SerializeField][Range(0, .1f)] private float beatSpawnThreshold;
 
     [SerializeField] private bool Testing;
 
@@ -35,7 +35,7 @@ public class FrequencyAveraging : MonoBehaviour
             bools.Add(false);
         }
 
-        if (noteCooldown <= 0)
+        if (noteCooldown <= 0 || Testing)
         {
             for (int i = 0; i < sampleRanges.Count; i++)
             {

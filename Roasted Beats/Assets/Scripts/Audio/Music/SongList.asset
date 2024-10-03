@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: SongList
   m_EditorClassIdentifier: 
   songSOs:
-  - audio: {fileID: 8300000, guid: 4ac9bab9213f1e542a439cdd95cdc46d, type: 3}
+  - bpm: 117
+    audio: {fileID: 8300000, guid: 4ac9bab9213f1e542a439cdd95cdc46d, type: 3}
     Name: EthernightClub
     FreqMapDifficulties:
     - sampleSize: 8192
       SampleRanges:
       - {x: 0, y: 70}
-      - {x: 71, y: 105}
+      - {x: 75, y: 78}
       - {x: 190, y: 245}
       - {x: 246, y: 342}
       BeatThreshholds:
