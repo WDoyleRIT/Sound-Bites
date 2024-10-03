@@ -20,6 +20,8 @@ public class FrequencyAveraging : MonoBehaviour
 
     private SongSO currentSong;
 
+    private float noteCooldown;
+
     public void UpdateData()
     {
         List<float> samples = FrequencyData.sampleData;
@@ -31,20 +33,30 @@ public class FrequencyAveraging : MonoBehaviour
         for (int i = 0; i < sampleRanges.Count; i++)
         {
             bools.Add(false);
-
-            float avg = 0;
-
-            for (int j = sampleRanges[i].x; j < sampleRanges[i].y; j++ )
-            {
-                avg += samples[j];
-            }
-
-            avg /= sampleRanges[i].y - sampleRanges[i].x;
-
-            if (avg >= (!Testing ? beatThreshholds[i] : beatSpawnThreshold)) bools[bools.Count - 1] = true; 
         }
 
+        if (noteCooldown <= 0)
+        {
+            for (int i = 0; i < sampleRanges.Count; i++)
+            {
+                float avg = 0;
+
+                for (int j = sampleRanges[i].x; j < sampleRanges[i].y; j++)
+                {
+                    avg += samples[j];
+                }
+
+                avg /= sampleRanges[i].y - sampleRanges[i].x;
+
+                if (avg >= (!Testing ? beatThreshholds[i] : beatSpawnThreshold)) bools[i] = true;
+            }
+
+            noteCooldown = GlobalVar.Instance.noteCoolDown;
+        }
+
+        noteCooldown -= Time.deltaTime;
         OnSpawnBeat.Invoke(bools);
+        
     }
 
     /// <summary>

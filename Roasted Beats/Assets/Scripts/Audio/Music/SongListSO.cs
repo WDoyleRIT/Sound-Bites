@@ -61,6 +61,7 @@ public class SongListSO : ScriptableObject
 [Serializable]
 public class SongSO
 {
+    [SerializeField] public int bpm;
     [SerializeField] public AudioClip audio;
     [SerializeField] public String Name;
     [SerializeField] public List<SampleInt> FreqMapDifficulties;
