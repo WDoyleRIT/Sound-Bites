@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.U2D.IK;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,7 +35,7 @@ public class SongManager : MonoBehaviour
     private IEnumerator StartMusic()
     {
         songDelay = GlobalVar.Instance.noteSpdInSec;
-        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm / 2;
+        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 2;
 
         switch (songDelay)
         {

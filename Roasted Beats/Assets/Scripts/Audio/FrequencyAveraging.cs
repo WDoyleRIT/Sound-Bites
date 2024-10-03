@@ -35,8 +35,8 @@ public class FrequencyAveraging : MonoBehaviour
             bools.Add(false);
         }
 
-        if (noteCooldown <= 0 || Testing)
-        {
+        //if (noteCooldown <= 0 || Testing)
+        //{
             for (int i = 0; i < sampleRanges.Count; i++)
             {
                 float avg = 0;
@@ -51,10 +51,10 @@ public class FrequencyAveraging : MonoBehaviour
                 if (avg >= (!Testing ? beatThreshholds[i] : beatSpawnThreshold)) bools[i] = true;
             }
 
-            noteCooldown = GlobalVar.Instance.noteCoolDown;
-        }
+            //noteCooldown = GlobalVar.Instance.noteCoolDown;
+        //}
 
-        noteCooldown -= Time.deltaTime;
+        //noteCooldown -= Time.deltaTime;
         OnSpawnBeat.Invoke(bools);
         
     }

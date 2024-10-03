@@ -25,6 +25,6 @@ MonoBehaviour:
       - {x: 246, y: 342}
       BeatThreshholds:
       - 0.005
-      - 0.006
+      - 0.025
       - 0.0025
       - 0.002

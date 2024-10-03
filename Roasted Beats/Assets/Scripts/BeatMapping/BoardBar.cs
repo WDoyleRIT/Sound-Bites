@@ -25,7 +25,7 @@ public class BoardBar : MonoBehaviour
 
     private void Update()
     {
-        //noteCooldown -= Time.deltaTime;
+        noteCooldown -= Time.deltaTime;
 
         // We calculate speed each frame just because its easier if we need to change it in global
         if (travelDistance == 0) return;
@@ -45,13 +45,13 @@ public class BoardBar : MonoBehaviour
 
     public void CreateNote(int prefabIndex)
     {
-        //if (noteCooldown > 0) return; 
+        if (noteCooldown > 0) return; 
         notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position, transform.rotation, transform));
 
         Vector3 direction = Vector3.Normalize(EndPos.position - StartPos.position);
 
         notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed, direction);
-        //noteCooldown = GlobalVar.Instance.noteCoolDown;
+        noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
     public void CheckNoteCollision()
