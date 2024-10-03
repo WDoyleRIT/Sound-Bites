@@ -87,8 +87,15 @@ public class BoardBar : MonoBehaviour
                 (distance < .35) ? 100 :
                 (distance < .5) ? 50 :
                 (distance < .75) ? 10 :
-                (distance < 1) ? 5 :
-                0;
+                (distance < .95) ? 5 :
+                -100;
+
+            if (score > 0)
+            {
+                Destroy(notes[i]);
+                notes.RemoveAt(i);
+                i--;
+            }
 
             currentLvl.ChangeScoreBy(score);
         }
