@@ -35,7 +35,7 @@ public class SongManager : MonoBehaviour
     private IEnumerator StartMusic()
     {
         songDelay = GlobalVar.Instance.noteSpdInSec;
-        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 2;
+        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 4;
 
         switch (songDelay)
         {
