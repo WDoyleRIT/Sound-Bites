@@ -11,17 +11,19 @@ public class Note : MonoBehaviour
 
     // Float to determine how fast the note moves
     [SerializeField] private float noteSpeed;
+    [SerializeField] private Vector3 direction;
 
-    public void CreateNote(float speed)
+    public void CreateNote(float speed, Vector3 dir)
     {
         noteSpeed = speed;
+        direction = dir;
     }
 
     // Update is called once per fixed frame
     public void OnUpdate()
     {
         // Lower the note from its starting point
-        transform.position = new Vector3(transform.position.x, transform.position.y - (noteSpeed * Time.deltaTime), transform.position.z);
+        transform.position = transform.position + (direction * noteSpeed * Time.deltaTime);
     }
 
 
