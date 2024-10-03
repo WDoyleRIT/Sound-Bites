@@ -20,5 +20,5 @@ public class GameManager : Singleton<GameManager>
     //
     // public LevelSelector levelSelect; 
 
-
+    public LevelManager currentLevel;
 }

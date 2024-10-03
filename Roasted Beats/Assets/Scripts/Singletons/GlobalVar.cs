@@ -14,5 +14,5 @@ public class GlobalVar : Singleton<GlobalVar>
     public int notesPassed = 0;
     public bool songIsPlaying = false;
 
-    public uint currentLvlPoints = 0;
+    public int currentLvlPoints = 0;
 }

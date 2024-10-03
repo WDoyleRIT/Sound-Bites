@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     // private SceneManager sceneManager
     [SerializeField] private SongListSO songList;
     private int currentSongIndex;
-    private uint levelScore;
+    private int levelScore;
 
     [SerializeField] private SongManager sm;
 
@@ -34,6 +34,14 @@ public class LevelManager : MonoBehaviour
 
         // Dropping variable to wake up playerInput;
         var input = InputManager.Instance.playerInput;
+
+        GameManager.Instance.currentLevel = this;
+    }
+
+    public void ChangeScoreBy(int score)
+    {
+        levelScore += score;
+        levelScore = Mathf.Max(levelScore, 0);
     }
 
     private void Update()
