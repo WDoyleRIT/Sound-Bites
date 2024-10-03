@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,18 +12,59 @@ public class BoardGeneration : MonoBehaviour
     //[SerializeField] private NoteTest gameManager;
 
     // List of bar objects
-    private List<GameObject> bars = new List<GameObject>();
+    private List<GameObject> bars;
     // Make a list of notes!!!!
+
+    private void OnValidate()
+    {
+        // In editor every time the editor updates
+        // It'll gen the bars, did this so we can see how the board looks before playing
+        if (transform.childCount > 0) return;
+
+        GenerateBars(4);
+    }
+
+    #region Delete
+    // Different executions to delete bars
+    private void DeleteAllBars()
+    {
+        if (Application.isEditor)
+        {
+            Debug.Log($"Deleting {transform.childCount} bars.");
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                GameObject.DestroyImmediate(transform.GetChild(i).gameObject);
+            }
+            Debug.Log("Deletion complete.");
+        }
+        else
+        {
+            if (bars != null)
+            {
+                for (int i = 0; i < bars.Count; i++)
+                {
+                    GameObject.Destroy(bars[i]);
+                }
+
+                bars.Clear();
+            }
+        }
+
+        bars = new List<GameObject>();
+    }
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        DeleteAllBars();
         GenerateBars(4);
-        
+
         //InputManager.Instance.LoadInputs();
-        
+
         //var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
-        
+
         /*if (input != null )
         {
             var action = input.FindAction("Hit Note1");
@@ -80,9 +122,14 @@ public class BoardGeneration : MonoBehaviour
         }
     }
 
+
+
     private void GenerateBars(int numBars) {
+
+        bars = new List<GameObject>();
+
         // Caps the number of bars at 5
-        if(numBars >= 5)
+        if (numBars >= 5)
         {
             numBars = 5;
         }
