@@ -76,12 +76,13 @@ public class BoardBar : MonoBehaviour
 
     public void CheckNoteCollision()
     {
-        for (int i = 0; i < notes.Count; i++)
-        {
-            float distance = Vector3.Distance(notes[i].transform.position, EndPos.position);
+        //for (int i = 0; i < notes.Count; i++)
+        //{
+            float distance = Vector3.Distance(notes[0].transform.position, EndPos.position);
 
             LevelManager currentLvl = GameManager.Instance.currentLevel;
 
+            
             int score =
                 (distance <= 0.05) ? 1000 :
                 (distance < .15) ? 500 :
@@ -93,13 +94,12 @@ public class BoardBar : MonoBehaviour
 
             if (score > 0)
             {
-                Destroy(notes[i]);
-                notes.RemoveAt(i);
-                i--;
+                Destroy(notes[0]);
+                notes.RemoveAt(0);
                 GlobalVar.Instance.notesPassed++;
             }
 
             currentLvl.ChangeScoreBy(score);
-        }
+        //}
     }
 }
