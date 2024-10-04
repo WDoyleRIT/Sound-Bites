@@ -21,7 +21,8 @@ public class ScoreManager : MonoBehaviour
     {
         score = GlobalVar.Instance.currentLvlPoints;
 
-        textPrefab.text = score.ToString("Score: " + score);
+        //textPrefab.text = score.ToString("Score: " + score);
+        textPrefab.text = ("Score: " + score);
     }
 
     public void BeatPressed(float points)
