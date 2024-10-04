@@ -17,6 +17,7 @@ public class BoardGeneration : MonoBehaviour
 
     private void OnValidate()
     {
+        if (!Application.isEditor) return;
         // In editor every time the editor updates
         // It'll gen the bars, did this so we can see how the board looks before playing
         if (transform.childCount > 0) return;
@@ -28,6 +29,12 @@ public class BoardGeneration : MonoBehaviour
     // Different executions to delete bars
     private void DeleteAllBars()
     {
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+
         if (Application.isEditor)
         {
             Debug.Log($"Deleting {transform.childCount} bars.");
@@ -61,6 +68,8 @@ public class BoardGeneration : MonoBehaviour
         DeleteAllBars();
         GenerateBars(4);
 
+        Debug.Log(transform.childCount);
+
         //InputManager.Instance.LoadInputs();
 
         //var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
@@ -77,72 +86,48 @@ public class BoardGeneration : MonoBehaviour
         }*/
     }
 
-    public void HitNote1(InputAction.CallbackContext context)
+    private void ChangeRing(int i, InputAction.CallbackContext context)
     {
-        GameObject ring = bars[0].transform.GetChild(2).gameObject;
-        if (context.started)
-        {
-            Debug.Log("Bar 1 Press");
+        //GameObject ring = bars[i].GetComponent<BoardBar>().EndPos.gameObject;
+
+            //Debug.Log(String.Format("Bar Press {0}", i));
             // Checks collision of first bar
-            CheckCollision(0);
-            ring.SetActive(false);
+            
+        //ring.GetComponent<SpriteRenderer>().sortingOrder = 0;
+
+        if (context.performed)
+        {
+            CheckCollision(i);
         }
 
-        if (context.canceled)
-        {
-            ring.SetActive(true);
-        }
+        //if (context.canceled)
+        //{
+        //    //GameObject ring = bars[i].GetComponent<BoardBar>().EndPos.gameObject;
+        //    ring.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+        //}
+
+        bars[i].GetComponent<BoardBar>().ChangeRing(i, context);
+    }
+
+    public void HitNote1(InputAction.CallbackContext context)
+    {
+        ChangeRing(0, context);
     }
 
     public void HitNote2(InputAction.CallbackContext context)
     {
-        GameObject ring = bars[1].transform.GetChild(2).gameObject;
-        if (context.started)
-        {
-            Debug.Log("Bar 2 Press");
-            // Checks collision of second bar
-            CheckCollision(1);
-            ring.SetActive(false);
-        }
-
-        if (context.canceled)
-        {
-            ring.SetActive(true);
-        }
+        ChangeRing(1, context);
     }
 
     public void HitNote3(InputAction.CallbackContext context)
     {
-        GameObject ring = bars[2].transform.GetChild(2).gameObject;
-        if (context.started)
-        {
-            Debug.Log("Bar 3 Press");
-            // Checks collision of third bar
-            CheckCollision(2);
-            ring.SetActive(false);
-        }
-
-        if (context.canceled)
-        {
-            ring.SetActive(true);
-        }
+        ChangeRing(2, context);
     }
 
     public void HitNote4(InputAction.CallbackContext context)
     {
-        GameObject ring = bars[3].transform.GetChild(2).gameObject;
-        if (context.started)
-        {
-            Debug.Log("Bar 4 Press");
-            // Checks collision of fourth bar
-            CheckCollision(3);
-            ring.SetActive(false);
-        }
-
-        if (context.canceled)
-        {
-            ring.SetActive(true);
-        }
+        ChangeRing(3, context);
     }
 
     // Will Doyle: Temporarily reworked this method so that it only checks the bar at a certain index

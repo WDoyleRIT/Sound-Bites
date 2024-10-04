@@ -7,7 +7,7 @@ public class SceneManaging : MonoBehaviour
 {
     
     [SerializeField] private Animator transition;
-    [SerializeField] private float waitTime = 1;
+    [SerializeField] private float waitTime = 0;
     
     public void OpenLvl(string name)
     {

@@ -65,7 +65,7 @@ public class MoveIntoScene : MonoBehaviour
 
         if (charPosition.x >= -5.5 && !exit)
         {
-            textPrefab.text = "Make me some food please! (Have " + (30 - notesPassed) + " notes pass)";
+            textPrefab.text = "Make me some food please! (" + (30 - notesPassed) + " more notes to pass)";
             if (!noteCountReset)
             {
                 gv.notesPassed = 0;

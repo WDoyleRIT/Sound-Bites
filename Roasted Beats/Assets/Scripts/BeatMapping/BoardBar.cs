@@ -1,21 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BoardBar : MonoBehaviour
 {
     [SerializeField] private List<GameObject> NotePrefabs;
 
     [SerializeField] private Transform StartPos;
-    [SerializeField] private Transform EndPos;
+    [SerializeField] public Transform EndPos;
     [SerializeField] private Transform MissedPos;
 
     private float noteCooldown;
     private float speed;
     private float travelDistance;
 
-    private List<GameObject> notes;
+    private List<GameObject> notes = new List<GameObject>();
 
     private void Start()
     {
@@ -33,6 +34,28 @@ public class BoardBar : MonoBehaviour
         if (travelDistance == 0) return;
 
         speed = travelDistance / GlobalVar.Instance.noteSpdInSec;
+    }
+
+    public void ChangeRing(int i, InputAction.CallbackContext context)
+    {
+        GameObject ring = EndPos.gameObject;
+
+        Debug.Log(String.Format("Bar Press {0}", i));
+
+        //ring.GetComponent<SpriteRenderer>().sortingOrder = 0;
+
+        Debug.Log(ring.transform.name);
+        Debug.Log(ring);
+        ring.SetActive(false);
+
+        if (context.canceled)
+        {
+            //GameObject ring = bars[i].GetComponent<BoardBar>().EndPos.gameObject;
+            //ring.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            ring.SetActive(true);
+        }
+
+        Debug.Log(ring.activeSelf);
     }
 
     public void OnUpdate()
@@ -78,6 +101,8 @@ public class BoardBar : MonoBehaviour
     {
         //for (int i = 0; i < notes.Count; i++)
         //{
+        if (notes.Count <= 0) return;
+
             float distance = Vector3.Distance(notes[0].transform.position, EndPos.position);
 
             LevelManager currentLvl = GameManager.Instance.currentLevel;
