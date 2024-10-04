@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows.Speech;
 
 public class MoveIntoScene : MonoBehaviour
 {
@@ -16,9 +18,12 @@ public class MoveIntoScene : MonoBehaviour
     Vector3 vertical = Vector3.up;
 
     bool exit = false;
+    bool noteCountReset = false;
 
     int notesPassed = 0;
     GlobalVar gv;
+    [SerializeField] TextMeshPro textPrefab;
+
 
 
     public void HitNote(InputAction.CallbackContext context)
@@ -36,41 +41,83 @@ public class MoveIntoScene : MonoBehaviour
         height= 2f * mainCam.orthographicSize;
         width = height * mainCam.aspect;
         charPosition.x = -(width / 2);
-        charPosition.y = 4;
+        charPosition.y = 0.5f;
         transform.position= charPosition;
         speed = 2;
         gv = GlobalVar.Instance;
+        textPrefab = Instantiate(textPrefab, textPrefab.transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
         notesPassed = gv.notesPassed;
+        //Debug.Log(notesPassed);
         velocity = direction * speed * Time.deltaTime;
         charPosition += velocity;
         transform.position = charPosition;
+
+
 
         // Joe's notes
         // I suggest using an animator for character movement up and down
         // while just moving x with code
 
-        if (charPosition.x >= 0 && notesPassed<10)
+        if (charPosition.x >= -5.5 && !exit)
         {
-            speed = 0;
+            textPrefab.text = "Make me some food please! (Have " + (30 - notesPassed) + " notes pass)";
+            if (!noteCountReset)
+            {
+                gv.notesPassed = 0;
+                notesPassed = 0;
+                noteCountReset = true;
+                //Debug.Log("resetting");
+            }
+            if (notesPassed < 30 && noteCountReset)
+            {
+                speed = 0;
+            }
+            else
+            {
+                exit = true;
+                speed= 2;
+                noteCountReset= false;
+                //Debug.Log("exiting");
+            }
         }
         else
         {
+            textPrefab.text = "";
             speed = 2;
         }
-        if(charPosition.y >= 4.5)
+        if(charPosition.y >= 0)
         {
             vertical = Vector3.down;
-            direction = Vector3.right + vertical;
+            if (!exit)
+            {
+                direction = Vector3.right + vertical;
+            }
+            else
+            {
+                direction = Vector3.left + vertical;
+            }
         }
-        else if (charPosition.y <= 3.5)
+        else if (charPosition.y <= -1)
         {
             vertical = Vector3.up;
-            direction = Vector3.right + vertical;
+            if (!exit)
+            {
+                direction = Vector3.right + vertical;
+            }
+            else
+            {
+                direction = Vector3.left + vertical;
+            }
+        }
+
+        if (charPosition.x < -(width/2)-2.5)
+        {
+            exit = false;
         }
     }
 }

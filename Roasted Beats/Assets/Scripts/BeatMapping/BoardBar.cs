@@ -56,6 +56,7 @@ public class BoardBar : MonoBehaviour
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
                 i--;
+                GlobalVar.Instance.notesPassed++;
             }
         }
 
@@ -95,6 +96,7 @@ public class BoardBar : MonoBehaviour
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
                 i--;
+                GlobalVar.Instance.notesPassed++;
             }
 
             currentLvl.ChangeScoreBy(score);
