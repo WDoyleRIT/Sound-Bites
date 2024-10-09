@@ -89,7 +89,7 @@ public class BoardBar : MonoBehaviour
     public void CreateNote(int prefabIndex)
     {
         if (noteCooldown > 0) return;
-        notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position, transform.rotation, transform));
+        notes.Add(Instantiate(NotePrefabs[prefabIndex], StartPos.position + new Vector3(0,0,-.4f), transform.rotation, transform));
 
         Vector3 direction = Vector3.Normalize(EndPos.position - StartPos.position);
 
