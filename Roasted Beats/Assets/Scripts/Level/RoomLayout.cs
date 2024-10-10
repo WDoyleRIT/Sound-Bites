@@ -8,13 +8,19 @@ using UnityEngine.Events;
 public class RoomLayout : MonoBehaviour
 {
     [SerializeField] private List<GameObject> roomLayers;
+    [SerializeField] private GameObject shadeLayer;
 
     [SerializeField] private float layerOffset;
     [SerializeField] private float roomOffsetMax;
 
+    [Header("Camera Variables")]
+    [SerializeField] private float camLerpSpeed;
+
     private Vector3 cameraOffset;
+    private Vector3 targetOffset;
 
     private List<GameObject> instantiatedLayers;
+    private List<GameObject> shadeLayers;
 
     private void OnValidate()
     {
@@ -31,6 +37,8 @@ public class RoomLayout : MonoBehaviour
 
     private void Update()
     {
+        cameraOffset = Vector3.Lerp(targetOffset, cameraOffset, Mathf.Pow(.5f, Time.deltaTime * camLerpSpeed));
+
         for (int i = 0; i < instantiatedLayers.Count; i++)
         {
             GameObject layer = instantiatedLayers[i];
@@ -41,7 +49,7 @@ public class RoomLayout : MonoBehaviour
 
     public void SetCameraOffset(Vector3 offset)
     {
-        cameraOffset = offset;
+        targetOffset = offset;
     }
 
     private void GenerateLayers()
@@ -63,16 +71,22 @@ public class RoomLayout : MonoBehaviour
         }
     
         instantiatedLayers = new List<GameObject>();
+        shadeLayers = new List<GameObject>();
 
         for (int i = 0; i < roomLayers.Count; i++)
         {
             instantiatedLayers.Add(Instantiate(roomLayers[i], transform.position + new Vector3(0, 0, layerOffset * i), Quaternion.identity, transform));
 
-            float color = (1 - i * .075f);
-
             GameObject layer = instantiatedLayers[instantiatedLayers.Count - 1];
 
-            layer.GetComponent<SpriteRenderer>().color = new Color(color,color,color,1);
+            shadeLayers.Add(Instantiate(shadeLayer, transform.position + new Vector3(0, 0, layerOffset * i - .01f), Quaternion.identity, layer.transform));
+            float color = (1 - i * .055f);
+
+            
+
+            shadeLayers[shadeLayers.Count - 1].transform.localScale = Vector3.one * 2;
+
+            //layer.GetComponent<SpriteRenderer>().color = new Color(color,color,color,1);
             layer.transform.localScale = Vector3.one - (Vector3.one * .025f * i);
         }
     }
