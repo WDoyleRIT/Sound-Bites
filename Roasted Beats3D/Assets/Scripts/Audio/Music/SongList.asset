@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455f81064277f6040a3f76abeed18fe7, type: 3}
+  m_Name: SongList
+  m_EditorClassIdentifier: 
+  songSOs:
+  - bpm: 117
+    audio: {fileID: 8300000, guid: 4ac9bab9213f1e542a439cdd95cdc46d, type: 3}
+    Name: EthernightClub
+    FreqMapDifficulties:
+    - sampleSize: 8192
+      SampleRanges:
+      - {x: 0, y: 70}
+      - {x: 75, y: 78}
+      - {x: 190, y: 245}
+      - {x: 246, y: 342}
+      BeatThreshholds:
+      - 0.005
+      - 0.025
+      - 0.0025
+      - 0.002
