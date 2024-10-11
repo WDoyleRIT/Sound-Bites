@@ -103,7 +103,7 @@ public class BoardBar : MonoBehaviour
         //{
         if (notes.Count <= 0) return;
 
-            float distance = Vector3.Distance(notes[0].transform.position, EndPos.position);
+            float distance = Vector2.Distance(notes[0].transform.position, EndPos.position);
 
             LevelManager currentLvl = GameManager.Instance.currentLevel;
 
