@@ -1,0 +1,65 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+
+public class ObjectInteraction : MonoBehaviour
+{
+    [SerializeField] private LayerMask interactionLayer;
+
+    public UnityEvent OnInteraction;
+    public UnityEvent<bool> OnHover;
+
+    public bool HoveredOver { get; private set; }
+
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
+    void Update()
+    {
+        // Send hover status to any listeners
+        OnHover.Invoke(HoveredOver = CheckHoverStatus());
+    }
+
+    /// <summary>
+    /// Checks for ray collision using an input
+    /// </summary>
+    /// <param name="context"></param>
+    void CheckCollision(InputAction.CallbackContext context)
+    {
+       if (HoveredOver && context.started)
+       {
+            OnInteraction.Invoke();
+       }
+    }
+
+    /// <summary>
+    /// Sends ray out from camera mouse position to check for collision
+    /// </summary>
+    /// <returns></returns>
+    private bool CheckHoverStatus()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 0;
+
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 100, interactionLayer))
+        {
+            GameObject objInt = hit.collider.gameObject;
+
+            while (objInt.transform.parent != null && objInt.name != this.gameObject.name)
+            {
+                objInt = objInt.transform.parent.gameObject;
+            }
+
+            return this.gameObject == objInt;
+        }
+
+        return false;
+    }
+}

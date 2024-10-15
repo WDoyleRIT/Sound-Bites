@@ -79,12 +79,12 @@ public class RoomLayout : MonoBehaviour
 
             GameObject layer = instantiatedLayers[instantiatedLayers.Count - 1];
 
-            shadeLayers.Add(Instantiate(shadeLayer, transform.position + new Vector3(0, 0, layerOffset * i - .01f), Quaternion.identity, layer.transform));
+            //shadeLayers.Add(Instantiate(shadeLayer, transform.position + new Vector3(0, 0, layerOffset * i - .01f), Quaternion.identity, layer.transform));
             float color = (1 - i * .055f);
 
             
 
-            shadeLayers[shadeLayers.Count - 1].transform.localScale = Vector3.one * 2;
+            //shadeLayers[shadeLayers.Count - 1].transform.localScale = Vector3.one * 2;
 
             //layer.GetComponent<SpriteRenderer>().color = new Color(color,color,color,1);
             layer.transform.localScale = Vector3.one - (Vector3.one * .025f * i);
