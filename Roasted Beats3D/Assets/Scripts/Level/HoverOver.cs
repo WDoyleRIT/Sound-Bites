@@ -14,5 +14,10 @@ public class HoverOver : MonoBehaviour
         hoverMask.SetActive(hoverStatus);
     }
 
+    public void OnClick()
+    {
+        hoverMask.SetActive(false);
+    }
+
     // ========================================================================
 }

@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         OnSceneStart.Invoke();
 
         // Dropping variable to wake up playerInput;
-        var input = InputManager.Instance.playerInput;
+        //var input = InputManager.Instance.playerInput;
 
         GameManager.Instance.currentLevel = this;
     }

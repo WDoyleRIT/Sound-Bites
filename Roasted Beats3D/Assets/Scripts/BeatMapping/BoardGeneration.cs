@@ -72,18 +72,18 @@ public class BoardGeneration : MonoBehaviour
 
         //InputManager.Instance.LoadInputs();
 
-        //var input = InputManager.Instance.playerInput.actions.FindActionMap("Player");
+        //var input = InputManager.Instance.PlayerInput.actions.FindActionMap("Player");
 
-        /*if (input != null )
-        {
-            var action = input.FindAction("Hit Note1");
+        //if (input != null )
+        //{
+        //    var action = input.FindAction("Hit Note1");
 
-            if (action != null)
-            {
-                action.Enable();
-                action.performed += HitNotes;
-            }
-        }*/
+        //    if (action != null)
+        //    {
+        //        action.Enable();
+        //        action.performed += HitNote1;
+        //    }
+        //}
     }
 
     private void ChangeRing(int i, InputAction.CallbackContext context)

@@ -21,12 +21,12 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Hit Note2",
                     "type": "Button",
-                    "id": "57fce058-2a95-4507-a395-b5fe5ffe642f",
+                    "id": "8daea8b1-5a7e-4ce2-80e0-4452cdadb73a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -35,7 +35,7 @@
                 {
                     "name": "Hit Note3",
                     "type": "Button",
-                    "id": "fdb0dfe6-7733-4360-adb9-eb376ff1e9e9",
+                    "id": "12a03d67-a78e-4c4b-bcde-d4810fc80893",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -44,7 +44,16 @@
                 {
                     "name": "Hit Note4",
                     "type": "Button",
-                    "id": "66696d84-2837-40b3-a7e3-4ff2fe6eb9e4",
+                    "id": "2b7d43f0-ca5f-4d8a-915b-8eebcb806590",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LMB",
+                    "type": "Button",
+                    "id": "7352e77f-e4de-40a3-9f46-6a715003806d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -76,7 +85,18 @@
                 },
                 {
                     "name": "",
-                    "id": "ba56b1c2-5dff-40de-8883-5641d4c3082a",
+                    "id": "ed2cfdce-5d3a-4cc1-8d87-b88d1f667993",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "093749d8-5c09-4a7c-b9d3-70b58ae2cc71",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -87,7 +107,7 @@
                 },
                 {
                     "name": "",
-                    "id": "7e269e0d-9052-4463-b542-943e1dd6008f",
+                    "id": "c357532c-e580-4094-aec9-a284517652f9",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -98,7 +118,7 @@
                 },
                 {
                     "name": "",
-                    "id": "80f8661e-93b4-42be-939b-9e3a81747045",
+                    "id": "7499fcc9-bf1f-476b-ab5c-2d16d429b8fa",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",

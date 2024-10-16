@@ -6,7 +6,20 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : Singleton<InputManager>
 {
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
+
+    public PlayerInput PlayerInput
+    {
+        get
+        {
+            if (playerInput == null)
+            {
+                LoadInputs();
+            }
+
+            return playerInput;
+        }
+    }
 
     public void LoadInputs()
     {

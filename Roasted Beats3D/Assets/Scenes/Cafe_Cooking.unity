@@ -10848,16 +10848,20 @@ MonoBehaviour:
     m_ActionName: Player/Hit Note1[/Keyboard/a]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 57fce058-2a95-4507-a395-b5fe5ffe642f
+    m_ActionId: 8daea8b1-5a7e-4ce2-80e0-4452cdadb73a
     m_ActionName: Player/Hit Note2[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fdb0dfe6-7733-4360-adb9-eb376ff1e9e9
+    m_ActionId: 12a03d67-a78e-4c4b-bcde-d4810fc80893
     m_ActionName: Player/Hit Note3[/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 66696d84-2837-40b3-a7e3-4ff2fe6eb9e4
+    m_ActionId: 2b7d43f0-ca5f-4d8a-915b-8eebcb806590
     m_ActionName: Player/Hit Note4[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7352e77f-e4de-40a3-9f46-6a715003806d
+    m_ActionName: Player/LMB[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -11177,7 +11181,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 57fce058-2a95-4507-a395-b5fe5ffe642f
+    m_ActionId: 8daea8b1-5a7e-4ce2-80e0-4452cdadb73a
     m_ActionName: Player/Hit Note2[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls:
@@ -11193,7 +11197,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: fdb0dfe6-7733-4360-adb9-eb376ff1e9e9
+    m_ActionId: 12a03d67-a78e-4c4b-bcde-d4810fc80893
     m_ActionName: Player/Hit Note3[/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
@@ -11209,8 +11213,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 66696d84-2837-40b3-a7e3-4ff2fe6eb9e4
+    m_ActionId: 2b7d43f0-ca5f-4d8a-915b-8eebcb806590
     m_ActionName: Player/Hit Note4[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7352e77f-e4de-40a3-9f46-6a715003806d
+    m_ActionName: Player/LMB[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -14,6 +14,27 @@ public class ObjectInteraction : MonoBehaviour
 
     public bool HoveredOver { get; private set; }
 
+    private void Start()
+    {
+        AddInput();
+    }
+
+    private void AddInput()
+    {
+        InputActionMap input = InputManager.Instance.PlayerInput.actions.FindActionMap("Player");
+
+        if (input != null)
+        {
+            InputAction action = input.FindAction("LMB");
+
+            if (action != null)
+            {
+                action.Enable();
+                action.performed += CheckCollision;
+            }
+        }
+    }
+
     /// <summary>
     /// Start is called before the first frame update
     /// </summary>
@@ -29,8 +50,9 @@ public class ObjectInteraction : MonoBehaviour
     /// <param name="context"></param>
     void CheckCollision(InputAction.CallbackContext context)
     {
-       if (HoveredOver && context.started)
+        if (HoveredOver && context.performed)
        {
+            Debug.Log(String.Format("Clicked {0}", transform.name));
             OnInteraction.Invoke();
        }
     }
