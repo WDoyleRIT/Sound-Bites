@@ -1,18 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 
 public class RotateMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void RotateRight()
     {
-        
+        Quaternion currentRotate = transform.rotation;
+        Vector3 currentPosition = transform.position;
+
+        float rotateAmount = 45.0f;
+        float moveAmount = -6.0f;
+
+        currentPosition.x += moveAmount;
+        currentRotate.y += rotateAmount;
+
+        transform.rotation = currentRotate;
+        transform.position = currentPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RotateLeft()
     {
-        
+        Quaternion currentRotate = transform.rotation;
+        Vector3 currentPosition = transform.position;
+
+        float rotateAmount = -45.0f;
+        float moveAmount = 6.0f;
+
+        currentPosition.x += moveAmount;
+        currentRotate.y += rotateAmount;
+
+        transform.rotation = currentRotate;
+        transform.position = currentPosition;
     }
 }
