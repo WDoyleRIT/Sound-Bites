@@ -32,6 +32,14 @@ public class RoomLayout : MonoBehaviour
 
     private void Start()
     {
+        instantiatedLayers = new List<GameObject>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            instantiatedLayers.Add(transform.GetChild(i).gameObject);
+        }
+
+        if (transform.childCount > 0) return;
         GenerateLayers();
     }
 

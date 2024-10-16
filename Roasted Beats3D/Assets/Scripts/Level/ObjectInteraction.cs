@@ -16,24 +16,24 @@ public class ObjectInteraction : MonoBehaviour
 
     private void Start()
     {
-        AddInput();
+        //AddInput();
     }
 
-    private void AddInput()
-    {
-        InputActionMap input = InputManager.Instance.PlayerInput.actions.FindActionMap("Player");
+    //private void AddInput()
+    //{
+    //    InputActionMap input = InputManager.Instance.PlayerInput.actions.FindActionMap("Player");
 
-        if (input != null)
-        {
-            InputAction action = input.FindAction("LMB");
+    //    if (input != null)
+    //    {
+    //        InputAction action = input.FindAction("LMB");
 
-            if (action != null)
-            {
-                action.Enable();
-                action.performed += CheckCollision;
-            }
-        }
-    }
+    //        if (action != null)
+    //        {
+    //            action.Enable();
+    //            action.performed += CheckCollision;
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// Start is called before the first frame update
@@ -42,15 +42,17 @@ public class ObjectInteraction : MonoBehaviour
     {
         // Send hover status to any listeners
         OnHover.Invoke(HoveredOver = CheckHoverStatus());
+
+        CheckCollision();
     }
 
     /// <summary>
     /// Checks for ray collision using an input
     /// </summary>
     /// <param name="context"></param>
-    void CheckCollision(InputAction.CallbackContext context)
+    void CheckCollision()
     {
-        if (HoveredOver && context.performed)
+        if (HoveredOver && Input.GetMouseButtonDown(0))
        {
             Debug.Log(String.Format("Clicked {0}", transform.name));
             OnInteraction.Invoke();
@@ -78,6 +80,8 @@ public class ObjectInteraction : MonoBehaviour
             {
                 objInt = objInt.transform.parent.gameObject;
             }
+
+            //Debug.Log(string.Format("hovering over {0}", transform.name));
 
             return this.gameObject == objInt;
         }

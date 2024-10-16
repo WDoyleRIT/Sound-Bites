@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,22 +41,32 @@ public class BoardBar : MonoBehaviour
     {
         GameObject ring = EndPos.gameObject;
 
-        Debug.Log(String.Format("Bar Press {0}", i));
+        //Debug.Log(String.Format("Bar Press {0}", i));
 
         //ring.GetComponent<SpriteRenderer>().sortingOrder = 0;
 
-        Debug.Log(ring.transform.name);
-        Debug.Log(ring);
-        ring.SetActive(false);
+        //Debug.Log(ring.transform.name);
+        //Debug.Log(ring);
 
-        if (context.canceled)
+        if (context.performed)
         {
-            //GameObject ring = bars[i].GetComponent<BoardBar>().EndPos.gameObject;
-            //ring.GetComponent<SpriteRenderer>().sortingOrder = 2;
-            ring.SetActive(true);
+            ring.SetActive(false);
+            StartCoroutine(SetRingTrue(.1f));
         }
-
+            
         Debug.Log(ring.activeSelf);
+    }
+
+    /// <summary>
+    /// Will set ring to true after a set amount of time
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    private IEnumerator SetRingTrue(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        EndPos.gameObject.SetActive(true);
     }
 
     public void OnUpdate()

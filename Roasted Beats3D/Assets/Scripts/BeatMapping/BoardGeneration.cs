@@ -70,20 +70,30 @@ public class BoardGeneration : MonoBehaviour
 
         Debug.Log(transform.childCount);
 
-        //InputManager.Instance.LoadInputs();
+        // Scubscribes the inputs to the player actions
+        SubscribeActions();
+    }
 
-        //var input = InputManager.Instance.PlayerInput.actions.FindActionMap("Player");
+    // Input related methods
+    #region Input
 
-        //if (input != null )
-        //{
-        //    var action = input.FindAction("Hit Note1");
+    private void SubscribeActions()
+    {
+        var Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+        Action.Enable();
+        Action.performed += HitNote1;
 
-        //    if (action != null)
-        //    {
-        //        action.Enable();
-        //        action.performed += HitNote1;
-        //    }
-        //}
+        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+        Action.Enable();
+        Action.performed += HitNote2;
+
+        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
+        Action.Enable();
+        Action.performed += HitNote3;
+
+        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
+        Action.Enable();
+        Action.performed += HitNote4;
     }
 
     private void ChangeRing(int i, InputAction.CallbackContext context)
@@ -130,6 +140,8 @@ public class BoardGeneration : MonoBehaviour
         ChangeRing(3, context);
     }
 
+    #endregion
+
     // Will Doyle: Temporarily reworked this method so that it only checks the bar at a certain index
     private void CheckCollision(int index)
     {
@@ -141,7 +153,10 @@ public class BoardGeneration : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Generates bars
+    /// </summary>
+    /// <param name="numBars"></param>
     private void GenerateBars(int numBars) {
 
         bars = new List<GameObject>();

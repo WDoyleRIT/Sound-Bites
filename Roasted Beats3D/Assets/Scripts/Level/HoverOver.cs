@@ -8,15 +8,21 @@ public class HoverOver : MonoBehaviour
     // ========================================================================
 
     [SerializeField] private GameObject hoverMask;
+    [SerializeField] private GameObject popUp;
 
     public void OnHover(bool hoverStatus)
     {
         hoverMask.SetActive(hoverStatus);
     }
 
-    public void OnClick()
+    public void OnClickFalse()
     {
-        hoverMask.SetActive(false);
+        popUp.SetActive(false);
+    }
+
+    public void OnClickTrue()
+    {
+        popUp.SetActive(true);
     }
 
     // ========================================================================
