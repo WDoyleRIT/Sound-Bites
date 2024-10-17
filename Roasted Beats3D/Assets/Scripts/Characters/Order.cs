@@ -8,14 +8,15 @@ public class Order : MonoBehaviour
 
     [SerializeField] private int itemCount;
     [SerializeField] private GameObject OrderBubble;
+    [SerializeField] public Transform BubblePos;
+
+    [SerializeField] private float orderItemSpacing = 1f;
 
     public List<FoodItem> foodItems {  get; private set; }
 
-    public List<FoodItem> GetOrder()
+    public List<FoodItem> GetOrder(OrderListSO orderList)
     {
-        //CafeManager currentLevel = GameManager.Instance.CurrentLevel;
-
-        //orderList = currentLevel.OrderList;
+        this.orderList = orderList;
 
         foodItems = new List<FoodItem>();
 
@@ -31,14 +32,17 @@ public class Order : MonoBehaviour
 
     private void SetOrderItems()
     {
-        OrderBubble = Instantiate(OrderBubble, transform);
+        OrderBubble = Instantiate(OrderBubble, BubblePos);
         
         for (int i = 0;i < foodItems.Count;i++)
         {
-            float itemOffset = 1;
+            float itemOffset = orderItemSpacing;
             float offset = -foodItems.Count / 2 * itemOffset;
 
-            Instantiate(foodItems[i].Cooked, OrderBubble.transform.position + new Vector3(i * itemOffset + offset, 0, -.01f), Quaternion.identity, OrderBubble.transform);
+            GameObject food = Instantiate(foodItems[i].Cooked, BubblePos.position + new Vector3(i * itemOffset + offset, 0, -.01f), Quaternion.identity, BubblePos);
+            food.transform.localScale = Vector3.one * .5f;
         }
+
+        BubblePos.gameObject.SetActive(false);
     }
 }

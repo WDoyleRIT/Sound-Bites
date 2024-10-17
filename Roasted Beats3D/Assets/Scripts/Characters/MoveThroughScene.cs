@@ -1,14 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows.Speech;
 
 public class MoveIntoScene : MonoBehaviour
 {
+    [SerializeField] private Transform standPos;
+    [SerializeField] private Transform endPos;
 
-    public bool IsStill {  get; private set; }
+    public Transform StandPos { get { return standPos; } set { standPos = value; } }
+    public Transform EndPos { get { return endPos; } set { endPos = value; } }
+
+    public Vector3 currentTargetPos;
+
+    public bool IsMoving { get; private set; }
+    public bool IsReadyToOrder {  get; private set; }
+    public bool WalkedOut { get; private set; }
+    public bool OrderRecieved {  get; set; }
+
+    private bool up;
+
+    private float count = 0;
+
+    private void Start()
+    {
+        IsMoving = false;
+        IsReadyToOrder = false;
+        WalkedOut = false;
+        OrderRecieved = false;
+
+        currentTargetPos = standPos.position;
+    }
+
+    public void SetTargetPosition(Vector3 position)
+    {
+        Debug.Log(string.Format("Set position to {0}", position));
+        currentTargetPos = position;
+    }
+
+    private void Update()
+    {
+        float speed = 10;
+        Vector3 direction = Vector3.Normalize(currentTargetPos - (transform.position + (Vector3.up * (IsMoving ? (up ? 1 : -1) : 0))));
+
+        // Moves position towards current target position
+        if (IsMoving)
+            transform.position += direction * Time.deltaTime * speed;
+
+        // Simple Clock ----------
+        if (count < 0)
+        {
+            up = !up;
+            count = .25f;
+        }
+
+        Debug.Log(count);
+
+        count -= Time.deltaTime;
+        // -----------------------
+
+        // If the position is close enough we set it to the target
+        if (Vector3.Distance(currentTargetPos, transform.position) < 0.05f)
+        {
+            transform.position = currentTargetPos;
+            IsMoving = false;
+        }
+        else
+            IsMoving = true;
+
+        if (transform.position == standPos.position)
+            IsReadyToOrder = true;
+
+        if (transform.position == endPos.position)
+            WalkedOut = true;
+
+        if (OrderRecieved)
+        {
+            currentTargetPos = endPos.position;
+            IsMoving = true;
+        }
+            
+    }
+
+    /*
+    public bool IsReadyToOrder {  get; private set; }
 
     float width;
     float height;
@@ -53,7 +131,7 @@ public class MoveIntoScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsStill = false;
+        IsReadyToOrder = false;
 
         notesPassed = gv.notesPassed;
         //Debug.Log(notesPassed);
@@ -69,7 +147,7 @@ public class MoveIntoScene : MonoBehaviour
 
         if (charPosition.x >= -5.5 && !exit)
         {
-            IsStill = true;
+            IsReadyToOrder = true;
 
             textPrefab.text = "Make me some food please! (" + (30 - notesPassed) + " more notes to pass)";
             if (!noteCountReset)
@@ -125,5 +203,5 @@ public class MoveIntoScene : MonoBehaviour
         {
             exit = false;
         }
-    }
+    }*/
 }

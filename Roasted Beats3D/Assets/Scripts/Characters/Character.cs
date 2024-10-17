@@ -6,21 +6,22 @@ using UnityEngine;
 [RequireComponent(typeof(MoveIntoScene), typeof(Order))]
 public class Character : MonoBehaviour
 {
-    [SerializeField] private MoveIntoScene MIS;
-    [SerializeField] private Order order;
+    [SerializeField] public MoveIntoScene MIS;
+    [SerializeField] public Order order;
 
     public bool OrderTaken {  get; set; }
 
     private List<FoodItem> orderList;
 
+    public bool ReadyToDelete {  get; private set; }
 
-    void Start()
+    public void CreateCharacter(OrderListSO orderList)
     {
-        orderList = order.GetOrder();
+        this.orderList = order.GetOrder(orderList);
         OrderTaken = false;
     }
 
-    private IEnumerator SpawnCustomer()
+    public IEnumerator SpawnCustomer()
     {
         yield return StartWalkIn();
 
@@ -31,7 +32,7 @@ public class Character : MonoBehaviour
 
     private IEnumerator StartWalkIn()
     {
-        while (!MIS.IsStill)
+        while (!MIS.IsReadyToOrder)
         {
             yield return new WaitForNextFrameUnit();
         }
@@ -39,26 +40,37 @@ public class Character : MonoBehaviour
 
     private IEnumerator StartWalkOut()
     {
-        while (!MIS.IsStill)
+        //Debug.Log(MIS.EndPos.position);
+        MIS.OrderRecieved = true;
+
+        while (!MIS.WalkedOut)
         {
             yield return new WaitForNextFrameUnit();
         }
 
-        Destroy(gameObject);
+        ReadyToDelete = true;
     }
 
     private IEnumerator WaitForOrder()
     {
-
-
+        DisplayOrder(true);
+        
         while (!OrderTaken)
         {
             yield return new WaitForNextFrameUnit();
         }
+
+        DisplayOrder(false);
     }
 
-    private void DisplayOrder()
+    public void SetOrderTaken(bool value)
     {
+        if (!MIS.IsReadyToOrder) return;
+        OrderTaken = value;
+    }
 
+    private void DisplayOrder(bool value)
+    {
+        order.BubblePos.gameObject.SetActive(value);
     }
 }
