@@ -7,25 +7,24 @@ using UnityEngine.InputSystem;
 
 public class CheckoutNote : MonoBehaviour
 {
-    [SerializeField] private float scaleSpeed;
+    [SerializeField] private float xScaleSpeed;
+    [SerializeField] private float yScaleSpeed;
     private Vector3 scale;
 
-    public Quaternion rotation;
 
-    public void CreateNote(float _scaleSpeed, Vector3 _scale)
+    public void CreateNote(float _xScaleSpeed,float _yScaleSpeed, Vector3 _scale)
     {
-        scaleSpeed = _scaleSpeed;
+        xScaleSpeed = _xScaleSpeed;
+        yScaleSpeed = _yScaleSpeed;
         scale = _scale;
-        rotation = transform.rotation;
         transform.localScale = scale;
     }
 
     public void OnUpdate()
     {
-        transform.rotation = rotation;
         scale=transform.localScale;
-        scale.x += scaleSpeed;
-        scale.y += scaleSpeed;
+        scale.x += xScaleSpeed;
+        scale.y += yScaleSpeed;
         transform.localScale = scale;
     }
 

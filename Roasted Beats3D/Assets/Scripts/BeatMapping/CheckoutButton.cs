@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckoutManager : MonoBehaviour
+public class CheckoutButton : MonoBehaviour
 {
 
     [SerializeField] private List<GameObject> NotePrefabs;
@@ -10,9 +10,12 @@ public class CheckoutManager : MonoBehaviour
     [SerializeField] private Transform buttonPos;
 
     [SerializeField] private Transform MissedScale;
+    [SerializeField] private float xMaxScale;
+    [SerializeField] private float yMaxScale;
 
 
-    private float scaleSpeed;
+    private float xScaleSpeed;
+    private float yScaleSpeed;
 
     List<GameObject> notes=new List<GameObject>();
 
@@ -22,21 +25,19 @@ public class CheckoutManager : MonoBehaviour
     {
         notes = new List<GameObject>();
 
-        scaleSpeed = (0.5f - 0.1f) / 100;
+        xScaleSpeed = (0.5f - 0.1f) / 1000;
+        yScaleSpeed = (0.6f - 0.12f) / 1000;
 
         CreateNote(0);
 
+        xMaxScale = 0.5f;
+        yMaxScale = 0.6f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scaleSpeed = 1f;
 
-        for(int i = 0; i < notes.Count; i++)
-        {
-            notes[i].GetComponent<CheckoutNote>().OnUpdate();
-        }
     }
 
 
@@ -44,9 +45,27 @@ public class CheckoutManager : MonoBehaviour
     {
 
         Debug.Log("Creating note");
-        notes.Add(Instantiate(NotePrefabs[prefabIndex], new Vector3(buttonPos.position.x,buttonPos.position.y,-1.1f), transform.rotation, transform));
+        notes.Add(Instantiate(NotePrefabs[prefabIndex], new Vector3(buttonPos.position.x,buttonPos.position.y,-1.1f), Quaternion.Euler(0,0,0), transform));
 
-        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(scaleSpeed,new Vector3(0.1f,0.12f,1f));
-        notes[notes.Count - 1].GetComponent<CheckoutNote>().rotation.x = -90; 
+        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(0.1f,0.12f,1f)); 
+    }
+
+    public void OnUpdate()
+    {
+
+        for (int i = 0; i < notes.Count; i++)
+        {
+            notes[i].GetComponent<CheckoutNote>().OnUpdate();
+
+
+            if (notes[i].transform.localScale.x > xMaxScale && notes[i].transform.localScale.y>yMaxScale)
+            {
+                Destroy(notes[i]);
+                notes.RemoveAt(i);
+                i--;
+                
+            }
+        }
+
     }
 }
