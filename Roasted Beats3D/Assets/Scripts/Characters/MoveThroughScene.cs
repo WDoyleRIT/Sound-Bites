@@ -8,6 +8,8 @@ using UnityEngine.Windows.Speech;
 public class MoveIntoScene : MonoBehaviour
 {
 
+    public bool IsStill {  get; private set; }
+
     float width;
     float height;
     float speed = 0;
@@ -51,6 +53,8 @@ public class MoveIntoScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsStill = false;
+
         notesPassed = gv.notesPassed;
         //Debug.Log(notesPassed);
         velocity = direction * speed * Time.deltaTime;
@@ -65,6 +69,8 @@ public class MoveIntoScene : MonoBehaviour
 
         if (charPosition.x >= -5.5 && !exit)
         {
+            IsStill = true;
+
             textPrefab.text = "Make me some food please! (" + (30 - notesPassed) + " more notes to pass)";
             if (!noteCountReset)
             {

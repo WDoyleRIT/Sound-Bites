@@ -4,7 +4,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelManager : MonoBehaviour
+public class RhythmManager : MonoBehaviour
 {
     // private SceneManager sceneManager
     [SerializeField] private SongListSO songList;
@@ -12,10 +12,13 @@ public class LevelManager : MonoBehaviour
     private int levelScore;
 
     [SerializeField] private SongManager sm;
+    [SerializeField] private OrderListSO orderList;
 
     public List<int> songIndicesForThisLevel;
     public UnityEvent OnSceneStart;
     public UnityEvent OnSceneStop;
+
+
 
     private void Start()
     {
@@ -35,7 +38,7 @@ public class LevelManager : MonoBehaviour
         // Dropping variable to wake up playerInput;
         //var input = InputManager.Instance.playerInput;
 
-        GameManager.Instance.currentLevel = this;
+        GameManager.Instance.CurrentLevel = this;
     }
 
     public void ChangeScoreBy(int score)

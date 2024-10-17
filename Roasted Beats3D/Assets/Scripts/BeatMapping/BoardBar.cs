@@ -73,7 +73,7 @@ public class BoardBar : MonoBehaviour
     {
         for (int i = 0; i < notes.Count; i++)
         {
-            LevelManager currentLvl = GameManager.Instance.currentLevel;
+            RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
 
             notes[i].GetComponent<Note>().OnUpdate();
 
@@ -116,7 +116,7 @@ public class BoardBar : MonoBehaviour
 
             float distance = Vector2.Distance(notes[0].transform.position, EndPos.position);
 
-            LevelManager currentLvl = GameManager.Instance.currentLevel;
+            RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
 
             
             int score =

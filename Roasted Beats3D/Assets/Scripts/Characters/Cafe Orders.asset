@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c8e1a6612e8ed44aa7f8223008dcd5, type: 3}
+  m_Name: Cafe Orders
+  m_EditorClassIdentifier: 
+  items:
+  - name: Donut
+    Raw: {fileID: 0}
+    Medium: {fileID: 0}
+    Cooked: {fileID: 1809904251642255649, guid: c7bdf9af31f0c2841b60cb3736327941,
+      type: 3}
+    Burned: {fileID: 0}
+  - name: Coffee
+    Raw: {fileID: 0}
+    Medium: {fileID: 0}
+    Cooked: {fileID: 5637643754148603577, guid: ff8a7156d7b20524796f3e40e9f3f38a,
+      type: 3}
+    Burned: {fileID: 0}
+  - name: Muffin
+    Raw: {fileID: 0}
+    Medium: {fileID: 0}
+    Cooked: {fileID: 9041061214342232722, guid: c14ce3255857928428a811f415e0a684,
+      type: 3}
+    Burned: {fileID: 0}
