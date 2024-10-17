@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] TextMeshPro textPrefab;
+    [SerializeField] private TextMeshPro text;
     private float score;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        textPrefab = Instantiate(textPrefab, textPrefab.transform.position, Quaternion.identity);
+        //text = Instantiate(text, text.transform.position, text.transform.localRotation);
 
     }
 
@@ -22,7 +22,7 @@ public class ScoreManager : MonoBehaviour
         score = GlobalVar.Instance.currentLvlPoints;
 
         //textPrefab.text = score.ToString("Score: " + score);
-        textPrefab.text = ("Score: " + score);
+        text.text = ("Score: " + score);
     }
 
     public void BeatPressed(float points)

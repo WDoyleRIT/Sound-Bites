@@ -12,13 +12,10 @@ public class RhythmManager : MonoBehaviour
     private int levelScore;
 
     [SerializeField] private SongManager sm;
-    [SerializeField] private OrderListSO orderList;
 
     public List<int> songIndicesForThisLevel;
     public UnityEvent OnSceneStart;
     public UnityEvent OnSceneStop;
-
-
 
     private void Start()
     {

@@ -85,7 +85,7 @@ public class BoardBar : MonoBehaviour
 
             if (dirToMiss.y > 0)
             {
-                Debug.Log("Missed!");
+                //Debug.Log("Missed!");
                 currentLvl.ChangeScoreBy(-1000);
                 Destroy(notes[i]);
                 notes.RemoveAt(i);

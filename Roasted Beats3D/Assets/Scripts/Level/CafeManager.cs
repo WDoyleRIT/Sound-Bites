@@ -17,6 +17,8 @@ public class CafeManager : MonoBehaviour
 
     [SerializeField] private float charSpacing = 5;
 
+    [SerializeField] private List<string> levelSongNames;
+
     private List<GameObject> characters;
     private bool CharacterUpdate;
 

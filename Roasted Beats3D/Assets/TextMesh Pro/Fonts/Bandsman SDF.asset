@@ -65,7 +65,8 @@ MonoBehaviour:
   materialHashCode: 912698889
   m_Version: 1.1.0
   m_SourceFontFileGUID: 98f1f3d1a20348144b8edf18d3e89fb2
-  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 98f1f3d1a20348144b8edf18d3e89fb2, type: 3}
+  m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 98f1f3d1a20348144b8edf18d3e89fb2,
+    type: 3}
   m_SourceFontFile: {fileID: 12800000, guid: 98f1f3d1a20348144b8edf18d3e89fb2, type: 3}
   m_AtlasPopulationMode: 1
   m_FaceInfo:
@@ -1186,7 +1187,7 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0.9687953, g: 1, b: 0.44716978, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}

@@ -4516,6 +4516,8 @@ MonoBehaviour:
   charEndPos: {fileID: 2140286076}
   charStartPos: {fileID: 306943580}
   charSpacing: 5
+  levelSongNames:
+  - EthernightClub
 --- !u!4 &2033870575
 Transform:
   m_ObjectHideFlags: 0
