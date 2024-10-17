@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private SongListSO songList;
     private int currentSongIndex;
     private int levelScore;
+    private int levelStreak;
 
     [SerializeField] private SongManager sm;
 
@@ -44,8 +45,23 @@ public class LevelManager : MonoBehaviour
         levelScore = Mathf.Max(levelScore, 0);
     }
 
+    // Simple method to increase the streak when a note is hit,
+    // and to reset the streak when a note is missed.
+    public void ChangeStreak(int streak)
+    {
+        if(streak == 0)
+        {
+            levelStreak = 0;
+        }
+        else
+        {
+            levelStreak++;
+        }
+    }
+
     private void Update()
     {
         GlobalVar.Instance.currentLvlPoints = levelScore;
+        GlobalVar.Instance.streak = levelStreak;
     }
 }

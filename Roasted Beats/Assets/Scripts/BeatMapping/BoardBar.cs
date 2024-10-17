@@ -72,6 +72,8 @@ public class BoardBar : MonoBehaviour
             Vector3 dirToEnd = Vector3.Normalize(MissedPos.position - StartPos.position);
             //string end = dirToEnd.ToString();
 
+            // Note: After some testing, I think the notes should despawn a bit earlier,
+            // As among other things this would streamline the streak mechanic - Will
             if (dirToMiss.y > 0)
             {
                 Debug.Log("Missed!");
@@ -80,6 +82,8 @@ public class BoardBar : MonoBehaviour
                 notes.RemoveAt(i);
                 i--;
                 GlobalVar.Instance.notesPassed++;
+                // Reset Streak
+                currentLvl.ChangeStreak(0);
             }
         }
 
@@ -122,6 +126,14 @@ public class BoardBar : MonoBehaviour
                 Destroy(notes[0]);
                 notes.RemoveAt(0);
                 GlobalVar.Instance.notesPassed++;
+
+                // Add point to score streak
+                currentLvl.ChangeStreak(1);
+            }
+            else
+            {
+                // Reset Streak
+                currentLvl.ChangeStreak(0);
             }
 
             currentLvl.ChangeScoreBy(score);

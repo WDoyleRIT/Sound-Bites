@@ -13,6 +13,6 @@ public class GlobalVar : Singleton<GlobalVar>
     public float noteSpdInSec = 5f;
     public int notesPassed = 0;
     public bool songIsPlaying = false;
-
+    public int streak = 0;
     public int currentLvlPoints = 0;
 }
