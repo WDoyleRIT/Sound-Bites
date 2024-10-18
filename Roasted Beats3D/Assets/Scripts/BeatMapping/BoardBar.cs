@@ -122,7 +122,7 @@ public class BoardBar : MonoBehaviour
             RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
         
         // Changed thresholds for each rating type
-        // Will probably have to be adjusteed again since these values
+        // Will probably have to be adjusted again since these values
         // Were ported from 2D project
         int score =
         (distance <= 0.4) ? 1000 : // Perfect!

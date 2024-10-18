@@ -2084,8 +2084,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2184,6 +2184,71 @@ PrefabInstance:
       propertyPath: ratingText
       value: 
       objectReference: {fileID: 1564946163}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 8daea8b1-5a7e-4ce2-80e0-4452cdadb73a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 12a03d67-a78e-4c4b-bcde-d4810fc80893
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 2b7d43f0-ca5f-4d8a-915b-8eebcb806590
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 7352e77f-e4de-40a3-9f46-6a715003806d
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: Player/Hit Note2[/Keyboard/f]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: Player/Hit Note3[/Keyboard/j]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Player/Hit Note4[/Keyboard/k]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/LMB[/Mouse/leftButton]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005573144950519862, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6184259535933330811, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
         type: 3}
       propertyPath: OnSpawnBeat.m_PersistentCalls.m_Calls.Array.data[0].m_Target
