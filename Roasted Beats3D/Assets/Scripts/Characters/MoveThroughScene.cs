@@ -57,7 +57,7 @@ public class MoveIntoScene : MonoBehaviour
             count = .25f;
         }
 
-        Debug.Log(count);
+        //Debug.Log(count);
 
         count -= Time.deltaTime;
         // -----------------------

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 public class RhythmManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class RhythmManager : MonoBehaviour
     private int levelScore;
 
     [SerializeField] private SongManager sm;
+    [SerializeField] private AudioMixerGroup groupAudio;
 
     public List<int> songIndicesForThisLevel;
     public UnityEvent OnSceneStart;
@@ -36,6 +38,11 @@ public class RhythmManager : MonoBehaviour
         //var input = InputManager.Instance.playerInput;
 
         GameManager.Instance.CurrentLevel = this;
+    }
+
+    public void SetVolume(float volume)
+    {
+        //
     }
 
     public void ChangeScoreBy(int score)

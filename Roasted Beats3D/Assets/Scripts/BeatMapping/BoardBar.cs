@@ -123,9 +123,7 @@ public class BoardBar : MonoBehaviour
                 (distance <= 0.05) ? 1000 :
                 (distance < .15) ? 500 :
                 (distance < .35) ? 100 :
-                (distance < .5) ? 50 :
-                (distance < .75) ? 10 :
-                (distance < .95) ? 5 :
+                (distance < .95) ? 50 :
                 -100;
 
             if (score > 0)
