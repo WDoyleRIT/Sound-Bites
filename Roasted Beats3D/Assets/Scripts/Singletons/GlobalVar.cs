@@ -9,7 +9,7 @@ public class GlobalVar : Singleton<GlobalVar>
 {
     public float noteCoolDown = .45f;
     public int songDifficulty;
-    //public float noteSpeed = 0.1f;
+    public int streak = 0;
     public float noteSpdInSec = 5f;
     public int notesPassed = 0;
     public bool songIsPlaying = false;

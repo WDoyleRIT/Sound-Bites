@@ -85,12 +85,15 @@ public class BoardBar : MonoBehaviour
 
             if (dirToMiss.y > 0)
             {
-                //Debug.Log("Missed!");
+                Debug.Log("Missed!");
                 currentLvl.ChangeScoreBy(-1000);
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
                 i--;
                 GlobalVar.Instance.notesPassed++;
+                // Reset Streak
+                currentLvl.ChangeStreak(0);
+                currentLvl.ChangeRating(0);
             }
         }
 
@@ -117,23 +120,44 @@ public class BoardBar : MonoBehaviour
             float distance = Vector2.Distance(notes[0].transform.position, EndPos.position);
 
             RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
+        
+        // Changed thresholds for each rating type
+        // Will probably have to be adjusteed again since these values
+        // Were ported from 2D project
+        int score =
+        (distance <= 0.4) ? 1000 : // Perfect!
+        (distance < .55) ? 500 : // Great
+        (distance < .7) ? 100 : // Good
+        (distance < .85) ? 50 : // OK
+        -100; // Miss
 
-            
-            int score =
-                (distance <= 0.05) ? 1000 :
-                (distance < .15) ? 500 :
-                (distance < .35) ? 100 :
-                (distance < .95) ? 50 :
-                -100;
+        // Same deal as score but to be
+        // passed into method to change rating text
+        int rating =
+            (distance <= 0.4) ? 4 : // Perfect!!
+            (distance < .55) ? 3 : // Great!
+            (distance < .7) ? 2 : // Good
+            (distance < .85) ? 1 : // OK
+            0; // Miss
 
-            if (score > 0)
-            {
-                Destroy(notes[0]);
-                notes.RemoveAt(0);
-                GlobalVar.Instance.notesPassed++;
-            }
+        currentLvl.ChangeRating(rating);
 
-            currentLvl.ChangeScoreBy(score);
+        if (score > 0)
+        {
+            Destroy(notes[0]);
+            notes.RemoveAt(0);
+            GlobalVar.Instance.notesPassed++;
+
+            // Add point to score streak
+            currentLvl.ChangeStreak(1);
+        }
+        else
+        {
+            // Reset Streak
+            currentLvl.ChangeStreak(0);
+        }
+
+        currentLvl.ChangeScoreBy(score);
         //}
     }
 }
