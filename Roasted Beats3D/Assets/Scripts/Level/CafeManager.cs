@@ -22,6 +22,8 @@ public class CafeManager : MonoBehaviour
     private List<GameObject> characters;
     private bool CharacterUpdate;
 
+    [SerializeField] private RhythmManager rMan;
+
     private void Start()
     {
         characters = new List<GameObject>();

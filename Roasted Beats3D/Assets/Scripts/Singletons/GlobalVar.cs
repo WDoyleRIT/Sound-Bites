@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class GlobalVar : Singleton<GlobalVar>
 {
-    public float noteCoolDown = .5f;
+    public float noteCoolDown = .45f;
     public int songDifficulty;
     //public float noteSpeed = 0.1f;
     public float noteSpdInSec = 5f;
