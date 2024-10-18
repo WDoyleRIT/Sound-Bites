@@ -14,8 +14,11 @@ public class GenerateCheckout : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.RemoveAllListeners();
+        RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.AddListener(OnBeatUpdate);
         GenerateButtons();
         noteCooldowns = new List<float>();
+
         for (int i = 0; i < 4; i++)
         {
             noteCooldowns.Add(0f);
@@ -38,7 +41,13 @@ public class GenerateCheckout : MonoBehaviour
  
     }
 
-
+    public void DestroyNotes()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].GetComponent<CheckoutButton>().DestroyNotes();
+        }
+    }
 
     private void GenerateButtons()
     {
@@ -48,7 +57,7 @@ public class GenerateCheckout : MonoBehaviour
         {
             for(int j = 0; j < 3; j++)
             {
-                buttons.Add(Instantiate(buttonPrefab,new Vector3(-3f+2f*i,-1.5f+1.5f*j,transform.position.z),Quaternion.Euler(90,0,0)));
+                buttons.Add(Instantiate(buttonPrefab,new Vector3(-3f+2f*i,-1.5f+1.5f*j,transform.position.z),Quaternion.Euler(90,0,0), transform));
             }
         }
     }

@@ -2013,7 +2013,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1076201536}
   m_LocalRotation: {x: -0, y: 0.24958198, z: -0, w: 0.96835375}
-  m_LocalPosition: {x: 0, y: 0, z: -4.28}
+  m_LocalPosition: {x: 0, y: 0, z: -1.53}
   m_LocalScale: {x: 0.56866, y: 0.56866, z: 0.56866}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2021,7 +2021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 28.906, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.88, y: 1.4}
+  m_AnchoredPosition: {x: 4.25, y: 1.4}
   m_SizeDelta: {x: 7, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &1076201538
@@ -2254,6 +2254,11 @@ PrefabInstance:
       propertyPath: OnSpawnBeat.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6421688881056529312, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
+        type: 3}
+      propertyPath: ratingText
+      value: 
+      objectReference: {fileID: 1564946163}
     - target: {fileID: 7205792625742917159, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
         type: 3}
       propertyPath: m_Name
@@ -2316,6 +2321,8 @@ PrefabInstance:
     - {fileID: 5967347716450177840, guid: 9791a78f2f21e9240b33fa4a275d9bc9, type: 3}
     - {fileID: 2006694211260442958, guid: 9791a78f2f21e9240b33fa4a275d9bc9, type: 3}
     - {fileID: 566132270666811785, guid: 9791a78f2f21e9240b33fa4a275d9bc9, type: 3}
+    - {fileID: 7093998846605533926, guid: 9791a78f2f21e9240b33fa4a275d9bc9, type: 3}
+    - {fileID: 8622765219304823972, guid: 9791a78f2f21e9240b33fa4a275d9bc9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8350824829244048749, guid: 9791a78f2f21e9240b33fa4a275d9bc9,
         type: 3}

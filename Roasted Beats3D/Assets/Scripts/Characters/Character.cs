@@ -54,7 +54,8 @@ public class Character : MonoBehaviour
     private IEnumerator WaitForOrder()
     {
         DisplayOrder(true);
-        
+        GlobalVar.Instance.Ordering = true;
+
         while (!OrderTaken)
         {
             yield return new WaitForNextFrameUnit();

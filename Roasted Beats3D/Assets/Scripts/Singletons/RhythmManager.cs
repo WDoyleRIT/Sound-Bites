@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 using UnityEngine.Events;
 using TMPro;
 
-public class RhythmManager : MonoBehaviour
+public class RhythmManager : Singleton<RhythmManager>
 {
     // private SceneManager sceneManager
     [SerializeField] private SongListSO songList;
@@ -14,19 +14,33 @@ public class RhythmManager : MonoBehaviour
     private int levelScore;
     private int levelStreak;
 
-    [SerializeField] private SongManager sm;
+    [SerializeField] public SongManager sm;
     [SerializeField] private AudioMixerGroup groupAudio;
+
+    public bool hasStarted;
 
     public List<int> songIndicesForThisLevel;
     public UnityEvent OnSceneStart;
     public UnityEvent OnSceneStop;
 
     // Text Field for Rating box
-    [SerializeField] TextMeshPro ratingText;
+    [SerializeField] public TextMeshPro ratingText;
+    private float targetVolume;
 
     private void Start()
     {
         OnStart();
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        targetVolume = volume; 
+    }
+
+    public void SetVolume(float volume)
+    {
+        targetVolume = volume;
+        sm.songSource.volume = volume;
     }
 
     public void OnStart()
@@ -44,13 +58,8 @@ public class RhythmManager : MonoBehaviour
 
         GameManager.Instance.CurrentLevel = this;
 
-        // Hide rating text
-        ratingText.text = "";
-    }
-
-    public void SetVolume(float volume)
-    {
-        //
+        if (ratingText != null)
+            ratingText.text = "";
     }
 
     public void ChangeScoreBy(int score)
@@ -100,5 +109,13 @@ public class RhythmManager : MonoBehaviour
     {
         GlobalVar.Instance.currentLvlPoints = levelScore;
         GlobalVar.Instance.streak = levelStreak;
+
+        if (GlobalVar.Instance.notesPassed > 20)
+        {
+            GlobalVar.Instance.notesPassed = 0;
+            SceneManaging.Instance.OpenLvl("Cafe_Orders");
+        }
+
+        sm.songSource.volume = Mathf.Lerp(targetVolume, sm.songSource.volume, Mathf.Pow(.5f, Time.deltaTime * 1));
     }
 }

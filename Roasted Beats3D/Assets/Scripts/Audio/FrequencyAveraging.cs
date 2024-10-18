@@ -9,7 +9,7 @@ public class FrequencyAveraging : MonoBehaviour
     /// Observer pattern to let song depedent scripts know of song change
     /// </summary>
     [SerializeField] private UnityEvent<SongSO> OnChangeSong;
-    [SerializeField] private UnityEvent<List<bool>> OnSpawnBeat;
+    [SerializeField] public UnityEvent<List<bool>> OnSpawnBeat;
 
     [SerializeField] private SongListSO SongListSO;
     [SerializeField] private FrequencyData FrequencyData;

@@ -28,7 +28,15 @@ public class CafeManager : MonoBehaviour
     {
         characters = new List<GameObject>();
 
+        // Drop all but one instance of manager
+        bool n = RhythmManager.Instance.hasStarted;
+
         StartCoroutine(StartCafeScene());
+
+        // Wake up globalvar
+        GlobalVar.Instance.notesPassed = 0;
+
+        RhythmManager.Instance.ChangeVolume(.1f);
     }
 
     /// <summary>

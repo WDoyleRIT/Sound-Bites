@@ -120,23 +120,23 @@ public class BoardBar : MonoBehaviour
             float distance = Vector2.Distance(notes[0].transform.position, EndPos.position);
 
             RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
-        
+
         // Changed thresholds for each rating type
         // Will probably have to be adjusted again since these values
         // Were ported from 2D project
         int score =
-        (distance <= 0.4) ? 1000 : // Perfect!
-        (distance < .55) ? 500 : // Great
-        (distance < .7) ? 100 : // Good
+        (distance <= .15) ? 1000 : // Perfect!
+        (distance < .25) ? 500 : // Great
+        (distance < .35) ? 100 : // Good
         (distance < .85) ? 50 : // OK
         -100; // Miss
 
         // Same deal as score but to be
         // passed into method to change rating text
         int rating =
-            (distance <= 0.4) ? 4 : // Perfect!!
-            (distance < .55) ? 3 : // Great!
-            (distance < .7) ? 2 : // Good
+            (distance <= .15) ? 4 : // Perfect!!
+            (distance < .25) ? 3 : // Great!
+            (distance < .35) ? 2 : // Good
             (distance < .85) ? 1 : // OK
             0; // Miss
 

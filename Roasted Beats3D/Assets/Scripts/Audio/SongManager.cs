@@ -12,9 +12,9 @@ public class SongManager : MonoBehaviour
     [SerializeField] private SongSO currentSong;
 
     [SerializeField] private AudioSource frequencySource;
-    [SerializeField] private AudioSource songSource;
+    [SerializeField] public AudioSource songSource;
         
-    [SerializeField] private FrequencyAveraging frequencyAveraging;
+    [SerializeField] public FrequencyAveraging frequencyAveraging;
     [SerializeField] private FrequencyData frequencyData;
 
     public UnityEvent OnUpdate;

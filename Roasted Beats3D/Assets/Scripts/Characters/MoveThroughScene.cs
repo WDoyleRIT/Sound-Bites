@@ -37,14 +37,14 @@ public class MoveIntoScene : MonoBehaviour
 
     public void SetTargetPosition(Vector3 position)
     {
-        Debug.Log(string.Format("Set position to {0}", position));
+        //Debug.Log(string.Format("Set position to {0}", position));
         currentTargetPos = position;
     }
 
     private void Update()
     {
         float speed = 10;
-        Vector3 direction = Vector3.Normalize(currentTargetPos - (transform.position + (Vector3.up * (IsMoving ? (up ? 1 : -1) : 0))));
+        Vector3 direction = Vector3.Normalize(currentTargetPos - (transform.position + (Vector3.up * 0/*(IsMoving ? (up ? 1 : -1) : 0)*/)));
 
         // Moves position towards current target position
         if (IsMoving)

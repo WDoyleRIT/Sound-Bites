@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +15,8 @@ public class BoardGeneration : MonoBehaviour
     // List of bar objects
     private List<GameObject> bars;
     // Make a list of notes!!!!
+
+    public TextMeshPro ratingText;
 
     private void OnValidate()
     {
@@ -65,6 +68,10 @@ public class BoardGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RhythmManager.Instance.ratingText = ratingText;
+        RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.RemoveAllListeners();
+        RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.AddListener(OnBeatUpdate);
+
         DeleteAllBars();
         GenerateBars(4);
 
@@ -79,21 +86,22 @@ public class BoardGeneration : MonoBehaviour
 
     private void SubscribeActions()
     {
-        var Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
-        Action.Enable();
-        Action.performed += HitNote1;
+        var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+        
+        action.Enable();
+        action.performed += HitNote1;
 
-        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
-        Action.Enable();
-        Action.performed += HitNote2;
+        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+        action.Enable();
+        action.performed += HitNote2;
 
-        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
-        Action.Enable();
-        Action.performed += HitNote3;
+        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
+        action.Enable();
+        action.performed += HitNote3;
 
-        Action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
-        Action.Enable();
-        Action.performed += HitNote4;
+        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
+        action.Enable();
+        action.performed += HitNote4;
     }
 
     private void ChangeRing(int i, InputAction.CallbackContext context)

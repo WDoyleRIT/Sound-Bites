@@ -17,4 +17,6 @@ public class GlobalVar : Singleton<GlobalVar>
     public int checkoutNotesPassed = 0;
 
     public int currentLvlPoints = 0;
+
+    public bool Ordering = false;
 }
