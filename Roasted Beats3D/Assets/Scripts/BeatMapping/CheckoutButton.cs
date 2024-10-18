@@ -71,6 +71,7 @@ public class CheckoutButton : MonoBehaviour
                 notes.RemoveAt(i);
                 i--;
                 noteOnButton = false;
+                GlobalVar.Instance.checkoutNotesPassed++;
             }
         }
 
@@ -82,5 +83,7 @@ public class CheckoutButton : MonoBehaviour
         Destroy(notes[0]);
         notes.RemoveAt(0);
         noteOnButton = false;
+        GlobalVar.Instance.checkoutNotesPassed++;
+
     }
 }
