@@ -1,37 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 //using System.Numerics;
 using UnityEngine;
 
 public class RotateMenu : MonoBehaviour
 {
-    public void RotateRight()
+    public void RotateThang(float direction)
     {
-        Quaternion currentRotate = transform.rotation;
-        Vector3 currentPosition = transform.position;
+        Vector3 pivot = new Vector3(0.0f, 0.0f, 15.0f);
 
-        float rotateAmount = 45.0f;
-        float moveAmount = -6.0f;
-
-        currentPosition.x += moveAmount;
-        currentRotate.y += rotateAmount;
-
-        transform.rotation = currentRotate;
-        transform.position = currentPosition;
-    }
-
-    public void RotateLeft()
-    {
-        Quaternion currentRotate = transform.rotation;
-        Vector3 currentPosition = transform.position;
-
-        float rotateAmount = -45.0f;
-        float moveAmount = 6.0f;
-
-        currentPosition.x += moveAmount;
-        currentRotate.y += rotateAmount;
-
-        transform.rotation = currentRotate;
-        transform.position = currentPosition;
+        transform.RotateAround(pivot, Vector3.up, 45.0f * direction);
     }
 }
