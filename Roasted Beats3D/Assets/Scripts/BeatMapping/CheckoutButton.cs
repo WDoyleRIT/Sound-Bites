@@ -13,6 +13,9 @@ public class CheckoutButton : MonoBehaviour
     [SerializeField] private float xMaxScale;
     [SerializeField] private float yMaxScale;
 
+    private float noteCooldown;
+    private bool noteOnButton;
+
 
     private float xScaleSpeed;
     private float yScaleSpeed;
@@ -25,10 +28,9 @@ public class CheckoutButton : MonoBehaviour
     {
         notes = new List<GameObject>();
 
-        xScaleSpeed = (0.5f - 0.1f) / 1000;
-        yScaleSpeed = (0.6f - 0.12f) / 1000;
+        xScaleSpeed = (0.5f - 0.1f) / GlobalVar.Instance.noteSpdInSec;
+        yScaleSpeed = (0.6f - 0.12f) / GlobalVar.Instance.noteSpdInSec;
 
-        CreateNote(0);
 
         xMaxScale = 0.5f;
         yMaxScale = 0.6f;
@@ -37,17 +39,20 @@ public class CheckoutButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        noteCooldown -= Time.deltaTime;
     }
 
 
     public void CreateNote(int prefabIndex)
     {
+        if (noteCooldown > 0 || noteOnButton) return;
 
-        Debug.Log("Creating note");
+        noteOnButton = true;
+        //Debug.Log("Creating note");
         notes.Add(Instantiate(NotePrefabs[prefabIndex], new Vector3(buttonPos.position.x,buttonPos.position.y,-1.1f), Quaternion.Euler(0,0,0), transform));
 
-        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(0.1f,0.12f,1f)); 
+        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(0.1f,0.12f,1f));
+        noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
     public void OnUpdate()
@@ -55,6 +60,8 @@ public class CheckoutButton : MonoBehaviour
 
         for (int i = 0; i < notes.Count; i++)
         {
+            //RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
+
             notes[i].GetComponent<CheckoutNote>().OnUpdate();
 
 
@@ -63,9 +70,17 @@ public class CheckoutButton : MonoBehaviour
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
                 i--;
-                
+                noteOnButton = false;
             }
         }
 
+    }
+
+
+    public void OnClick()
+    {
+        Destroy(notes[0]);
+        notes.RemoveAt(0);
+        noteOnButton = false;
     }
 }

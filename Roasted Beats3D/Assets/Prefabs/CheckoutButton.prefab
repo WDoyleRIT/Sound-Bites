@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 5135732896372758361}
   - component: {fileID: 3001049928018749355}
   - component: {fileID: 659479901146911707}
-  m_Layer: 0
+  - component: {fileID: -6102000294225961776}
+  m_Layer: 7
   m_Name: CheckoutButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,5 +123,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NotePrefabs:
   - {fileID: 4652005239320610474, guid: 20a124e3bf307c540884f3b14e8e672e, type: 3}
+  - {fileID: 4652005239320610474, guid: 20a124e3bf307c540884f3b14e8e672e, type: 3}
+  - {fileID: 4652005239320610474, guid: 20a124e3bf307c540884f3b14e8e672e, type: 3}
+  - {fileID: 4652005239320610474, guid: 20a124e3bf307c540884f3b14e8e672e, type: 3}
   buttonPos: {fileID: 9074230910195064669}
   MissedScale: {fileID: 0}
+  xMaxScale: 0
+  yMaxScale: 0
+--- !u!114 &-6102000294225961776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365127551926134035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a700886f24b50c43947de8c28930366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 659479901146911707}
+        m_TargetAssemblyTypeName: CheckoutButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
