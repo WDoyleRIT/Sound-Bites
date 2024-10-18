@@ -23,10 +23,11 @@ public class CheckoutNote : MonoBehaviour
     public void OnUpdate()
     {
         scale=transform.localScale;
-        scale.x += xScaleSpeed;
-        scale.y += yScaleSpeed;
+        scale.x += xScaleSpeed * Time.deltaTime;
+        scale.y += yScaleSpeed * Time.deltaTime;
         transform.localScale = scale;
     }
+
 
 
 }
