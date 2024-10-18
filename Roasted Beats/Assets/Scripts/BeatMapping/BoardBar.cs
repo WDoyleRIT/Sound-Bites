@@ -84,6 +84,7 @@ public class BoardBar : MonoBehaviour
                 GlobalVar.Instance.notesPassed++;
                 // Reset Streak
                 currentLvl.ChangeStreak(0);
+                currentLvl.ChangeRating(0);
             }
         }
 
@@ -111,30 +112,47 @@ public class BoardBar : MonoBehaviour
 
             LevelManager currentLvl = GameManager.Instance.currentLevel;
 
-            
-            int score =
-                (distance <= 0.05) ? 1000 :
-                (distance < .15) ? 500 :
-                (distance < .35) ? 100 :
-                (distance < .5) ? 50 :
-                (distance < .75) ? 10 :
-                (distance < .95) ? 5 :
-                -100;
+        /*int score =
+            (distance <= 0.05) ? 1000 : // Perfect!
+            (distance < .15) ? 500 : // Great
+            (distance < .35) ? 100 : // Good
+            (distance < .5) ? 50 : // Okay
+            (distance < .75) ? 10 : // Meh
+            (distance < .95) ? 5 : // Bad
+            -100; // Miss*/
 
-            if (score > 0)
-            {
+        int score =
+            (distance <= 0.4) ? 1000 : // Perfect!
+            (distance < .55) ? 500 : // Great
+            (distance < .7) ? 100 : // Good
+            (distance < .85) ? 50 : // OK
+            -100; // Miss
+
+        // Same deal as score but to be
+        // passed into method to change rating text
+        int rating =
+            (distance <= 0.4) ? 4 : // Perfect!!
+            (distance < .55) ? 3 : // Great!
+            (distance < .7) ? 2 : // Good
+            (distance < .85) ? 1 : // OK
+            0; // Miss
+
+        currentLvl.ChangeRating(rating);
+
+        if (score > 0)
+        {
                 Destroy(notes[0]);
                 notes.RemoveAt(0);
                 GlobalVar.Instance.notesPassed++;
 
                 // Add point to score streak
                 currentLvl.ChangeStreak(1);
-            }
-            else
-            {
+        }
+        else
+        {
                 // Reset Streak
                 currentLvl.ChangeStreak(0);
-            }
+        }
 
             currentLvl.ChangeScoreBy(score);
         //}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class LevelManager : MonoBehaviour
     public List<int> songIndicesForThisLevel;
     public UnityEvent OnSceneStart;
     public UnityEvent OnSceneStop;
+
+    // Text Field for Rating box
+    [SerializeField] TextMeshPro ratingText;
 
     private void Start()
     {
@@ -37,6 +41,9 @@ public class LevelManager : MonoBehaviour
         var input = InputManager.Instance.playerInput;
 
         GameManager.Instance.currentLevel = this;
+
+        // Hide rating text
+        ratingText.text = "";
     }
 
     public void ChangeScoreBy(int score)
@@ -56,6 +63,29 @@ public class LevelManager : MonoBehaviour
         else
         {
             levelStreak++;
+        }
+    }
+
+    // Changes the text that tells the player how accurate their note press is
+    public void ChangeRating(int rating)
+    {
+        switch (rating)
+        {
+            case 0:
+                ratingText.text = "Miss";
+                break;
+            case 1:
+                ratingText.text = "OK";
+                break;
+            case 2:
+                ratingText.text = "Good";
+                break;
+            case 3:
+                ratingText.text = "Great!";
+                break;
+            case 4:
+                ratingText.text = "Perfect!!";
+                break;
         }
     }
 
