@@ -31,14 +31,14 @@ public class RotateMenu : MonoBehaviour
 
     private IEnumerator Rotate(int direction, int degrees)
     {
-        for (int i = 0; i < degrees / menuItems.Count; i++)
+        for (int i = 0; i < degrees / menuItems.Count / 2; i++)
         {
             for (int j = 0; j < menuItems.Count; j++)
             {
-                menuItems[j].transform.RotateAround(pivot, Vector3.up, menuItems.Count * direction);
+                menuItems[j].transform.RotateAround(pivot, Vector3.up, menuItems.Count * direction * 2);
             }
             
-            yield return new WaitForSecondsRealtime(Time.deltaTime);
+            yield return new WaitForFixedUpdate();
         }
     }
 
