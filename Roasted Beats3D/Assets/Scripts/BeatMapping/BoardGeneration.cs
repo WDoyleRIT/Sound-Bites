@@ -77,7 +77,7 @@ public class BoardGeneration : MonoBehaviour
 
         Debug.Log(transform.childCount);
 
-        // Scubscribes the inputs to the player actions
+        // Subscribes the inputs to the player actions
         SubscribeActions();
     }
 
