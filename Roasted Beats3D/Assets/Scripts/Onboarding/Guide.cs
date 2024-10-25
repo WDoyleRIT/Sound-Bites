@@ -37,23 +37,23 @@ public class Guide : MonoBehaviour
 
     public void NextDialogueList()
     {
-        currentDialogueList = dialogues[currentDialogueListIndex];
-        currentDialogueListIndex++;
-        currentDialogueListIndex = Mathf.Clamp(currentDialogueListIndex, 0, dialogues.Count - 1);
+        //currentDialogueList = dialogues[currentDialogueListIndex];
+        //currentDialogueListIndex++;
+        //currentDialogueListIndex = Mathf.Clamp(currentDialogueListIndex, 0, dialogues.Count - 1);
     }
 
     public void NextDialogue()
     {
-        DialogueObj temp = currentDialogueList.list[currentDialogueIndex];
+        //DialogueObj temp = currentDialogueList.list[currentDialogueIndex];
 
-        if (currentActive != null) StopCoroutine(currentActive);
+        //if (currentActive != null) StopCoroutine(currentActive);
 
-        currentActive = StartCoroutine(DialogueLoop(temp.text, temp.charWaitTime));
+        //currentActive = StartCoroutine(DialogueLoop(temp.text, temp.charWaitTime));
 
-        currentDialogueIndex++;
-        currentDialogueIndex = Mathf.Clamp(currentDialogueIndex, 0, dialogues[currentDialogueListIndex - 1].list.Count - 1);
+        //currentDialogueIndex++;
+        //currentDialogueIndex = Mathf.Clamp(currentDialogueIndex, 0, dialogues[currentDialogueListIndex - 1].list.Count - 1);
 
-        Debug.Log(currentDialogueIndex);
+        //Debug.Log(currentDialogueIndex);
     }
     private void Update()
     {
