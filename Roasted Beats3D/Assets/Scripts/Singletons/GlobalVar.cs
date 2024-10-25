@@ -19,4 +19,5 @@ public class GlobalVar : Singleton<GlobalVar>
     public int currentLvlPoints = 0;
 
     public bool Ordering = false;
+
 }

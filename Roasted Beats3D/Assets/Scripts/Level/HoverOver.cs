@@ -22,9 +22,11 @@ public class HoverOver : MonoBehaviour
         {
             OnClickFalse();
             GlobalVar.Instance.Ordering = false;
-            GlobalVar.Instance.checkoutNotesPassed = 0;
-            SceneManaging.Instance.OpenLvl("Cafe_Cooking");
+            GlobalVar.Instance.checkoutNotesPassed = 0; 
             checkout.DestroyNotes();
+            //checkout.DeleteButtons();
+            SceneManaging.Instance.OpenLvl("Cafe_Cooking");
+
         }
     }
 
@@ -36,7 +38,10 @@ public class HoverOver : MonoBehaviour
     public void OnClickTrue()
     {
         if (GlobalVar.Instance.Ordering)
-        popUp.SetActive(true);
+        {
+            popUp.SetActive(true);
+            checkout.GenerateButtons();
+        }
         RhythmManager.Instance.ChangeVolume(.5f);
     }
 
