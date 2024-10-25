@@ -86,22 +86,47 @@ public class BoardGeneration : MonoBehaviour
 
     private void SubscribeActions()
     {
-        var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+        // D/F/J/K Controls
+        if(GlobalVar.Instance.controlScheme == 0)
+        {
+            var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+
+            action.Enable();
+            action.performed += HitNote1;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+            action.Enable();
+            action.performed += HitNote2;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
+            action.Enable();
+            action.performed += HitNote3;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
+            action.Enable();
+            action.performed += HitNote4;
+        }
+        // A/S/D/F Controls
+        else if(GlobalVar.Instance.controlScheme == 1)
+        {
+            var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note5");
+
+            action.Enable();
+            action.performed += HitNote1;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note6");
+            action.Enable();
+            action.performed += HitNote2;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+            action.Enable();
+            action.performed += HitNote3;
+
+            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+            action.Enable();
+            action.performed += HitNote4;
+        }
         
-        action.Enable();
-        action.performed += HitNote1;
-
-        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
-        action.Enable();
-        action.performed += HitNote2;
-
-        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
-        action.Enable();
-        action.performed += HitNote3;
-
-        action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
-        action.Enable();
-        action.performed += HitNote4;
     }
 
     private void ChangeRing(int i, InputAction.CallbackContext context)

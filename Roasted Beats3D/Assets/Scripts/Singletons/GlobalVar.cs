@@ -22,6 +22,9 @@ public class GlobalVar : Singleton<GlobalVar>
 
     public float lifePercent = 100;
 
+    // Used to determine which control scheme to use
+    public int controlScheme = 0;
+
 
     private void Update()
     {
