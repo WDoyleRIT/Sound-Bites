@@ -16,7 +16,9 @@ public class GenerateCheckout : MonoBehaviour
     {
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.RemoveAllListeners();
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.AddListener(OnBeatUpdate);
-        GenerateButtons();
+
+        //GenerateButtons();
+
         noteCooldowns = new List<float>();
 
         for (int i = 0; i < 4; i++)
@@ -28,7 +30,7 @@ public class GenerateCheckout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i=0;i<buttons.Count;i++)
+        for (int i=0;i<buttons.Count;i++)
         {
             buttons[i].GetComponent<CheckoutButton>().OnUpdate();
 
@@ -49,7 +51,7 @@ public class GenerateCheckout : MonoBehaviour
         }
     }
 
-    private void GenerateButtons()
+    public void GenerateButtons()
     {
         buttons= new List<GameObject>();
 
@@ -60,6 +62,16 @@ public class GenerateCheckout : MonoBehaviour
                 buttons.Add(Instantiate(buttonPrefab,new Vector3(-3f+2f*i,-1.5f+1.5f*j,transform.position.z),Quaternion.Euler(90,0,0), transform));
             }
         }
+    }
+
+
+    public void DeleteButtons()
+    {
+        for(int i=0;i<buttons.Count;i++)
+        {
+            Destroy(buttons[i]);
+        }
+        buttons = new List<GameObject> ();
     }
 
 
