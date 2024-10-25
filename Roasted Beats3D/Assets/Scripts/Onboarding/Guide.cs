@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -36,19 +37,36 @@ public class Guide : MonoBehaviour
 
     public void NextDialogueList()
     {
-        currentDialogueListIndex++;
         currentDialogueList = dialogues[currentDialogueListIndex];
+        currentDialogueListIndex++;
+        currentDialogueListIndex = Mathf.Clamp(currentDialogueListIndex, 0, dialogues.Count - 1);
     }
 
     public void NextDialogue()
     {
-        currentDialogueIndex++;
-
         DialogueObj temp = currentDialogueList.list[currentDialogueIndex];
 
         if (currentActive != null) StopCoroutine(currentActive);
 
         currentActive = StartCoroutine(DialogueLoop(temp.text, temp.charWaitTime));
+
+        currentDialogueIndex++;
+        currentDialogueIndex = Mathf.Clamp(currentDialogueIndex, 0, dialogues[currentDialogueListIndex - 1].list.Count - 1);
+
+        Debug.Log(currentDialogueIndex);
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("pressed left");
+            NextDialogueList();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("pressed right");
+            NextDialogue();
+        }
     }
 
     public void SetActive(bool active)
