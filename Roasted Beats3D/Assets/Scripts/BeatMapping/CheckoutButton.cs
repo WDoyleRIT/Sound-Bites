@@ -90,6 +90,7 @@ public class CheckoutButton : MonoBehaviour
                 i--;
                 noteOnButton = false;
                 GlobalVar.Instance.checkoutNotesPassed++;
+                GlobalVar.Instance.lifePercent -= 5;
             }
         }
 
@@ -104,5 +105,6 @@ public class CheckoutButton : MonoBehaviour
         noteOnButton = false;
         GlobalVar.Instance.checkoutNotesPassed++;
 
+        GlobalVar.Instance.lifePercent += 2;
     }
 }

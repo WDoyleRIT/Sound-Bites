@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cafe_Orders.unity
     guid: 8aa3247a24268274bba1a96db82f2ac9
+  - enabled: 1
+    path: Assets/Scenes/LossScene.unity
+    guid: a95b903a974617a4c91daa05e66e32ba
   m_configObjects: {}

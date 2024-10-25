@@ -24,6 +24,8 @@ public class CafeManager : MonoBehaviour
 
     [SerializeField] private RhythmManager rMan;
 
+    private float lifePercent;
+
     private void Start()
     {
         characters = new List<GameObject>();
@@ -37,7 +39,10 @@ public class CafeManager : MonoBehaviour
         GlobalVar.Instance.notesPassed = 0;
 
         RhythmManager.Instance.ChangeVolume(.1f);
+        lifePercent=GlobalVar.Instance.lifePercent;
     }
+
+
 
     /// <summary>
     /// Starts all cafe scene specific coroutines that need tro be cycled through

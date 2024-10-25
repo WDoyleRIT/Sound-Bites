@@ -20,4 +20,19 @@ public class GlobalVar : Singleton<GlobalVar>
 
     public bool Ordering = false;
 
+    public float lifePercent = 100;
+
+
+    private void Update()
+    {
+        lifePercent = GlobalVar.Instance.lifePercent;
+        if (lifePercent > 100)
+        {
+            GlobalVar.Instance.lifePercent = 100;
+        }
+        if (lifePercent <= 0)
+        {
+            SceneManaging.Instance.OpenLvl("LossScene");
+        }
+    }
 }

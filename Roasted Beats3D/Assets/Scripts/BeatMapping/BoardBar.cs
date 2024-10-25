@@ -94,6 +94,7 @@ public class BoardBar : MonoBehaviour
                 // Reset Streak
                 currentLvl.ChangeStreak(0);
                 currentLvl.ChangeRating(0);
+                GlobalVar.Instance.lifePercent -= 5;
             }
         }
 
@@ -147,6 +148,7 @@ public class BoardBar : MonoBehaviour
             Destroy(notes[0]);
             notes.RemoveAt(0);
             GlobalVar.Instance.notesPassed++;
+            GlobalVar.Instance.lifePercent += 2;
 
             // Add point to score streak
             currentLvl.ChangeStreak(1);
