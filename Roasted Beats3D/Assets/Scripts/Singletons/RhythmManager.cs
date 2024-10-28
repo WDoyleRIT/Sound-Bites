@@ -112,6 +112,7 @@ public class RhythmManager : Singleton<RhythmManager>
 
         if (GlobalVar.Instance.notesPassed > 20)
         {
+            GlobalVar.Instance.customersServed++;
             GlobalVar.Instance.notesPassed = 0;
             SceneManaging.Instance.OpenLvl("Cafe_Orders");
         }

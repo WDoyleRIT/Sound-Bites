@@ -26,6 +26,10 @@ public class GlobalVar : Singleton<GlobalVar>
     public int controlScheme = 0;
 
 
+    public int customersServed = 0;
+
+    public int highScore = 0;
+
     private void Update()
     {
         lifePercent = GlobalVar.Instance.lifePercent;
@@ -37,5 +41,12 @@ public class GlobalVar : Singleton<GlobalVar>
         {
             SceneManaging.Instance.OpenLvl("LossScene");
         }
+        if (customersServed >= 2)
+        {
+            SceneManaging.Instance.OpenLvl("WinScene");
+        }
+
+
     }
+
 }
