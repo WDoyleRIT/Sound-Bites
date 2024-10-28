@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc44fdd42afa4e8e400503c091f69, type: 3}
   m_Name: SelectDialogue
   m_EditorClassIdentifier: 
-  list:
+  dialogueList:
   - sprite: {fileID: 0}
-    text: Hello There!
-    charWaitTime: 0.02
-    speechSound: {fileID: 0}
+    text: Welcome to our humble town!
+    charWaitTime: -1
   - sprite: {fileID: 0}
-    text: Looking for a job?
-    charWaitTime: 0.02
-    speechSound: {fileID: 0}
+    text: I've heard that you have been looking for a position as a reputable chef.
+    charWaitTime: -1
   - sprite: {fileID: 0}
-    text: An old cafe down the street is hiring, why don't you give it a try!
-    charWaitTime: 0.02
-    speechSound: {fileID: 0}
+    text: Unfortunately, you have to prove yourself and start at our local mom and
+      pop cafe to prove yourself!
+    charWaitTime: -1
+  - sprite: {fileID: 0}
+    text: In order to start working, go to the cafe and click start level!
+    charWaitTime: -1
