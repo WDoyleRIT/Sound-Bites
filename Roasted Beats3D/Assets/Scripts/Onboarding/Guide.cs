@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Guide : MonoBehaviour
 {
@@ -19,12 +20,12 @@ public class Guide : MonoBehaviour
 
 
     [Header("Text")]
-    [SerializeField] private TextMeshPro TextMeshPro;
+    [SerializeField] private TextMeshProUGUI TextMeshPro;
     [SerializeField] private float defaultTextSpeed = .05f;
 
     [Header("Other")]
     [SerializeField] private GameObject Self;
-    [SerializeField] private Transform charSpawnPoint;
+    [SerializeField] private RectTransform charSpawnPoint;
 
     private string spokenText = "";
     private int dialogueIndex = 0;
@@ -32,7 +33,9 @@ public class Guide : MonoBehaviour
     private DialogueSO currentDialogueList;
 
     private Coroutine currentDialogueActive;
-    private Coroutine currentVoiceActive;
+    private Coroutine currentSpeechActive;
+
+    private Image charSprite;
 
     private void Start()
     {
@@ -43,9 +46,11 @@ public class Guide : MonoBehaviour
     {
         spokenText = "";
 
-        if (currentVoiceActive != null) currentVoiceActive = null;
+        SpawnCharacter();
 
-        currentVoiceActive = StartCoroutine(SpeechLoop(timeInbetween));
+        if (currentSpeechActive != null) StopCoroutine(currentSpeechActive);
+
+        currentSpeechActive = StartCoroutine(SpeechLoop(timeInbetween));
 
         int textLength = text.Length;
 
@@ -59,8 +64,18 @@ public class Guide : MonoBehaviour
             yield return new WaitForSecondsRealtime(newTime);
         }
 
-        currentVoiceActive = null;
-        currentDialogueActive = null;
+        StopCoroutine(currentSpeechActive);
+    }
+
+    private void SpawnCharacter()
+    {
+        if (charSprite != null) GameObject.Destroy(charSprite.gameObject);
+
+        charSprite = new GameObject("CharacterGuide", typeof(Image), typeof(RectTransform)).GetComponent<Image>();
+        charSprite.sprite = currentDialogueList.dialogueList[dialogueIndex].sprite;
+        charSprite.preserveAspect = true;
+        charSprite.transform.localScale = Vector3.one * 6;
+        charSprite.transform.SetParent(charSpawnPoint.transform, false);
     }
 
     private IEnumerator SpeechLoop(float timeInbetween)
