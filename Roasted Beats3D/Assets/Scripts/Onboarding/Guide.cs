@@ -27,6 +27,8 @@ public class Guide : MonoBehaviour
     [SerializeField] private GameObject Self;
     [SerializeField] private RectTransform charSpawnPoint;
 
+    [SerializeField] private string tutInfo;
+
     private string spokenText = "";
     private int dialogueIndex = 0;
     private int currentDialogueListIndex = 0;
@@ -41,6 +43,15 @@ public class Guide : MonoBehaviour
     private void Start()
     {
         currentDialogueList = dialogues[0];
+
+        bool start = !TutorialSaveInfo.Instance.GetDictValue(tutInfo);
+
+        SetActive(start);
+
+        if (start)
+        {
+            NextDialogue();
+        }
     }
 
     private IEnumerator DialogueLoop(string text, float timeInbetween)
@@ -137,7 +148,7 @@ public class Guide : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && isActive)
         {
             if (currentDialogueList.dialogueList.Count == dialogueIndex)
             {
@@ -154,5 +165,7 @@ public class Guide : MonoBehaviour
     {
         Self.SetActive(active);
         isActive = active;
+
+        TutorialSaveInfo.Instance.SetDictValue(tutInfo, !active);
     }
 }

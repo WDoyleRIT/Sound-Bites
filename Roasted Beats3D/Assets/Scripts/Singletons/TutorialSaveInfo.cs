@@ -55,15 +55,15 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
         }
     }
 
-    public delegate void Select(bool value);
-    public delegate void Cafe(bool value);
-    public delegate void Checkout(bool value);
-    public delegate void Cooking(bool value);
+    //public delegate void Select(bool value);
+    //public delegate void Cafe(bool value);
+    //public delegate void Checkout(bool value);
+    //public delegate void Cooking(bool value);
 
-    public event Select OnSelect;
-    public event Cafe OnCafe;
-    public event Checkout OnCheckout;
-    public event Cooking OnCooking;
+    //public event Select OnSelect;
+    //public event Cafe OnCafe;
+    //public event Checkout OnCheckout;
+    //public event Cooking OnCooking;
 
     public void Awake()
     {
@@ -71,12 +71,19 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
 
         LoadInfo();
 
+        // Saving coroutine to be stopped later, as it will run until we stop it or program stops
         saveCoroutine = StartCoroutine(SaveHeartBeat());
     }
 
-    private bool GetDictValue(string value)
+    public bool GetDictValue(string value)
     {
         return tutorialSaveInfo[value];
+    }
+
+    public void SetDictValue(string key, bool value)
+    {
+        tutorialSaveInfo[key] = value;
+        SaveData();
     }
 
     // ==================================================================================================
