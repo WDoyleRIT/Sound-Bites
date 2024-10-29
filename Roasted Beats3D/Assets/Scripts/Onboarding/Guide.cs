@@ -36,6 +36,7 @@ public class Guide : MonoBehaviour
     private Coroutine currentSpeechActive;
 
     private Image charSprite;
+    private bool isActive;
 
     private void Start()
     {
@@ -80,7 +81,7 @@ public class Guide : MonoBehaviour
 
     private IEnumerator SpeechLoop(float timeInbetween)
     {
-        timeInbetween *= 2;
+        timeInbetween *= 3;
 
         while (true)
         {
@@ -142,9 +143,16 @@ public class Guide : MonoBehaviour
         //    Debug.Log("pressed left");
         //    NextDialogueList();
         //}
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("pressed right");
+            if (currentDialogueList.dialogueList.Count - 1 == dialogueIndex)
+            {
+                StopAllCoroutines();
+                SetActive(false);
+                return;
+            }
+
+            //Debug.Log("NextDialogue");
             NextDialogue();
         }
     }
@@ -152,5 +160,6 @@ public class Guide : MonoBehaviour
     public void SetActive(bool active)
     {
         Self.SetActive(active);
+        isActive = active;
     }
 }

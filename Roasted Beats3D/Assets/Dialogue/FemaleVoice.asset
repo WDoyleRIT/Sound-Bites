@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FemaleVoice
   m_EditorClassIdentifier: 
   voiceList:
-  - {fileID: 8300000, guid: 70fb8a145e72d8446bf2f8b3a5fc3599, type: 3}
-  - {fileID: 8300000, guid: c1a470877ef93f24aa3d0933afc3f42f, type: 3}
-  - {fileID: 8300000, guid: d805383e7faf77549b2699bdc688c870, type: 3}
+  - {fileID: 8300000, guid: 22c2bd89f718a78499261c213c1e93ae, type: 3}
+  - {fileID: 8300000, guid: 764c633259f5cbe40b98e4688f859d17, type: 3}
+  - {fileID: 8300000, guid: 26dd76c4fe73311478de79373c18045d, type: 3}
