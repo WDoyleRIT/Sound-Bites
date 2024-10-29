@@ -132,27 +132,20 @@ public class Guide : MonoBehaviour
         currentDialogueActive = StartCoroutine(DialogueLoop(temp.text, waitTime));
 
         dialogueIndex++;
-        dialogueIndex = Mathf.Clamp(dialogueIndex, 0, currentDialogueList.dialogueList.Count - 1);
 
         Debug.Log(dialogueIndex);
     }
     private void Update()
     {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Debug.Log("pressed left");
-        //    NextDialogueList();
-        //}
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentDialogueList.dialogueList.Count - 1 == dialogueIndex)
+            if (currentDialogueList.dialogueList.Count == dialogueIndex)
             {
                 StopAllCoroutines();
                 SetActive(false);
                 return;
             }
 
-            //Debug.Log("NextDialogue");
             NextDialogue();
         }
     }
