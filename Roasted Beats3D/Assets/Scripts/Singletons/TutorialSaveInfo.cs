@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -139,10 +137,10 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
     public void SaveData()
     {
         TutSaveData data = new TutSaveData();
-        data.SelectMenu = new KeyValue<string, bool>("SelectMenu", false);
-        data.Cafe = new KeyValue<string, bool>("Cafe", false);
-        data.Checkout = new KeyValue<string, bool>("Checkout", false);
-        data.Cooking = new KeyValue<string, bool>("Cooking", false);
+        data.SelectMenu = new KeyValue<string, bool>("SelectMenu", tutorialSaveInfo["SelectMenu"]);
+        data.Cafe = new KeyValue<string, bool>("Cafe", tutorialSaveInfo["Cafe"]);
+        data.Checkout = new KeyValue<string, bool>("Checkout", tutorialSaveInfo["Checkout"]);
+        data.Cooking = new KeyValue<string, bool>("Cooking", tutorialSaveInfo["Cooking"]);
 
         // https://youtu.be/aUi9aijvpgs
 
@@ -180,7 +178,7 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
         }
     }
 
-    private void SaveBasicData()
+    public void SaveBasicData()
     {
         TutSaveData data = new TutSaveData();
         data.SelectMenu = new KeyValue<string, bool>("SelectMenu", false);

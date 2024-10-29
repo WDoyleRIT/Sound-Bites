@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
         continueB.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
         newGameB.onClick.RemoveAllListeners();
         newGameB.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
+        newGameB.onClick.AddListener(() => TutorialSaveInfo.Instance.SaveBasicData());
         quitB.onClick.RemoveAllListeners();
         quitB.onClick.AddListener(() => Application.Quit());
     }

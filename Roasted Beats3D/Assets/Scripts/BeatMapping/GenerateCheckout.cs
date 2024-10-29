@@ -10,6 +10,17 @@ public class GenerateCheckout : MonoBehaviour
     private List<GameObject> buttons;
     private List<float> noteCooldowns;
 
+    [SerializeField] private Guide guide;
+
+    public void CheckTutorial()
+    {
+        if (!TutorialSaveInfo.Instance.GetDictValue("Checkout"))
+        {
+            guide.SetActive(true);
+            guide.SetDialogueList(1);
+        }
+        
+    }
 
     // Start is called before the first frame update
     void Start()

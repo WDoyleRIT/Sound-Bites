@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc44fdd42afa4e8e400503c091f69, type: 3}
+  m_Name: CheckoutDialogue
+  m_EditorClassIdentifier: 
+  dialogueList:
+  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+    text: Your first customer!!
+    charWaitTime: -1
+  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+    text: This is the cash register, where you can proceed to checkout the customer.
+    charWaitTime: -1
+  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+    text: All you have to do is wait for the notes on screen to get to their full
+      size to maximize customer satisfaction! (Score
+    charWaitTime: -1
+  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+    text: Have fun!
+    charWaitTime: -1

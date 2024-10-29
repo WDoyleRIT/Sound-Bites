@@ -12,7 +12,8 @@ public class Guide : MonoBehaviour
     [SerializeField] private VoiceSO charVoice;
 
     [Header("Audio")]
-    [SerializeField] private List<AudioSource> audioSources;
+    [SerializeField] private GameObject sources;
+    private AudioSource[] audioSources;
     private int currentAudioSource;
 
     [SerializeField] private float defaultPitch = 1;
@@ -27,7 +28,7 @@ public class Guide : MonoBehaviour
     [SerializeField] private GameObject Self;
     [SerializeField] private RectTransform charSpawnPoint;
 
-    [SerializeField] private string tutInfo;
+    [SerializeField] private List<string> tutInfo;
 
     private string spokenText = "";
     private int dialogueIndex = 0;
@@ -42,9 +43,11 @@ public class Guide : MonoBehaviour
 
     private void Start()
     {
+        audioSources = sources.GetComponents<AudioSource>();
+
         currentDialogueList = dialogues[0];
 
-        bool start = !TutorialSaveInfo.Instance.GetDictValue(tutInfo);
+        bool start = !TutorialSaveInfo.Instance.GetDictValue(tutInfo[currentDialogueListIndex]);
 
         SetActive(start);
 
@@ -112,17 +115,17 @@ public class Guide : MonoBehaviour
         audioSources[currentAudioSource].pitch = pitch;
         audioSources[currentAudioSource].Play();
 
-        currentAudioSource = (currentAudioSource + 1) % audioSources.Count;
+        currentAudioSource = (currentAudioSource + 1) % audioSources.Length;
     }
 
     /// <summary>
     /// Sets next dialogue list
     /// </summary>
-    public void NextDialogueList()
+    public void SetDialogueList(int value)
     {
         dialogueIndex = 0;
 
-        currentDialogueListIndex++;
+        currentDialogueListIndex = value;
 
         currentDialogueListIndex = Mathf.Clamp(currentDialogueListIndex, 0, dialogues.Count - 1);
 
@@ -166,6 +169,6 @@ public class Guide : MonoBehaviour
         Self.SetActive(active);
         isActive = active;
 
-        TutorialSaveInfo.Instance.SetDictValue(tutInfo, !active);
+        TutorialSaveInfo.Instance.SetDictValue(tutInfo[currentDialogueListIndex], !active);
     }
 }
