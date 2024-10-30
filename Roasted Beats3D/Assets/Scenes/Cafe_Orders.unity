@@ -4881,7 +4881,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefabs:
   - {fileID: 5717313487962171292, guid: 79ffb2e5f68e9d0429572d63af0bced6, type: 3}
-  waitBetweenCustomers: 5
+  - {fileID: 5717313487962171292, guid: 6e0a4862f723171478081e332be38c93, type: 3}
+  - {fileID: 5717313487962171292, guid: bd7746e0d4540a7448a89425a5f1dfee, type: 3}
+  waitBetweenCustomers: 15
   orderList: {fileID: 11400000, guid: f2af7896afc497c40b2762a416a0ad7f, type: 2}
   charStandPos: {fileID: 354339389}
   charEndPos: {fileID: 2140286076}

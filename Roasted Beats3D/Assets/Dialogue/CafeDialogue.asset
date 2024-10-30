@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: CafeDialogue
   m_EditorClassIdentifier: 
   dialogueList:
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: Congratulations on being hired!
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: Now to start working, welcome to your first day on the job.
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: In the cafe's main area, you will be taking orders and manning the cash
       register!
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: Now you get to it!
     charWaitTime: -1

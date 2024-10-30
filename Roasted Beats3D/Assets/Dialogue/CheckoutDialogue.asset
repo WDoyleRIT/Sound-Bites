@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: CheckoutDialogue
   m_EditorClassIdentifier: 
   dialogueList:
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: Your first customer!!
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: This is the cash register, where you can proceed to checkout the customer.
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: All you have to do is wait for the notes on screen to get to their full
       size to maximize customer satisfaction! (Score
     charWaitTime: -1
-  - sprite: {fileID: 21300000, guid: 1e53bb3a56f37be4494aed866b797c29, type: 3}
+  - sprite: {fileID: 21300000, guid: f266fc8b85f02224ea6a750ba0e86a9b, type: 3}
     text: Have fun!
     charWaitTime: -1
