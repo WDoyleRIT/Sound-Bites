@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class Guide : MonoBehaviour
@@ -41,8 +43,12 @@ public class Guide : MonoBehaviour
     private Image charSprite;
     private bool isActive;
 
+    private Spring[] springs;
+
     private void Start()
     {
+        CreateSprings(10.0f,0.5f,0.0f,false);
+
         audioSources = sources.GetComponents<AudioSource>();
 
         currentDialogueList = dialogues[0];
@@ -50,12 +56,20 @@ public class Guide : MonoBehaviour
 
         bool start = !TutorialSaveInfo.Instance.GetDictValue(tutInfo[currentDialogueListIndex]);
 
-        SetActive(start);
+        StartCoroutine(SetActive(start));
 
         if (start)
         {
             NextDialogue();
         }
+    }
+
+    private void CreateSprings(float v1, float v2, float v3, bool v4)
+    {
+        springs = new Spring[2];
+
+        springs[0] = new Spring(v1, v2, v3, v4);
+        springs[1] = new Spring(v1, v2, v3, v4);
     }
 
     private IEnumerator DialogueLoop(string text, float timeInbetween)
@@ -152,12 +166,19 @@ public class Guide : MonoBehaviour
     }
     private void Update()
     {
+        Self.transform.localScale = new Vector3(1/*springs[0].Position*/, Mathf.Abs(springs[1].Position));
+
+        foreach (Spring s in springs)
+        {
+            s.Update();
+        }
+
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && isActive)
         {
             if (currentDialogueList.dialogueList.Count == dialogueIndex)
             {
                 StopAllCoroutines();
-                SetActive(false);
+                StartCoroutine(SetActive(false));
                 return;
             }
 
@@ -165,9 +186,8 @@ public class Guide : MonoBehaviour
         }
     }
 
-    public void SetActive(bool active)
+    public IEnumerator SetActive(bool active)
     {
-        Time.timeScale = active ? 0.0f : 1.0f;
         AudioListener.pause = active;
 
         foreach (AudioSource source in audioSources)
@@ -175,10 +195,33 @@ public class Guide : MonoBehaviour
             source.ignoreListenerPause = true;
         }
 
+        if (!active)
+        {
+            springs[0].RestPosition = 0.0f;
+            springs[1].RestPosition = 0.0f;
+
+            Time.timeScale = 1.0f;
+
+            yield return new WaitForSeconds(.5f);
+        }
+
         Self.SetActive(active);
         isActive = active;
 
+        if (active)
+        {
+            yield return new WaitForSeconds(.1f);
+
+            springs[0].RestPosition = 1.0f;
+            springs[1].RestPosition = 1.0f;
+
+            Time.timeScale = 0.0f;
+        }
+
+
         if (!active)
+        {
             TutorialSaveInfo.Instance.SetDictValue(tutInfo[currentDialogueListIndex], true);
+        }
     }
 }

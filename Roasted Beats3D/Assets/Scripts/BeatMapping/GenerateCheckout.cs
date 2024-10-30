@@ -16,7 +16,7 @@ public class GenerateCheckout : MonoBehaviour
     {
         if (!TutorialSaveInfo.Instance.GetDictValue("Checkout"))
         {
-            guide.SetActive(true);
+            StartCoroutine(guide.SetActive(true));
             guide.SetDialogueList(1);
         }
         
