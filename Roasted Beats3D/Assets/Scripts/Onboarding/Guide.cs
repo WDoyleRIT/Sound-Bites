@@ -47,7 +47,7 @@ public class Guide : MonoBehaviour
 
     private void Start()
     {
-        CreateSprings(10.0f,0.5f,0.0f,false);
+        CreateSprings(20.0f,1f,0.0f,false);
 
         audioSources = sources.GetComponents<AudioSource>();
 
