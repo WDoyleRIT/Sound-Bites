@@ -143,6 +143,16 @@ public class BoardBar : MonoBehaviour
 
         currentLvl.ChangeRating(rating);
 
+        float accuracy =
+            (distance <= .15) ? 100.00f : // Perfect!!
+            (distance < .25) ? 90.00f : // Great!
+            (distance < .35) ? 80.00f : // Good
+            (distance < .85) ? 70.00f : // OK
+            0.00f; // Miss
+
+        // Add the accuracy of current note to sum of accuracy
+        GlobalVar.Instance.sumAccuracy += accuracy;
+
         if (score > 0)
         {
             Destroy(notes[0]);

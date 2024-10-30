@@ -25,6 +25,7 @@ public class GlobalVar : Singleton<GlobalVar>
     // Used to determine which control scheme to use
     public int controlScheme = 0;
 
+    public float sumAccuracy = 0f;
 
     public int customersServed = 0;
 
