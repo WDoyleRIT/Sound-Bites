@@ -46,6 +46,7 @@ public class Guide : MonoBehaviour
         audioSources = sources.GetComponents<AudioSource>();
 
         currentDialogueList = dialogues[0];
+        currentDialogueListIndex = 0;
 
         bool start = !TutorialSaveInfo.Instance.GetDictValue(tutInfo[currentDialogueListIndex]);
 
@@ -166,9 +167,18 @@ public class Guide : MonoBehaviour
 
     public void SetActive(bool active)
     {
+        Time.timeScale = active ? 0.0f : 1.0f;
+        AudioListener.pause = active;
+
+        foreach (AudioSource source in audioSources)
+        {
+            source.ignoreListenerPause = true;
+        }
+
         Self.SetActive(active);
         isActive = active;
 
-        TutorialSaveInfo.Instance.SetDictValue(tutInfo[currentDialogueListIndex], !active);
+        if (!active)
+            TutorialSaveInfo.Instance.SetDictValue(tutInfo[currentDialogueListIndex], true);
     }
 }

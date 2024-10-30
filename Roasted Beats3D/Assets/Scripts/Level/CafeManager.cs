@@ -102,7 +102,7 @@ public class CafeManager : MonoBehaviour
 
             CharacterUpdate = true;
 
-            yield return new WaitForSecondsRealtime(waitBetweenCustomers);
+            yield return new WaitForSeconds(waitBetweenCustomers);
         }
     }
 
