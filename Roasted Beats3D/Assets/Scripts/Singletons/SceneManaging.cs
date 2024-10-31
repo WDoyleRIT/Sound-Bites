@@ -41,14 +41,24 @@ public class SceneManaging : Singleton<SceneManaging>
     IEnumerator LoadLevel(string scene)
     {
         // Play animation
-        //transition.SetTrigger("start");
+        //transition.SetTrigger("TriggerSceneOut");
 
         // Wait
         yield return new WaitForSeconds(waitTime);
 
         // LoadScene
+
         //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
-        SceneManager.LoadScene(scene);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null; // Wait for the next frame until the scene is fully loaded
+        }
+
+        //transition.SetTrigger("TriggerSceneIn");
+
     }
     
 }

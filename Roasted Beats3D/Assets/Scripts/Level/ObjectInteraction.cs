@@ -12,6 +12,8 @@ public class ObjectInteraction : MonoBehaviour
     public UnityEvent OnInteraction;
     public UnityEvent<bool> OnHover;
 
+    public static bool isPaused;
+
     public bool HoveredOver { get; private set; }
 
     private void Start()
@@ -40,6 +42,12 @@ public class ObjectInteraction : MonoBehaviour
     /// </summary>
     void Update()
     {
+        if (Time.timeScale == 0) isPaused = true;
+        else if (Time.timeScale == 1) isPaused = false;
+
+        if (isPaused)
+            return;
+
         // Send hover status to any listeners
         OnHover.Invoke(HoveredOver = CheckHoverStatus());
 

@@ -40,6 +40,7 @@ public class CafeManager : MonoBehaviour
 
         RhythmManager.Instance.ChangeVolume(.1f);
         lifePercent=GlobalVar.Instance.lifePercent;
+
     }
 
 
@@ -101,7 +102,7 @@ public class CafeManager : MonoBehaviour
 
             CharacterUpdate = true;
 
-            yield return new WaitForSecondsRealtime(waitBetweenCustomers);
+            yield return new WaitForSeconds(waitBetweenCustomers);
         }
     }
 

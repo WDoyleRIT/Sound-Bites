@@ -63,7 +63,7 @@ public class MoveIntoScene : MonoBehaviour
         // -----------------------
 
         // If the position is close enough we set it to the target
-        if (Vector3.Distance(currentTargetPos, transform.position) < 0.05f)
+        if (Vector3.Distance(currentTargetPos, transform.position) < 0.1f)
         {
             transform.position = currentTargetPos;
             IsMoving = false;
@@ -71,7 +71,7 @@ public class MoveIntoScene : MonoBehaviour
         else
             IsMoving = true;
 
-        if (transform.position == standPos.position)
+        if (Vector3.Distance(transform.position,standPos.position) < .1f)
             IsReadyToOrder = true;
 
         if (transform.position == endPos.position)

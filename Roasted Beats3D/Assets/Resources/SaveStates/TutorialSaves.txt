@@ -1,0 +1,4 @@
+SelectMenu,0
+Cafe,0
+Checkout,0
+Cooking,0

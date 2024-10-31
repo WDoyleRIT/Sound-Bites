@@ -25,6 +25,15 @@ public class GlobalVar : Singleton<GlobalVar>
     // Used to determine which control scheme to use
     public int controlScheme = 0;
 
+    public float sumAccuracy = 0f;
+
+    public int customersServed = 0;
+
+    //public int highScore = 0;
+
+    public int[] scores= new int[5];
+
+
 
     private void Update()
     {
@@ -37,5 +46,20 @@ public class GlobalVar : Singleton<GlobalVar>
         {
             SceneManaging.Instance.OpenLvl("LossScene");
         }
+        if (customersServed >= 2)
+        {
+            customersServed = 0;
+            SceneManaging.Instance.OpenLvl("WinScene");
+        }
+
+
     }
+
+
+    public void ResetLevel()
+    {
+        currentLvlPoints = 0;
+
+    }
+
 }
