@@ -29,7 +29,11 @@ public class GlobalVar : Singleton<GlobalVar>
 
     public int customersServed = 0;
 
-    public int highScore = 0;
+    //public int highScore = 0;
+
+    public int[] scores= new int[5];
+
+
 
     private void Update()
     {
@@ -44,9 +48,17 @@ public class GlobalVar : Singleton<GlobalVar>
         }
         if (customersServed >= 2)
         {
+            customersServed = 0;
             SceneManaging.Instance.OpenLvl("WinScene");
         }
 
+
+    }
+
+
+    public void ResetLevel()
+    {
+        currentLvlPoints = 0;
 
     }
 
