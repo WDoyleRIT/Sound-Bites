@@ -711,7 +711,6 @@ GameObject:
   - component: {fileID: 547505619}
   - component: {fileID: 547505618}
   - component: {fileID: 547505617}
-  - component: {fileID: 547505620}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -771,20 +770,6 @@ Transform:
   - {fileID: 1388121224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &547505620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547505616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb3b457be2ab6d4b8e997c850af312c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonText: {fileID: 143499270}
-  levelButton: {fileID: 499154306}
 --- !u!1 &675346074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1172473491}
   - component: {fileID: 1172473492}
+  - component: {fileID: 1172473493}
   m_Layer: 0
   m_Name: LevelSelect
   m_TagString: Untagged
@@ -1877,6 +1863,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a869d4cefbc08d4f8c05f8f14366227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1172473493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172473490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb3b457be2ab6d4b8e997c850af312c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 143499270}
+  levelButton: {fileID: 499154306}
 --- !u!1 &1332016585
 GameObject:
   m_ObjectHideFlags: 0
