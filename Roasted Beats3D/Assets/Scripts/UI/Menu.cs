@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(RotateMenu))]
 public class Menu : MonoBehaviour
@@ -10,6 +11,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private Transform pivot;
 
     [SerializeField] private int rotationAngle;
+
+    [SerializeField] private TextMeshProUGUI controlText;
 
     private void Start()
     {
@@ -28,4 +31,18 @@ public class Menu : MonoBehaviour
         }
     }
 
+    public void ChangeControls()
+    {
+        if(GlobalVar.Instance.controlScheme == 1)
+        {
+            GlobalVar.Instance.controlScheme = 0;
+            controlText.text = "Controls: D/F/J/K";
+        }
+        else if(GlobalVar.Instance.controlScheme == 0)
+        {
+            GlobalVar.Instance.controlScheme = 1;
+            controlText.text = "Controls: A/S/D/F";
+        }
+        
+    }
 }

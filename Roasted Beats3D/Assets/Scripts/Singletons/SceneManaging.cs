@@ -18,25 +18,6 @@ public class SceneManaging : Singleton<SceneManaging>
     {
         StartCoroutine(LoadLevel(name));
     }
-
-    // Changes variable that determines the control scheme
-    public void ChangeControls()
-    {
-        // Can't figure out how to change the text for some reason, will sort it out in class
-
-        if(GlobalVar.Instance.controlScheme == 0)
-        {
-            GlobalVar.Instance.controlScheme = 1;
-            //controlText.text = "Controls: A/S/D/F";
-            Debug.Log("Controls: A/S/D/F");
-        }
-        else if (GlobalVar.Instance.controlScheme == 1)
-        {
-            GlobalVar.Instance.controlScheme = 0;
-            //controlText.text = "Controls: D/F/J/K";
-            Debug.Log("Controls: D/F/J/K");
-        }
-    }
         
     IEnumerator LoadLevel(string scene)
     {

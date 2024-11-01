@@ -25,6 +25,9 @@ public class HoverOver : MonoBehaviour
             GlobalVar.Instance.checkoutNotesPassed = 0; 
             checkout.DestroyNotes();
             //checkout.DeleteButtons();
+
+            GlobalVar.Instance.sumAccuracy = 0;
+
             SceneManaging.Instance.OpenLvl("Cafe_Cooking");
 
         }

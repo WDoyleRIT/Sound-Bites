@@ -54,7 +54,7 @@ public class BoardBar : MonoBehaviour
             StartCoroutine(SetRingTrue(.1f));
         }
             
-        Debug.Log(ring.activeSelf);
+        //Debug.Log(ring.activeSelf);
     }
 
     /// <summary>
