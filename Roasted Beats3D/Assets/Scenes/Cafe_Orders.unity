@@ -5152,6 +5152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7637631862421392478, guid: eca4e695157c47c409eac62d30757d02,
         type: 3}
+      propertyPath: defaultPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637631862421392478, guid: eca4e695157c47c409eac62d30757d02,
+        type: 3}
       propertyPath: tutInfo.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -6184,7 +6189,7 @@ MonoBehaviour:
   sm: {fileID: 4612140746517700699}
   groupAudio: {fileID: 0}
   hasStarted: 0
-  songIndicesForThisLevel: 00000000
+  songIndicesForThisLevel: 0000000001000000
   OnSceneStart:
     m_PersistentCalls:
       m_Calls:
@@ -6226,6 +6231,7 @@ MonoBehaviour:
   songSource: {fileID: 8217784676080634516}
   frequencyAveraging: {fileID: 6184259536235359273}
   frequencyData: {fileID: 8042645304431922099}
+  isTesting: 0
   OnUpdate:
     m_PersistentCalls:
       m_Calls:

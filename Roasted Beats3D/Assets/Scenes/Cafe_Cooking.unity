@@ -3893,6 +3893,11 @@ PrefabInstance:
       objectReference: {fileID: 1336485366}
     - target: {fileID: 7637631862421392478, guid: eca4e695157c47c409eac62d30757d02,
         type: 3}
+      propertyPath: defaultPitch
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637631862421392478, guid: eca4e695157c47c409eac62d30757d02,
+        type: 3}
       propertyPath: tutInfo.Array.size
       value: 1
       objectReference: {fileID: 0}

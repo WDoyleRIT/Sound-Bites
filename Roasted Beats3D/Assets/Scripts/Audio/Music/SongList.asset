@@ -28,3 +28,18 @@ MonoBehaviour:
       - 0.025
       - 0.0025
       - 0.002
+  - bpm: 103
+    audio: {fileID: 8300000, guid: dd9c98170c7cf12458e0b4011fdd3f4b, type: 3}
+    Name: VeranoSensual
+    FreqMapDifficulties:
+    - sampleSize: 8192
+      SampleRanges:
+      - {x: 72, y: 73}
+      - {x: 212, y: 219}
+      - {x: 259, y: 290}
+      - {x: 419, y: 432}
+      BeatThreshholds:
+      - 0.035
+      - 0.0095
+      - 0.0095
+      - 0.0095

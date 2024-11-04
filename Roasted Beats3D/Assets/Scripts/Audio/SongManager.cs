@@ -17,6 +17,8 @@ public class SongManager : MonoBehaviour
     [SerializeField] public FrequencyAveraging frequencyAveraging;
     [SerializeField] private FrequencyData frequencyData;
 
+    public bool isTesting = false;
+
     public UnityEvent OnUpdate;
 
     public void OnSongStart()
@@ -34,7 +36,7 @@ public class SongManager : MonoBehaviour
 
     private IEnumerator StartMusic()
     {
-        songDelay = GlobalVar.Instance.noteSpdInSec;
+        songDelay = isTesting ? songDelay : GlobalVar.Instance.noteSpdInSec;
         GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 4;
 
         switch (songDelay)
