@@ -93,22 +93,12 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
-        if (!File.Exists(fullPath))
+        if (!DataIO.Instance.CheckFilePath(fullPath))
         {
             SaveBasicData();
-        }
+        } 
 
-        string data = "";
-
-        using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-        {
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                data = reader.ReadToEnd();
-            }
-        }
-
-        TutSaveData loadedData = JsonUtility.FromJson<TutSaveData>(data);
+        TutSaveData loadedData = DataIO.Instance.LoadData<TutSaveData>(fullPath);
 
         UpdateDict(loadedData);
     }
@@ -146,36 +136,14 @@ public class TutorialSaveInfo : Singleton<TutorialSaveInfo>
 
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
-        Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-
-        string dataToStore = JsonUtility.ToJson(data, true);
-
-        using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-        {
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                writer.Write(dataToStore);
-            }
-        }
+        DataIO.Instance.SavaData<TutSaveData>(data, fullPath);
     }
 
     public void SaveData(TutSaveData data)
     {
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
-        Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
-
-        string dataToStore = JsonUtility.ToJson(data, true);
-
-        Debug.Log(dataToStore);
-
-        using (FileStream stream = new FileStream(fullPath, FileMode.Create))
-        {
-            using (StreamWriter writer = new StreamWriter(stream))
-            {
-                writer.Write(dataToStore);
-            }
-        }
+        DataIO.Instance.SavaData(data, fullPath);
     }
 
     public void SaveBasicData()
