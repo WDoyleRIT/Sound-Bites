@@ -14,10 +14,15 @@ public class MainMenu : MonoBehaviour
     {
         continueB.onClick.RemoveAllListeners();
         continueB.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
+        continueB.onClick.AddListener(() => continueB.GetComponent<SquishEffect>().OnClick());
+
         newGameB.onClick.RemoveAllListeners();
         newGameB.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
         newGameB.onClick.AddListener(() => TutorialSaveInfo.Instance.SaveBasicData());
+        newGameB.onClick.AddListener(() => newGameB.GetComponent<SquishEffect>().OnClick());
+
         quitB.onClick.RemoveAllListeners();
         quitB.onClick.AddListener(() => Application.Quit());
+        quitB.onClick.AddListener(() => quitB.GetComponent<SquishEffect>().OnClick());
     }
 }

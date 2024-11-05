@@ -45,7 +45,7 @@ public class Spring
     
     public float RestPosition {  get; set; }
     public float Velocity { get => velocity; set => velocity = value; }
-    public float Position { get => position; }
+    public float Position { get => position; set => position = value; }
 
     private float velocity;
     private float position;
@@ -58,6 +58,7 @@ public class Spring
         this.angularFrequency = angularFrequency;
         this.dampingRatio = dampingRatio;
         this.RestPosition = restPosition;
+        this.position = restPosition;
     }
 
     public void Update()
@@ -156,5 +157,10 @@ public class Spring
 
         pPos = oldPos * param.M_posPosCoef + oldVel * param.M_posVelCoef + equilibriumPos;
         pVel = oldPos * param.M_velPosCoef + oldVel * param.M_velVelCoef;
+    }
+
+    public void Nudge(float velocity)
+    {
+        this.velocity = velocity;
     }
 }
