@@ -12,9 +12,13 @@ public class MoveMenus : MonoBehaviour
     [SerializeField] float angularFrequency;
     [SerializeField] float offsetDistance;
 
+    //CanvasGroup canvasGroup;
+
     private void Start()
     {
         xSpring = new Spring(angularFrequency, dampingRatio, transform.position.x / offsetDistance, true);
+
+        //canvasGroup = GetComponent<CanvasGroup>();
     }
 
     private void Update()
@@ -22,6 +26,20 @@ public class MoveMenus : MonoBehaviour
         xSpring.Update();
 
         transform.position = new Vector3(xSpring.Position * offsetDistance, transform.position.y, transform.position.z);
+
+        /*
+        if (gameObject.name == "ManageButtons")
+        {
+            if (moved != 0)
+            {
+                canvasGroup.alpha = 0;
+            }
+            else
+            {
+                canvasGroup.alpha = 1;
+            }
+        }
+        */
     }
 
     public void MoveRight()

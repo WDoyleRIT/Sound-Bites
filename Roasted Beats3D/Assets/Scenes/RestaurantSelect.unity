@@ -1974,8 +1974,10 @@ GameObject:
   - component: {fileID: 1332016587}
   - component: {fileID: 1332016586}
   - component: {fileID: 1332016590}
+  - component: {fileID: 1332016592}
+  - component: {fileID: 1332016593}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ManageButtons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2080,6 +2082,33 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_SortAtRoot: 0
+--- !u!114 &1332016592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332016585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a869d4cefbc08d4f8c05f8f14366227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dampingRatio: 0
+  angularFrequency: 0
+  offsetDistance: 0
+--- !u!225 &1332016593
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332016585}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1388121223
 GameObject:
   m_ObjectHideFlags: 0
