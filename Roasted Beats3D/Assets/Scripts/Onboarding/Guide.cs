@@ -23,7 +23,7 @@ public class Guide : MonoBehaviour
 
 
     [Header("Text")]
-    [SerializeField] private TextMeshProUGUI TextMeshPro;
+    [SerializeField] private TextMeshProUGUI TMPro;
     [SerializeField] private float defaultTextSpeed = .05f;
 
     [Header("Other")]
@@ -42,11 +42,17 @@ public class Guide : MonoBehaviour
 
     private Image charSprite;
     private bool isActive;
+    private bool isInDialogue;
+
+    private List<Spring> charSprings;
+    private List<Coroutine> charCoroutines;
 
     private Spring[] springs;
 
     private void Start()
     {
+        charCoroutines = new List<Coroutine>();
+
         CreateSprings(20.0f,1f,0.0f,false);
 
         audioSources = sources.GetComponents<AudioSource>();
@@ -75,8 +81,11 @@ public class Guide : MonoBehaviour
     private IEnumerator DialogueLoop(string text, float timeInbetween)
     {
         spokenText = "";
+        TMPro.text = spokenText;   
 
         SpawnCharacter();
+
+        isInDialogue = true;
 
         if (currentSpeechActive != null) StopCoroutine(currentSpeechActive);
 
@@ -87,14 +96,60 @@ public class Guide : MonoBehaviour
         for (int i = 0; i < textLength; i++)
         {
             spokenText += text[i];
-            TextMeshPro.text = spokenText;
+            TMPro.text = spokenText;
+            //charCoroutines.Add(StartCoroutine(SpawnTextChar(i))); 
 
             float newTime = timeInbetween + Random.Range(-timeInbetween / 4, timeInbetween / 4);
 
             yield return new WaitForSecondsRealtime(newTime);
         }
 
+        isInDialogue = false;
+
         StopCoroutine(currentSpeechActive);
+    }
+
+    /// <summary>
+    /// Deprecated/Not-Working
+    /// </summary>
+    /// <param name="i"></param>
+    /// <returns></returns>
+    private IEnumerator SpawnTextChar(int i)
+    {
+        TMPro.ForceMeshUpdate();
+
+        float time = 2;
+
+        TMP_CharacterInfo TMPC = TMPro.textInfo.characterInfo[i];
+
+        charSprings.Add(new Spring(5, .25f, 0, false));
+        charSprings[i].Position = 10;
+
+        Vector3[] vertices = TMPro.mesh.vertices;
+
+        int charIndex = TMPC.vertexIndex; 
+
+        while (time > 0)
+        {
+            Vector3 offset = Vector3.up * charSprings[i].Position;
+            
+            vertices[charIndex + 0] += offset;
+            vertices[charIndex + 1] += offset;
+            vertices[charIndex + 2] += offset;
+            vertices[charIndex + 3] += offset;
+
+            Vector3[] tempVertices = TMPro.mesh.vertices;
+
+            tempVertices[charIndex + 0] = vertices[charIndex + 0];
+            tempVertices[charIndex + 1] = vertices[charIndex + 1];
+            tempVertices[charIndex + 2] = vertices[charIndex + 2];
+            tempVertices[charIndex + 3] = vertices[charIndex + 3];
+
+            TMPro.mesh.SetVertices(tempVertices);
+
+            time -= Time.unscaledDeltaTime;
+            yield return new WaitForSecondsRealtime(Time.unscaledDeltaTime);
+        }
     }
 
     private void SpawnCharacter()
@@ -152,6 +207,12 @@ public class Guide : MonoBehaviour
     /// </summary>
     public void NextDialogue()
     {
+        for (int i = 0; i < charCoroutines.Count; i++)
+            StopCoroutine(charCoroutines[i]);
+
+        charCoroutines.Clear();
+        charSprings = new List<Spring>();
+
         DialogueObj temp = currentDialogueList.dialogueList[dialogueIndex];
 
         if (currentDialogueActive != null) StopCoroutine(currentDialogueActive);
@@ -169,12 +230,19 @@ public class Guide : MonoBehaviour
         Self.transform.localScale = new Vector3(1/*springs[0].Position*/, Mathf.Abs(springs[1].Position));
 
         foreach (Spring s in springs)
-        {
             s.Update();
-        }
+
+        foreach (Spring s in charSprings) 
+            s.Update();
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && isActive)
         {
+            if (currentDialogueActive != null && isInDialogue)
+            {
+                SkipDialogue();
+                return;
+            }
+
             if (currentDialogueList.dialogueList.Count == dialogueIndex)
             {
                 StopAllCoroutines();
@@ -184,6 +252,19 @@ public class Guide : MonoBehaviour
 
             NextDialogue();
         }
+    }
+
+    private void SkipDialogue()
+    {
+        StopCoroutine(currentDialogueActive);
+        currentDialogueActive = null;
+
+        DialogueObj temp = currentDialogueList.dialogueList[dialogueIndex - 1];
+
+        spokenText = temp.text;
+        TMPro.text = spokenText;
+
+        isInDialogue = false;
     }
 
     public IEnumerator SetActive(bool active)
