@@ -19,9 +19,9 @@ public class SceneManaging : Singleton<SceneManaging>
     private AsyncOperation asyncLoad;
     private bool inSceneTransition;
 
-    private void Start()
+    protected override void OnAwake()
     {
-        transitionSpring = new Spring(10, 2f, offset = transitionPanel.position.x, false);    
+        transitionSpring = new Spring(10, 2f, offset = transitionPanel.position.x, false);
     }
 
     private void Update()
@@ -41,6 +41,8 @@ public class SceneManaging : Singleton<SceneManaging>
         
     IEnumerator LoadLevel(string scene)
     {
+        
+
         // Play animation
         //transition.SetTrigger("TriggerSceneOut");
 

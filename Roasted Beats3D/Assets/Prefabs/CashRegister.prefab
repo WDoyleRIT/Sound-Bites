@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 5058055860682027696}
   - component: {fileID: 9048266712585818716}
   - component: {fileID: 861385945730953706}
+  - component: {fileID: 6383350746120636798}
   m_Layer: 7
   m_Name: CashRegister
   m_TagString: Untagged
@@ -374,6 +375,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverMask: {fileID: 1411147327722385915}
   popUp: {fileID: 0}
+  checkout: {fileID: 0}
+--- !u!114 &6383350746120636798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657886021208139334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8a3418802b48246af024a789e2f44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angularFrequency: 10
+  dampingRatio: 0.5
+  nudgeValue: -2
 --- !u!1 &6204622208747592126
 GameObject:
   m_ObjectHideFlags: 0

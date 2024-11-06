@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  transition: {fileID: 0}
+  transitionPanel: {fileID: 0}
   waitTime: 1
   controlText: {fileID: 0}
 --- !u!1 &133946163
@@ -2111,6 +2111,7 @@ GameObject:
   - component: {fileID: 632584833}
   - component: {fileID: 632584834}
   - component: {fileID: 632584832}
+  - component: {fileID: 632584835}
   m_Layer: 7
   m_Name: CashRegister
   m_TagString: Untagged
@@ -2207,6 +2208,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 632584835}
+        m_TargetAssemblyTypeName: SquishEffect, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnHover:
     m_PersistentCalls:
       m_Calls:
@@ -2222,6 +2235,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &632584835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632584831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8a3418802b48246af024a789e2f44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angularFrequency: 30
+  dampingRatio: 0.75
+  nudgeValue: -10
 --- !u!1 &667599788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,7 +5034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  transition: {fileID: 0}
+  transitionPanel: {fileID: 0}
   waitTime: 0
   controlText: {fileID: 0}
 --- !u!4 &1671269766 stripped
