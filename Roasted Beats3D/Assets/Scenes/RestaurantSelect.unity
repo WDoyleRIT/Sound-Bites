@@ -2271,9 +2271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a869d4cefbc08d4f8c05f8f14366227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampingRatio: 0
-  angularFrequency: 0
-  offsetDistance: 0
+  dampingRatio: 0.75
+  angularFrequency: 30
+  offsetDistance: 19.25
 --- !u!225 &1332016593
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class HoverOver : MonoBehaviour
 
     public void OnClickTrue()
     {
-        if (GlobalVar.Instance.Ordering)
+        if (GlobalVar.Instance.Ordering && !popUp.gameObject.activeSelf)
         {
             popUp.SetActive(true);
             checkout.GenerateButtons();
