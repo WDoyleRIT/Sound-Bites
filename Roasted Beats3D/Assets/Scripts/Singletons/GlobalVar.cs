@@ -11,6 +11,7 @@ public class GlobalVar : Singleton<GlobalVar>
     public int songDifficulty;
     public int streak = 0;
     public float noteSpdInSec = 5f;
+    public float noteSpdInSec2 = 2f;
     public int notesPassed = 0;
     public bool songIsPlaying = false;
 

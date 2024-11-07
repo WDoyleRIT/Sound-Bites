@@ -232,8 +232,8 @@ public class Guide : MonoBehaviour
         foreach (Spring s in springs)
             s.Update();
 
-        foreach (Spring s in charSprings) 
-            s.Update();
+        //foreach (Spring s in charSprings) 
+        //    s.Update();
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && isActive)
         {
