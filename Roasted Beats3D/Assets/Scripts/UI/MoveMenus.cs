@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveMenus : MonoBehaviour
 {
-    int moved = 0;
+    public int moved = 0;
 
     private Spring xSpring;
 
