@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  transition: {fileID: 0}
+  transitionPanel: {fileID: 0}
   waitTime: 1
   controlText: {fileID: 0}
 --- !u!114 &14106181
@@ -247,6 +247,7 @@ MonoBehaviour:
   StartPos: {fileID: 891097650}
   EndPos: {fileID: 265241731}
   MissedPos: {fileID: 1073985000}
+  particles: {fileID: 0}
 --- !u!1 &181766579
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +307,7 @@ MonoBehaviour:
   StartPos: {fileID: 1822532832}
   EndPos: {fileID: 1751265049}
   MissedPos: {fileID: 356668289}
+  particles: {fileID: 0}
 --- !u!1 &246181574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +2922,7 @@ MonoBehaviour:
   StartPos: {fileID: 365879370}
   EndPos: {fileID: 2099184205}
   MissedPos: {fileID: 281447808}
+  particles: {fileID: 0}
 --- !u!1 &1119872178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,6 +3088,7 @@ MonoBehaviour:
   StartPos: {fileID: 717784637}
   EndPos: {fileID: 966415295}
   MissedPos: {fileID: 1101281814}
+  particles: {fileID: 0}
 --- !u!1 &1180633519
 GameObject:
   m_ObjectHideFlags: 0

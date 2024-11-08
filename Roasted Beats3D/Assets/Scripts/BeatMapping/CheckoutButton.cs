@@ -13,6 +13,8 @@ public class CheckoutButton : MonoBehaviour
     [SerializeField] private float xMaxScale;
     [SerializeField] private float yMaxScale;
 
+    [SerializeField] private ParticleSystem particles;
+
     private float noteCooldown;
     private bool noteOnButton;
 
@@ -135,6 +137,7 @@ public class CheckoutButton : MonoBehaviour
 
         if (score > 0)
         {
+            particles.Play();
             currentLvl.ChangeStreak(1);
         }
         else

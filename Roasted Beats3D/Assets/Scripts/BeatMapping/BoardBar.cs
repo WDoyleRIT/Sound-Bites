@@ -12,6 +12,7 @@ public class BoardBar : MonoBehaviour
     [SerializeField] private Transform StartPos;
     [SerializeField] public Transform EndPos;
     [SerializeField] private Transform MissedPos;
+    [SerializeField] private ParticleSystem particles;
 
     private float noteCooldown;
     private float speed;
@@ -162,6 +163,7 @@ public class BoardBar : MonoBehaviour
 
             // Add point to score streak
             currentLvl.ChangeStreak(1);
+            particles.Play();
         }
         else
         {
