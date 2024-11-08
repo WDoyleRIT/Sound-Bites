@@ -14,11 +14,15 @@ public class BoardBar : MonoBehaviour
     [SerializeField] private Transform MissedPos;
     [SerializeField] private ParticleSystem particles;
 
+
     private float noteCooldown;
     private float speed;
     private float travelDistance;
 
-    private List<GameObject> notes = new List<GameObject>();
+    public List<GameObject> notes = new List<GameObject>();
+
+    public int NoteAmount { get { return notes.Count; } }
+
 
     private void Start()
     {
@@ -174,4 +178,26 @@ public class BoardBar : MonoBehaviour
         currentLvl.ChangeScoreBy(score);
         //}
     }
+
+    public void ChangeParticleColor(int colorInt)
+    {
+        if (colorInt == 0)
+        {
+            particles.startColor = Color.magenta;
+        }
+        else if (colorInt == 1)
+        {
+            particles.startColor = Color.yellow;
+        }
+        else if(colorInt == 2)
+        {
+            particles.startColor = Color.green;
+        }
+        else if(colorInt == 3)
+        {
+            particles.startColor = Color.blue;
+        }
+    }
+
+
 }

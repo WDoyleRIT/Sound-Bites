@@ -11,6 +11,8 @@ public class RestaurantSelect : MonoBehaviour
 
     [SerializeField] private Button levelButton;
 
+    [SerializeField] private MoveMenus moveMenus;
+
     private string[] levelNames = new string[]
     {
         "Cafe_Orders",
@@ -36,6 +38,13 @@ public class RestaurantSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (moveMenus.moved != 0)
+        {
+            levelButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            levelButton.gameObject.SetActive(true);
+        }
     }
 }
