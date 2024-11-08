@@ -19,9 +19,18 @@ public class SceneManaging : Singleton<SceneManaging>
     private AsyncOperation asyncLoad;
     private bool inSceneTransition;
 
+    public void OnContinue(SaveData saveData)
+    {
+        string sceneName = saveData.sceneName;
+
+        OpenLvl(sceneName);
+    }
+
     protected override void OnAwake()
     {
         transitionSpring = new Spring(10, 2f, offset = transitionPanel.position.x, false);
+
+        GameSave.Instance.OnLoad += OnContinue;
     }
 
     private void Update()
@@ -67,6 +76,8 @@ public class SceneManaging : Singleton<SceneManaging>
         }
 
         transitionSpring.RestPosition = -offset;
+
+        GameSave.Instance.SaveScene(scene);
 
         yield return new WaitForSeconds(.05f);
         //transition.SetTrigger("TriggerSceneIn");

@@ -18,7 +18,9 @@ public class BoardBar : MonoBehaviour
     private float speed;
     private float travelDistance;
 
-    private List<GameObject> notes = new List<GameObject>();
+    public List<GameObject> notes = new List<GameObject>();
+
+    public int NoteAmount { get { return notes.Count; } }
 
     private void Start()
     {

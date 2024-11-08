@@ -39,6 +39,8 @@ public class GlobalVar : Singleton<GlobalVar>
     public float musicVol = 100.0f;
     public float SFXVol = 100.0f;
 
+    internal SaveData saveData;
+
     private void Update()
     {
         lifePercent = GlobalVar.Instance.lifePercent;

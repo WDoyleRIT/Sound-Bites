@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -79,6 +80,8 @@ public class BoardGeneration : MonoBehaviour
 
         // Subscribes the inputs to the player actions
         SubscribeActions();
+
+        StartCoroutine(SaveHeartBeat());
     }
 
     // Input related methods
@@ -217,6 +220,49 @@ public class BoardGeneration : MonoBehaviour
         for (int i = 0;i < bars.Count;i++)
         {
             bars[i].GetComponent<BoardBar>().OnUpdate();
+        }
+    }
+
+    private IEnumerator SaveHeartBeat()
+    {
+        SongData save = new SongData();
+
+        while(true)
+        {
+            
+            save.timeOfSong = RhythmManager.Instance.sm.songSource.time;
+
+            int noteCount = 0;
+
+            foreach (GameObject bar in bars)
+            {
+                noteCount += bar.GetComponent<BoardBar>().NoteAmount;
+            }
+
+            List<NoteData> noteList = new List<NoteData>();
+
+            for (int i = 0; i < bars.Count; i++)
+            {
+                foreach (GameObject note in bars[i].GetComponent<BoardBar>().notes)
+                {
+                    noteList.Add(
+                        new NoteData(i, note.transform.position)
+                        );
+                }
+            }
+
+            NoteData[] notes = new NoteData[noteList.Count];
+
+            for (int i = 0; i < notes.Length; i++)
+            {
+                notes[i] = noteList[i];
+            }
+
+            save.notes = notes;
+
+            GameSave.Instance.SaveSong(save);
+
+            yield return new WaitForSeconds(5);
         }
     }
 

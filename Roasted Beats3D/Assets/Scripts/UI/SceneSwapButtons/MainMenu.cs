@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         continueB.onClick.RemoveAllListeners();
-        continueB.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
+        continueB.onClick.AddListener(() => GameSave.Instance.Continue());
         continueB.onClick.AddListener(() => continueB.GetComponent<SquishEffect>().OnClick());
 
         newGameB.onClick.RemoveAllListeners();
