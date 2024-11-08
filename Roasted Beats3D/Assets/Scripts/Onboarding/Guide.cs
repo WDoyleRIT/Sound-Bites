@@ -264,6 +264,8 @@ public class Guide : MonoBehaviour
         spokenText = temp.text;
         TMPro.text = spokenText;
 
+        StopCoroutine(currentSpeechActive);
+
         isInDialogue = false;
     }
 
