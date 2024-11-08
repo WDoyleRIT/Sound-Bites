@@ -34,7 +34,10 @@ public class GlobalVar : Singleton<GlobalVar>
 
     public int[] scores= new int[5];
 
-
+    // Volume Variables
+    public float masterVol = 1.0f;
+    public float musicVol = 100.0f;
+    public float SFXVol = 100.0f;
 
     private void Update()
     {
