@@ -50,6 +50,7 @@ public class GlobalVar : Singleton<GlobalVar>
         }
         if (lifePercent <= 0)
         {
+            lifePercent = 100;
             SceneManaging.Instance.OpenLvl("LossScene");
         }
         if (customersServed >= 2)
