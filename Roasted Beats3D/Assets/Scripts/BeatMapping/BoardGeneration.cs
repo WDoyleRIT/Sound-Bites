@@ -209,6 +209,7 @@ public class BoardGeneration : MonoBehaviour
         {
             float barX = barPrefab.transform.localScale.x * (float)i - half;
             bars.Add(Instantiate(barPrefab, new Vector3(transform.position.x + barX, transform.position.y, transform.position.z), transform.rotation, transform));
+            bars[i].GetComponent<BoardBar>().ChangeParticleColor(i);
         }
     }
 
