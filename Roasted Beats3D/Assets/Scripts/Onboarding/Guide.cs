@@ -252,6 +252,13 @@ public class Guide : MonoBehaviour
 
             NextDialogue();
         }
+
+        // Update volume based on user settings
+        foreach (AudioSource src in audioSources)
+        {
+            // Product of master volume and sfx volume
+            src.volume = GlobalVar.Instance.masterVol * GlobalVar.Instance.SFXVol;
+        }
     }
 
     private void SkipDialogue()

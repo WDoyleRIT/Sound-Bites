@@ -23,6 +23,9 @@ public class SongManager : MonoBehaviour
 
     public void OnSongStart()
     {
+        // Set song volume based on settings (Does not work!)
+        songSource.volume = GlobalVar.Instance.masterVol * GlobalVar.Instance.musicVol;
+
         StartCoroutine(StartMusic());
         StartCoroutine(StartData());
     }

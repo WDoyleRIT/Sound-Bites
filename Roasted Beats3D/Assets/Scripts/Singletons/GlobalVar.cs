@@ -36,8 +36,8 @@ public class GlobalVar : Singleton<GlobalVar>
 
     // Volume Variables
     public float masterVol = 1.0f;
-    public float musicVol = 100.0f;
-    public float SFXVol = 100.0f;
+    public float musicVol = 1.0f;
+    public float SFXVol = 1.0f;
 
     private void Update()
     {
