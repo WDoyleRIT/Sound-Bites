@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RhythmManager : Singleton<RhythmManager>
 {
@@ -107,6 +108,15 @@ public class RhythmManager : Singleton<RhythmManager>
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "Cafe_Cooking")
+        {
+            SongData data = new SongData();
+
+            data.timeOfSong = sm.songSource.time;
+
+            GameSave.Instance.SaveSong(data);
+        }
+
         GlobalVar.Instance.currentLvlPoints = levelScore;
         GlobalVar.Instance.streak = levelStreak;
 

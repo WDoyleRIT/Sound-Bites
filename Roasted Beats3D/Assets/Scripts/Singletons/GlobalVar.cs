@@ -59,7 +59,7 @@ public class GlobalVar : Singleton<GlobalVar>
             SceneManaging.Instance.OpenLvl("WinScene");
         }
 
-
+        GameSave.Instance.SaveScore(currentLvlPoints);
     }
 
 
