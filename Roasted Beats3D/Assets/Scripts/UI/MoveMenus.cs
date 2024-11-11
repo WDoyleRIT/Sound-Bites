@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveMenus : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MoveMenus : MonoBehaviour
     [SerializeField] float angularFrequency;
     [SerializeField] float offsetDistance;
 
-    //CanvasGroup canvasGroup;
+    [SerializeField] Button openLvlButton;
 
     private void Start()
     {
@@ -27,19 +28,14 @@ public class MoveMenus : MonoBehaviour
 
         transform.position = new Vector3(xSpring.Position * offsetDistance, transform.position.y, transform.position.z);
 
-        /*
-        if (gameObject.name == "ManageButtons")
+        if (moved != 0)
         {
-            if (moved != 0)
-            {
-                canvasGroup.alpha = 0;
-            }
-            else
-            {
-                canvasGroup.alpha = 1;
-            }
+            openLvlButton.gameObject.SetActive(true);
         }
-        */
+        else
+        {
+            openLvlButton.gameObject.SetActive(false);
+        }
     }
 
     public void MoveRight()

@@ -1451,12 +1451,13 @@ GameObject:
   - component: {fileID: 495199873}
   - component: {fileID: 495199872}
   - component: {fileID: 495199871}
+  - component: {fileID: 495199874}
   m_Layer: 0
   m_Name: Locked Level Cover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &495199869
 Transform:
@@ -1545,6 +1546,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495199868}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!210 &495199874
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495199868}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &499154304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +1703,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!114 &499154310
 MonoBehaviour:
@@ -3977,9 +3990,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a869d4cefbc08d4f8c05f8f14366227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moved: 0
   dampingRatio: 0.7
   angularFrequency: 10
   offsetDistance: 19.25
+  openLvlButton: {fileID: 499154306}
 --- !u!114 &1172473493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3994,6 +4009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonText: {fileID: 143499270}
   levelButton: {fileID: 499154306}
+  moveMenus: {fileID: 1172473492}
 --- !u!1 &1200360015
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,8 +4229,6 @@ GameObject:
   - component: {fileID: 1332016587}
   - component: {fileID: 1332016586}
   - component: {fileID: 1332016590}
-  - component: {fileID: 1332016592}
-  - component: {fileID: 1332016593}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4321,33 +4335,6 @@ SortingGroup:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_SortAtRoot: 0
---- !u!114 &1332016592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332016585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a869d4cefbc08d4f8c05f8f14366227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dampingRatio: 0.75
-  angularFrequency: 30
-  offsetDistance: 19.25
---- !u!225 &1332016593
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332016585}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1363308381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,12 +4347,13 @@ GameObject:
   - component: {fileID: 1363308384}
   - component: {fileID: 1363308383}
   - component: {fileID: 1363308382}
+  - component: {fileID: 1363308386}
   m_Layer: 0
   m_Name: Locked Level Cover1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!64 &1363308382
 MeshCollider:
@@ -4454,6 +4442,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1172473491}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1363308386
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363308381}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &1388121223
 GameObject:
   m_ObjectHideFlags: 0
