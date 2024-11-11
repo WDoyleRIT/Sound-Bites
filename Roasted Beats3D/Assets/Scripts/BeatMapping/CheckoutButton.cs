@@ -56,8 +56,8 @@ public class CheckoutButton : MonoBehaviour
 
     public void CreateNote(int prefabIndex)
     {
-        xScaleSpeed = (0.5f - 0.1f) / GlobalVar.Instance.noteSpdInSec;
-        yScaleSpeed = (0.6f - 0.12f) / GlobalVar.Instance.noteSpdInSec;
+        xScaleSpeed = (1.0f-0.5f) / GlobalVar.Instance.noteSpdInSec;
+        yScaleSpeed = (1.2f-0.6f) / GlobalVar.Instance.noteSpdInSec;
 
 
         xMaxScale = 0.5f;
@@ -71,7 +71,7 @@ public class CheckoutButton : MonoBehaviour
 
        
 
-        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(0.1f,0.12f,1f));
+        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(1.0f,1.2f,1f),0.01f);
         noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
@@ -85,7 +85,7 @@ public class CheckoutButton : MonoBehaviour
             notes[i].GetComponent<CheckoutNote>().OnUpdate();
 
 
-            if (notes[i].transform.localScale.x > xMaxScale && notes[i].transform.localScale.y>yMaxScale)
+            if (notes[i].transform.localScale.x < xMaxScale && notes[i].transform.localScale.y<yMaxScale)
             {
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
