@@ -41,9 +41,28 @@ public class CafeManager : MonoBehaviour
         RhythmManager.Instance.ChangeVolume(.1f);
         lifePercent=GlobalVar.Instance.lifePercent;
 
+        SaveHeartbeat();
+
     }
 
+    private IEnumerator SaveHeartbeat()
+    {
+        while (true)
+        {
+            CustomerData[] data = new CustomerData[characters.Count];
 
+            for (int i = 0; i < data.Length; i++)
+            {
+                int[] orderData = new int[characters[i].GetComponent<Character>().order.];
+
+                data[i] = new CustomerData(i.ToString(), characters[i].transform.position, );
+            }
+
+            GameSave.Instance.SaveCustomers();
+
+            yield return new WaitForSecondsRealtime(2);
+        }
+    }
 
     /// <summary>
     /// Starts all cafe scene specific coroutines that need tro be cycled through
