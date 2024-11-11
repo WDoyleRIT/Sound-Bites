@@ -263,7 +263,7 @@ public class BoardGeneration : MonoBehaviour
 
             GameSave.Instance.SaveSong(save);
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
         }
     }
 
