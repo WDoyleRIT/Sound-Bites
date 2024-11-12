@@ -47,21 +47,23 @@ public class CafeManager : MonoBehaviour
 
     private IEnumerator SaveHeartbeat()
     {
-        while (true)
-        {
-            CustomerData[] data = new CustomerData[characters.Count];
+        //while (true)
+        //{
+        //    CustomerData[] data = new CustomerData[characters.Count];
 
-            for (int i = 0; i < data.Length; i++)
-            {
-                int[] orderData = new int[characters[i].GetComponent<Character>().order.];
+        //    for (int i = 0; i < data.Length; i++)
+        //    {
+        //        int[] orderData = characters[i].GetComponent<Character>().order.foodOrderInt;
 
-                data[i] = new CustomerData(i.ToString(), characters[i].transform.position, );
-            }
+        //        data[i] = new CustomerData(i.ToString(), characters[i].transform.position, orderData);
+        //    }
 
-            GameSave.Instance.SaveCustomers();
+        //    GameSave.Instance.SaveCustomers(data);
 
-            yield return new WaitForSecondsRealtime(2);
-        }
+        //    yield return new WaitForSecondsRealtime(2);
+        //}
+
+        yield return new WaitForSeconds(0);
     }
 
     /// <summary>
