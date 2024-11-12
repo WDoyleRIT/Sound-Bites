@@ -41,27 +41,27 @@ public class CafeManager : MonoBehaviour
         RhythmManager.Instance.ChangeVolume(.1f);
         lifePercent=GlobalVar.Instance.lifePercent;
 
-        SaveHeartbeat();
+        StartCoroutine(SaveHeartbeat());
 
     }
 
     private IEnumerator SaveHeartbeat()
     {
-        //while (true)
-        //{
-        //    CustomerData[] data = new CustomerData[characters.Count];
+        while (true)
+        {
+            CustomerData[] data = new CustomerData[characters.Count];
 
-        //    for (int i = 0; i < data.Length; i++)
-        //    {
-        //        int[] orderData = characters[i].GetComponent<Character>().order.foodOrderInt;
+            for (int i = 0; i < data.Length; i++)
+            {
+                int[] orderData = characters[i].GetComponent<Character>().order.foodOrderInt.ToArray();
 
-        //        data[i] = new CustomerData(i.ToString(), characters[i].transform.position, orderData);
-        //    }
+                data[i] = new CustomerData(i.ToString(), characters[i].transform.position, orderData);
+            }
 
-        //    GameSave.Instance.SaveCustomers(data);
+            GameSave.Instance.SaveCustomers(data);
 
-        //    yield return new WaitForSecondsRealtime(2);
-        //}
+            yield return new WaitForSecondsRealtime(2);
+        }
 
         yield return new WaitForSeconds(0);
     }

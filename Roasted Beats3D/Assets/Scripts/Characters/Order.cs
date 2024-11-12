@@ -13,7 +13,7 @@ public class Order : MonoBehaviour
     [SerializeField] private float orderItemSpacing = 1f;
 
     public List<FoodItem> foodItems {  get; private set; }
-    public int[] foodOrderInt {  get; private set; }
+    public List<int> foodOrderInt;
 
     public List<FoodItem> GetOrder(OrderListSO orderList)
     {
@@ -21,11 +21,13 @@ public class Order : MonoBehaviour
 
         foodItems = new List<FoodItem>();
 
-        foodOrderInt = new int[foodItems.Count];
+        foodOrderInt = new List<int>();
 
         for (int i = 0; i < itemCount; i++)
         {
-            foodOrderInt[i] = Random.Range(0, orderList.items.Count);
+            int randNum = Random.Range(0, orderList.items.Count);
+
+            foodOrderInt.Add(randNum);
 
             foodItems.Add(orderList.items[foodOrderInt[i]]);
         }

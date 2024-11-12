@@ -41,6 +41,11 @@ public class GlobalVar : Singleton<GlobalVar>
 
     internal SaveData saveData;
 
+    protected override void OnAwake()
+    {
+        GameSave.Instance.OnLoad += LoadScore;
+    }
+
     private void Update()
     {
         lifePercent = GlobalVar.Instance.lifePercent;
@@ -62,6 +67,11 @@ public class GlobalVar : Singleton<GlobalVar>
         GameSave.Instance.SaveScore(currentLvlPoints);
     }
 
+
+    private void LoadScore(SaveData data)
+    {
+        currentLvlPoints = data.score;
+    }
 
     public void ResetLevel()
     {

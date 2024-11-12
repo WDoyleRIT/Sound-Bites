@@ -5,6 +5,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+#region Structs
+
 [Serializable]
 public struct SaveData
 {
@@ -54,6 +56,7 @@ public struct NoteData
         this.position = position;
     }
 }
+#endregion
 
 public class GameSave : Singleton<GameSave>
 {
@@ -112,7 +115,7 @@ public class GameSave : Singleton<GameSave>
         {
             DataIO.Instance.SavaData<SaveData>(saveData, fullPath);
 
-            yield return new WaitForSecondsRealtime(10);
+            yield return new WaitForSecondsRealtime(5);
         }
     }
 }

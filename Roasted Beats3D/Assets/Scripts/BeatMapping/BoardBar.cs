@@ -117,6 +117,19 @@ public class BoardBar : MonoBehaviour
         noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
+    public void CreateNote(int prefabIndex, Vector3 position)
+    {
+        travelDistance = Vector3.Distance(StartPos.position, EndPos.position);
+        speed = travelDistance / GlobalVar.Instance.noteSpdInSec;
+
+        notes.Add(Instantiate(NotePrefabs[prefabIndex], position, transform.rotation, transform));
+
+        Vector3 direction = Vector3.Normalize(EndPos.position - StartPos.position);
+
+        notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed, direction);
+        noteCooldown = GlobalVar.Instance.noteCoolDown;
+    }
+
     public void CheckNoteCollision()
     {
         //for (int i = 0; i < notes.Count; i++)

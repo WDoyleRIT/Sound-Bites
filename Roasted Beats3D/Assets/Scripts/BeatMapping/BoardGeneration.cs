@@ -82,6 +82,11 @@ public class BoardGeneration : MonoBehaviour
         SubscribeActions();
 
         StartCoroutine(SaveHeartBeat());
+
+        if (GlobalVar.Instance.saveData.songData.notes.Length <= 0)
+            return;
+
+        GenerateNotes();
     }
 
     // Input related methods
@@ -188,6 +193,15 @@ public class BoardGeneration : MonoBehaviour
         }*/
     }
 
+    private void GenerateNotes()
+    {
+        NoteData[] notes = GlobalVar.Instance.saveData.songData.notes;
+
+        for (int i = 0; i < notes.Length; i++)
+        {
+            bars[notes[i].barNumber].GetComponent<BoardBar>().CreateNote(notes[i].barNumber, notes[i].position);
+        }
+    }
 
     /// <summary>
     /// Generates bars
