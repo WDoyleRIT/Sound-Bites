@@ -10,7 +10,7 @@ using UnityEngine.Audio;
 public class SongManager : MonoBehaviour
 {
     [SerializeField] private float songDelay = 0;
-    [SerializeField] private SongSO currentSong;
+    [SerializeField] public SongSO currentSong;
 
     [SerializeField] private AudioSource frequencySource;
     [SerializeField] public AudioSource songSource;
@@ -50,20 +50,33 @@ public class SongManager : MonoBehaviour
         songDelay = isTesting ? songDelay : GlobalVar.Instance.noteSpdInSec;
         GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 4;
 
-        switch (songDelay)
+        float time = GlobalVar.Instance.saveData.songData.timeOfSong;
+
+        if (time > 0)
         {
-            case 0:
-                frequencySource.Play();
-                songSource.Play();
-                break;
+            frequencySource.time = time - songDelay;
+            songSource.time = time;
 
-            default:
-                frequencySource.Play();
+            frequencySource.Play();
+            songSource.Play();
+        }
+        else
+        {
+            switch (songDelay)
+            {
+                case 0:
+                    frequencySource.Play();
+                    songSource.Play();
+                    break;
 
-                yield return new WaitForSecondsRealtime(songDelay);
+                default:
+                    frequencySource.Play();
 
-                songSource.Play();
-                break;
+                    yield return new WaitForSecondsRealtime(songDelay);
+
+                    songSource.Play();
+                    break;
+            }
         }
     }
 

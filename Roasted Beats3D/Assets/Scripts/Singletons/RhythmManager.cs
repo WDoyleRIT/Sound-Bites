@@ -61,6 +61,10 @@ public class RhythmManager : Singleton<RhythmManager>
 
         if (ratingText != null)
             ratingText.text = "";
+
+        if (GlobalVar.Instance.saveData.songData.songName == null) return;
+
+        sm.SetCurrentSong(songList.GetSongSO<string>(GlobalVar.Instance.saveData.songData.songName));
     }
 
     public void ChangeScoreBy(int score)
@@ -113,6 +117,7 @@ public class RhythmManager : Singleton<RhythmManager>
             SongData data = new SongData();
 
             data.timeOfSong = sm.songSource.time;
+            data.songName = sm.currentSong.Name;
 
             GameSave.Instance.SaveSong(data);
         }

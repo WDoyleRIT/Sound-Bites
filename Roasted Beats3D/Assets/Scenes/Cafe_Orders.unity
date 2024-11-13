@@ -6140,7 +6140,7 @@ MonoBehaviour:
   _persistent: 1
   songList: {fileID: 11400000, guid: f58d0679678e9b24fbd468ea9fe11a08, type: 2}
   sm: {fileID: 4612140746517700699}
-  groupAudio: {fileID: 0}
+  groupAudio: {fileID: 24300002, guid: c703a9e7f85d184489edc08077a8d3e9, type: 2}
   hasStarted: 0
   songIndicesForThisLevel: 0000000001000000
   OnSceneStart:

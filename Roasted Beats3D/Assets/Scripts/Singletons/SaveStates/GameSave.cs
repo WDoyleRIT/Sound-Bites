@@ -35,12 +35,14 @@ public struct CustomerData
 public struct SongData
 {
     public float timeOfSong;
+    public string songName;
     public NoteData[] notes;
 
-    public SongData(float timeOfSong, NoteData[] notes)
+    public SongData(float timeOfSong, NoteData[] notes, string songName)
     {
         this.timeOfSong = timeOfSong;
         this.notes = notes;
+        this.songName = songName;
     }
 }
 
@@ -49,11 +51,13 @@ public struct NoteData
 {
     public int barNumber;
     public Vector3 position;
+    public float speed;
 
-    public NoteData(int barNumber, Vector3 position)
+    public NoteData(int barNumber, Vector3 position, float speed)
     {
         this.barNumber = barNumber;
         this.position = position;
+        this.speed = speed;
     }
 }
 #endregion

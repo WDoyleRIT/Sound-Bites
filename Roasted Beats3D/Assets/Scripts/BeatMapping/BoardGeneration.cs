@@ -199,7 +199,7 @@ public class BoardGeneration : MonoBehaviour
 
         for (int i = 0; i < notes.Length; i++)
         {
-            bars[notes[i].barNumber].GetComponent<BoardBar>().CreateNote(notes[i].barNumber, notes[i].position);
+            bars[notes[i].barNumber].GetComponent<BoardBar>().CreateNote(notes[i].barNumber, notes[i].position, notes[i].speed);
         }
     }
 
@@ -242,6 +242,8 @@ public class BoardGeneration : MonoBehaviour
     {
         SongData save = new SongData();
 
+        save.songName = RhythmManager.Instance.sm.currentSong.Name;
+
         while(true)
         {
             
@@ -261,7 +263,10 @@ public class BoardGeneration : MonoBehaviour
                 foreach (GameObject note in bars[i].GetComponent<BoardBar>().notes)
                 {
                     noteList.Add(
-                        new NoteData(i, note.transform.position)
+                        new NoteData(
+                            i, 
+                            note.transform.position, 
+                            note.GetComponent<Note>().noteSpeed)
                         );
                 }
             }

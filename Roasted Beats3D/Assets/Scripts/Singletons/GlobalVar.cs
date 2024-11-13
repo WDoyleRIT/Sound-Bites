@@ -39,7 +39,7 @@ public class GlobalVar : Singleton<GlobalVar>
     public float musicVol = 1.0f;
     public float SFXVol = 1.0f;
 
-    internal SaveData saveData;
+    internal SaveData saveData = new SaveData();
 
     protected override void OnAwake()
     {

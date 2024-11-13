@@ -23,11 +23,13 @@ public class BoardBar : MonoBehaviour
 
     public int NoteAmount { get { return notes.Count; } }
 
+    private void Awake()
+    {
+        notes = new List<GameObject>();
+    }
 
     private void Start()
     {
-        notes = new List<GameObject>();
-
         // We get travel distance to know exactly how far we need the note to go before it gets pressed perfectly
         travelDistance = Vector3.Distance(StartPos.position, EndPos.position);
     }
@@ -117,11 +119,8 @@ public class BoardBar : MonoBehaviour
         noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
-    public void CreateNote(int prefabIndex, Vector3 position)
+    public void CreateNote(int prefabIndex, Vector3 position, float speed)
     {
-        travelDistance = Vector3.Distance(StartPos.position, EndPos.position);
-        speed = travelDistance / GlobalVar.Instance.noteSpdInSec;
-
         notes.Add(Instantiate(NotePrefabs[prefabIndex], position, transform.rotation, transform));
 
         Vector3 direction = Vector3.Normalize(EndPos.position - StartPos.position);
