@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class GlobalVar : Singleton<GlobalVar>
 {
+    // To do: try lowering the cooldown and see how it affects the note spread -Will
     public float noteCoolDown = .45f;
     public int songDifficulty;
     public int streak = 0;
