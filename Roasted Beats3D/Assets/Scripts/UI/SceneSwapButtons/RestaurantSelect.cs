@@ -13,6 +13,8 @@ public class RestaurantSelect : MonoBehaviour
 
     [SerializeField] private MoveMenus moveMenus;
 
+    [SerializeField] GameObject settingsHUD;
+
     private string[] levelNames = new string[]
     {
         "Cafe_Orders",
@@ -38,13 +40,14 @@ public class RestaurantSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveMenus.moved != 0)
-        {
-            levelButton.gameObject.SetActive(false);
-        }
-        else
-        {
-            levelButton.gameObject.SetActive(true);
-        }
+        // Was causing issues with settings menu, commenting out for now -Will D
+        //if (moveMenus.moved != 0 && settingsHUD.activeSelf)
+        //{
+        //    levelButton.gameObject.SetActive(false);
+        //}
+        //else
+        //{
+        //    levelButton.gameObject.SetActive(true);
+        //}
     }
 }

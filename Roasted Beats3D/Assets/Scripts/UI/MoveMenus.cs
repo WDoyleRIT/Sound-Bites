@@ -14,6 +14,7 @@ public class MoveMenus : MonoBehaviour
     [SerializeField] float offsetDistance;
 
     [SerializeField] Button openLvlButton;
+    [SerializeField] GameObject settingsHUD;
 
     private void Start()
     {
@@ -28,14 +29,15 @@ public class MoveMenus : MonoBehaviour
 
         transform.position = new Vector3(xSpring.Position * offsetDistance, transform.position.y, transform.position.z);
 
-        if (moved != 0)
-        {
-            openLvlButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            openLvlButton.gameObject.SetActive(false);
-        }
+        // Was causing issues with settings menu, commenting out for now -Will D
+        //if (moved != 0 && !settingsHUD.activeSelf)
+        //{
+        //    openLvlButton.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    openLvlButton.gameObject.SetActive(false);
+        //}
     }
 
     public void MoveRight()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(FrequencyData), typeof(FrequencyAveraging))]
 [RequireComponent(typeof(AudioSource))]
@@ -17,16 +18,21 @@ public class SongManager : MonoBehaviour
     [SerializeField] public FrequencyAveraging frequencyAveraging;
     [SerializeField] private FrequencyData frequencyData;
 
+    // Reference to the audio mixer
+    [SerializeField] private AudioMixer mixer;
+    // Float for the music volume
+    private float volume = 0;
+
     public bool isTesting = false;
 
     public UnityEvent OnUpdate;
 
     public void OnSongStart()
     {
-        // Set song volume based on settings (Does not work!)
-        Debug.Log("Starting volume: " + songSource.volume);
-        songSource.volume = GlobalVar.Instance.masterVol * GlobalVar.Instance.musicVol;
-        Debug.Log("Ending volume: " + songSource.volume);
+        // Set song volume based on settings (Range from -60db to 0db)
+        volume = (GlobalVar.Instance.masterVol * GlobalVar.Instance.musicVol * 60.0f) - 60.0f;
+        Debug.Log("Music Volume: " + volume);
+        mixer.SetFloat("volume", volume);
 
         StartCoroutine(StartMusic());
         StartCoroutine(StartData());
