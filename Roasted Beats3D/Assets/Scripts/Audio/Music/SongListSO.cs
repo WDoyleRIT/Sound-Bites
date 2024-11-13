@@ -27,7 +27,7 @@ public class SongListSO : ScriptableObject
     /// <summary>
     /// Creates song dictionary based on song name for faster finding
     /// </summary>
-    private void Start()
+    public void CreateDicts()
     {
         if (songSOs == null) return;
 

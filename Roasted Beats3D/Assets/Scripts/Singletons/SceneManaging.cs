@@ -19,6 +19,12 @@ public class SceneManaging : Singleton<SceneManaging>
     private AsyncOperation asyncLoad;
     private bool inSceneTransition;
 
+    public Transform posStart;
+    public Transform posIn;
+    public Transform posOut;
+
+    private float timer;
+
     public void OnContinue(SaveData saveData)
     {
         string sceneName = saveData.sceneName;
@@ -31,16 +37,13 @@ public class SceneManaging : Singleton<SceneManaging>
         transitionSpring = new Spring(10, 2f, offset = transitionPanel.position.x, false);
 
         GameSave.Instance.OnLoad += OnContinue;
+
+        StartCoroutine(UpdateTransition());
     }
 
     private void Update()
     {
-        if (!inSceneTransition)
-        {
-            transitionSpring.Update();
-        }
-
-        transitionPanel.position = new Vector3(transitionSpring.Position, transitionPanel.position.y, transitionPanel.position.z);
+        
     }
 
     public void OpenLvl(string name)
@@ -50,15 +53,15 @@ public class SceneManaging : Singleton<SceneManaging>
         
     IEnumerator LoadLevel(string scene)
     {
-        
-
         // Play animation
         //transition.SetTrigger("TriggerSceneOut");
 
-        transitionSpring.RestPosition = offset;
-        transitionSpring.Position = offset;
+        transitionPanel.gameObject.SetActive(true);
 
-        transitionSpring.RestPosition = 1000;
+        transitionSpring.RestPosition = posStart.position.x;
+        transitionSpring.Position = posStart.position.x;
+
+        transitionSpring.RestPosition = posIn.position.x;
 
         // Wait
         yield return new WaitForSeconds(waitTime);
@@ -75,13 +78,42 @@ public class SceneManaging : Singleton<SceneManaging>
             yield return null; // Wait for the next frame until the scene is fully loaded
         }
 
-        transitionSpring.RestPosition = -offset;
+        transitionSpring.RestPosition = posOut.position.x;
 
         GameSave.Instance.SaveScene(scene);
 
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSeconds(.01f);
         //transition.SetTrigger("TriggerSceneIn");
         inSceneTransition = false;
+
+        yield return new WaitForSeconds(1);
+
+        transitionSpring.Position = posOut.position.x;
+
+        timer = 1;
+
+        transitionPanel.gameObject.SetActive(false);
     }
-    
+
+    private IEnumerator UpdateTransition()
+    {
+        while (true)
+        {
+            if (!inSceneTransition)
+            {
+                transitionSpring.Update();
+            }
+
+            timer -= Time.unscaledDeltaTime;
+
+            if (timer < 0)
+            {
+                transitionPanel.position = posOut.position;
+            }
+
+            transitionPanel.position = new Vector3(transitionSpring.Position, transitionPanel.position.y, transitionPanel.position.z);
+
+            yield return null;
+        }
+    }
 }

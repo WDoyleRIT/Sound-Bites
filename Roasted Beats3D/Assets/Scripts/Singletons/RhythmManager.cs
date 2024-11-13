@@ -48,6 +48,8 @@ public class RhythmManager : Singleton<RhythmManager>
     {
         int songIndex = songIndicesForThisLevel[Random.Range(0, songIndicesForThisLevel.Count)];
 
+        songList.CreateDicts();
+
         sm.SetCurrentSong(songList.GetSongSO<int>(songIndex));
 
         GlobalVar.Instance.songIsPlaying = true;
