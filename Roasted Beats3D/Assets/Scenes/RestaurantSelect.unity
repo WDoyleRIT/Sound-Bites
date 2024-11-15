@@ -2004,7 +2004,7 @@ MonoBehaviour:
   settingsText: {fileID: 1789090799}
   openLvl: {fileID: 499154304}
   moveRight: {fileID: 1544560154}
-  moveLeft: {fileID: 1200360015}
+  moveLeft: {fileID: 0}
   cafeMenu: {fileID: 1608592236}
   fancyMenu: {fileID: 272683249}
   fastFoodMenu: {fileID: 696288838}
@@ -2853,16 +2853,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811820382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.136479, y: 1.1364789, z: 1.1364789}
+  m_LocalPosition: {x: 0, y: 0, z: 10.805999}
+  m_LocalScale: {x: -1.7, y: 1.7, z: 1.1364788}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 751196430}
-  m_Father: {fileID: 1200360016}
+  m_Father: {fileID: 1332016589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -855, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811820384
@@ -2953,7 +2953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 51313ea7c13f15f49ae03d9ae7b40af5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57c419fbff3a1134fb58497700f1f945, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4012,42 +4012,6 @@ MonoBehaviour:
   levelButton: {fileID: 499154306}
   moveMenus: {fileID: 1172473492}
   settingsHUD: {fileID: 128428591}
---- !u!1 &1200360015
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1200360016}
-  m_Layer: 5
-  m_Name: MoveLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1200360016
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200360015}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.806}
-  m_LocalScale: {x: -1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 811820383}
-  m_Father: {fileID: 1332016589}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -875, y: 10}
-  m_SizeDelta: {x: -113.64795, y: 113.64789}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1201892761
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,7 +4280,7 @@ RectTransform:
   - {fileID: 499154305}
   - {fileID: 996014091}
   - {fileID: 1544560155}
-  - {fileID: 1200360016}
+  - {fileID: 811820383}
   - {fileID: 1646262055}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4712,7 +4676,7 @@ RectTransform:
   m_GameObject: {fileID: 1544560154}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10.806}
-  m_LocalScale: {x: 1.1364789, y: 1.1364789, z: 1.1364789}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1.1364789}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 762427776}
@@ -4720,7 +4684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 875, y: 10}
+  m_AnchoredPosition: {x: 855, y: 10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1544560156
@@ -4811,7 +4775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 51313ea7c13f15f49ae03d9ae7b40af5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57c419fbff3a1134fb58497700f1f945, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6455,6 +6419,9 @@ MonoBehaviour:
   transitionPanel: {fileID: 140661978}
   waitTime: 1
   controlText: {fileID: 0}
+  posStart: {fileID: 0}
+  posIn: {fileID: 0}
+  posOut: {fileID: 0}
 --- !u!4 &2014359102
 Transform:
   m_ObjectHideFlags: 0
