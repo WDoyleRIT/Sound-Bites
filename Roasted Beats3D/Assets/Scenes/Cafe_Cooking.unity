@@ -9288,7 +9288,9 @@ GameObject:
   m_StaticEditorFlags: 0
 
 
+
   m_IsActive: 1
+
 
 
   m_IsActive: 0
@@ -13902,11 +13904,7 @@ SceneRoots:
   - {fileID: 1854358513}
   - {fileID: 426374945}
   - {fileID: 1864466113}
-<<<<<<< HEAD
-=======
+
   - {fileID: 1915052568}
   - {fileID: 670642048}
-
-
->>>>>>> parent of 0252537 (Revert "Cooking cafe area has cutting board in scene, checkout notes have some more leeway and can shrink to be slightly smaller than checkout buttons")
 
