@@ -328,6 +328,10 @@ MonoBehaviour:
   transitionPanel: {fileID: 0}
   waitTime: 1
   controlText: {fileID: 0}
+  posStart: {fileID: 0}
+  posIn: {fileID: 0}
+  posOut: {fileID: 0}
+  currentLevel: 
 --- !u!1 &133946163
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +449,10 @@ MonoBehaviour:
   transitionPanel: {fileID: 1577883072}
   waitTime: 1
   controlText: {fileID: 0}
+  posStart: {fileID: 0}
+  posIn: {fileID: 0}
+  posOut: {fileID: 0}
+  currentLevel: 
 --- !u!4 &140006756
 Transform:
   m_ObjectHideFlags: 0
@@ -4775,7 +4783,6 @@ GameObject:
   - component: {fileID: 1535285401}
   - component: {fileID: 1535285400}
   - component: {fileID: 1535285399}
-  - component: {fileID: 1535285402}
   m_Layer: 7
   m_Name: re
   m_TagString: Untagged
@@ -4870,22 +4877,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535285397}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1535285402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535285397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8bb5e8c71f7b254eae44cb64cda3504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _persistent: 1
-  transitionPanel: {fileID: 0}
-  waitTime: 0
-  controlText: {fileID: 0}
 --- !u!1 &1577883071
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Audio;
+using System;
 
 [RequireComponent(typeof(FrequencyData), typeof(FrequencyAveraging))]
 [RequireComponent(typeof(AudioSource))]
@@ -48,12 +49,14 @@ public class SongManager : MonoBehaviour
     private IEnumerator StartMusic()
     {
         songDelay = isTesting ? songDelay : GlobalVar.Instance.noteSpdInSec;
-        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 4;
+        GlobalVar.Instance.noteCoolDown = 60 / (float)currentSong.bpm * 4 * GlobalVar.Instance.noteCoolDownMultiplier;
 
         float time = GlobalVar.Instance.saveData.songData.timeOfSong;
 
         if (time > 0)
         {
+            SetCurrentSong(RhythmManager.Instance.songList.GetSongSO<string>(GlobalVar.Instance.saveData.songData.songName));
+
             frequencySource.time = time - songDelay;
             songSource.time = time;
 
@@ -94,5 +97,11 @@ public class SongManager : MonoBehaviour
     {
         frequencyAveraging.ChangeSong(currentSong);
         songSource.clip = currentSong.audio;
+    }
+
+    internal void StopSong()
+    {
+        frequencySource.Stop();
+        songSource.Stop();
     }
 }

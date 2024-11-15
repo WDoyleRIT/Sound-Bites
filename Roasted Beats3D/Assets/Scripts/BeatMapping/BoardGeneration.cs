@@ -99,18 +99,22 @@ public class BoardGeneration : MonoBehaviour
         {
             var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
 
+            action.Disable();
             action.Enable();
             action.performed += HitNote1;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+            action.Disable();
             action.Enable();
             action.performed += HitNote2;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
+            action.Disable();
             action.Enable();
             action.performed += HitNote3;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
+            action.Disable();
             action.Enable();
             action.performed += HitNote4;
         }
@@ -118,19 +122,22 @@ public class BoardGeneration : MonoBehaviour
         else if(GlobalVar.Instance.controlScheme == 1)
         {
             var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note5");
-
+            action.Disable();
             action.Enable();
             action.performed += HitNote1;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note6");
+            action.Disable();
             action.Enable();
             action.performed += HitNote2;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+            action.Disable();
             action.Enable();
             action.performed += HitNote3;
 
             action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
+            action.Disable();
             action.Enable();
             action.performed += HitNote4;
         }
