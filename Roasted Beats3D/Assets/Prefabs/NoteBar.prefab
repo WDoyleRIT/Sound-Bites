@@ -125,7 +125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6167022533727742504
 Transform:
   m_ObjectHideFlags: 0
@@ -275,9 +275,6 @@ MonoBehaviour:
   EndPos: {fileID: 4579251237333593311}
   MissedPos: {fileID: 3279330227676182395}
   particles: {fileID: -8307665254554913591}
-  hitSound: {fileID: 0}
-  source: {fileID: 0}
-  notes: []
 --- !u!198 &-8307665254554913591
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5211,7 +5208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6192764744111040485
 Transform:
   m_ObjectHideFlags: 0
