@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,8 +14,6 @@ public class BoardBar : MonoBehaviour
     [SerializeField] private Transform MissedPos;
     [SerializeField] private ParticleSystem particles;
 
-    public AudioClip hitSound;
-    public AudioSource source;
 
     private float noteCooldown;
     private float speed;
@@ -35,8 +32,6 @@ public class BoardBar : MonoBehaviour
     {
         // We get travel distance to know exactly how far we need the note to go before it gets pressed perfectly
         travelDistance = Vector3.Distance(StartPos.position, EndPos.position);
-
-        source.clip = hitSound;
     }
 
     private void Update()
@@ -185,8 +180,6 @@ public class BoardBar : MonoBehaviour
             // Add point to score streak
             currentLvl.ChangeStreak(1);
             particles.Play();
-            //source.Play();
-            StartCoroutine(PlayHitSound());
         }
         else
         {
@@ -197,14 +190,6 @@ public class BoardBar : MonoBehaviour
         currentLvl.ChangeScoreBy(score);
         //}
     }
-
-
-    private IEnumerator PlayHitSound()
-    {
-        source.Play();
-        yield return new WaitForNextFrameUnit();
-    }
-
 
     public void ChangeParticleColor(int colorInt)
     {
