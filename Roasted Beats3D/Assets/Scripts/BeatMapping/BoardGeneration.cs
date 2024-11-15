@@ -19,6 +19,12 @@ public class BoardGeneration : MonoBehaviour
 
     public TextMeshPro ratingText;
 
+    [SerializeField] private GameObject sources;
+    private AudioSource[] audioSources;
+    [SerializeField] public AudioClip[] clips;
+
+
+
     private void OnValidate()
     {
         if (!Application.isEditor) return;
@@ -73,6 +79,9 @@ public class BoardGeneration : MonoBehaviour
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.RemoveAllListeners();
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.AddListener(OnBeatUpdate);
 
+        audioSources = sources.GetComponents<AudioSource>();
+
+
         DeleteAllBars();
         GenerateBars(4);
 
@@ -87,6 +96,8 @@ public class BoardGeneration : MonoBehaviour
             return;
 
         GenerateNotes();
+
+
     }
 
     // Input related methods
@@ -227,6 +238,8 @@ public class BoardGeneration : MonoBehaviour
             float barX = barPrefab.transform.localScale.x * (float)i - half;
             bars.Add(Instantiate(barPrefab, new Vector3(transform.position.x + barX, transform.position.y, transform.position.z), transform.rotation, transform));
             bars[i].GetComponent<BoardBar>().ChangeParticleColor(i);
+            bars[i].GetComponent<BoardBar>().hitSound = clips[i];
+            bars[i].GetComponent<BoardBar>().source = audioSources[i];
         }
     }
 
