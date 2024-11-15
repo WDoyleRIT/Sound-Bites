@@ -34,8 +34,8 @@ public class CheckoutButton : MonoBehaviour
         yScaleSpeed = (0.6f - 0.12f) / GlobalVar.Instance.noteSpdInSec;
 
 
-        xMaxScale = 0.5f;
-        yMaxScale = 0.6f;
+        xMaxScale = 0.45f;
+        yMaxScale = 0.54f;
     }
 
     // Update is called once per frame
@@ -60,8 +60,8 @@ public class CheckoutButton : MonoBehaviour
         yScaleSpeed = (1.2f-0.6f) / GlobalVar.Instance.noteSpdInSec;
 
 
-        xMaxScale = 0.5f;
-        yMaxScale = 0.6f;
+        //xMaxScale = 0.5f;
+        //yMaxScale = 0.6f;
 
         if (noteCooldown > 0 || noteOnButton) return;
 
@@ -104,15 +104,15 @@ public class CheckoutButton : MonoBehaviour
     {
         if (notes.Count <= 0) return;
         
-        float size = xMaxScale - notes[0].transform.localScale.x;
+        float size =  notes[0].transform.localScale.x - xMaxScale;
 
         RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
 
         int score =
             (size <= .05) ? 1000 :
-            (size < .1) ? 500 :
-            (size < .2) ? 100 :
-            (size < .35) ? 50 :
+            (size < .15) ? 500 :
+            (size < .25) ? 100 :
+            (size < .4) ? 50 :
             0;
 
 
@@ -120,18 +120,18 @@ public class CheckoutButton : MonoBehaviour
 
         int rating =
             (size <= .05) ? 4 :
-            (size < .1) ? 3 :
-            (size < .2) ? 2 :
-            (size < .35) ? 1 :
+            (size < .15) ? 3 :
+            (size < .25) ? 2 :
+            (size < .4) ? 1 :
             0;
         currentLvl.ChangeRating(rating);
 
 
         float accuracy=
             (size <= .05) ? 100.00f :
-            (size < .1) ? 90.00f :
-            (size < .2) ? 80.00f :
-            (size < .35) ? 70.00f :
+            (size < .15) ? 90.00f :
+            (size < .25) ? 80.00f :
+            (size < .4) ? 70.00f :
             0.00f;
 
 

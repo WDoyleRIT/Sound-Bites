@@ -8,7 +8,8 @@ using UnityEngine;
 public class GlobalVar : Singleton<GlobalVar>
 {
     // To do: try lowering the cooldown and see how it affects the note spread -Will
-    public float noteCoolDown = .45f;
+    public float noteCoolDown = .25f;
+    internal float noteCoolDownMultiplier = .5f;
     public int songDifficulty;
     public int streak = 0;
     public float noteSpdInSec = 5f;
@@ -44,7 +45,7 @@ public class GlobalVar : Singleton<GlobalVar>
 
     protected override void OnAwake()
     {
-        GameSave.Instance.OnLoad += LoadScore;
+        
     }
 
     private void Update()
@@ -65,19 +66,22 @@ public class GlobalVar : Singleton<GlobalVar>
             SceneManaging.Instance.OpenLvl("WinScene");
         }
 
-        GameSave.Instance.SaveScore(currentLvlPoints);
+
+        if (!(SceneManaging.Instance.currentLevel == "MainMenu"))
+            GameSave.Instance.SaveScore(currentLvlPoints, notesPassed, customersServed);
     }
 
 
-    private void LoadScore(SaveData data)
+    public void LoadScore(SaveData data)
     {
         currentLvlPoints = data.score;
+        notesPassed = data.notesPassed;
+        customersServed = data.customersServed;
     }
 
     public void ResetLevel()
     {
         currentLvlPoints = 0;
-
     }
 
 }

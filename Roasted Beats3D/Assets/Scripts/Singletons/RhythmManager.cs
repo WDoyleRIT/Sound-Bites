@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 public class RhythmManager : Singleton<RhythmManager>
 {
     // private SceneManager sceneManager
-    [SerializeField] private SongListSO songList;
+    [SerializeField] public SongListSO songList;
     private int currentSongIndex;
     private int levelScore;
     private int levelStreak;
@@ -66,7 +66,7 @@ public class RhythmManager : Singleton<RhythmManager>
 
         if (GlobalVar.Instance.saveData.songData.songName == null) return;
 
-        sm.SetCurrentSong(songList.GetSongSO<string>(GlobalVar.Instance.saveData.songData.songName));
+        targetVolume = sm.songSource.volume;
     }
 
     public void ChangeScoreBy(int score)
@@ -87,6 +87,17 @@ public class RhythmManager : Singleton<RhythmManager>
         {
             levelStreak++;
         }
+    }
+
+    public void ResetSong()
+    {
+        sm.StopSong();
+
+        int songIndex = songIndicesForThisLevel[Random.Range(0, songIndicesForThisLevel.Count)];
+
+        sm.SetCurrentSong(songList.GetSongSO<int>(songIndex));
+
+        GlobalVar.Instance.songIsPlaying = false;
     }
 
     // Changes the text that tells the player how accurate their note press is
@@ -133,6 +144,11 @@ public class RhythmManager : Singleton<RhythmManager>
             GlobalVar.Instance.notesPassed = 0;
             SceneManaging.Instance.OpenLvl("Cafe_Orders");
         }
+
+        //if (SceneManaging.Instance.currentLevel == "RestaurantSelect")
+        //{
+        //    ResetSong();
+        //}
 
         sm.songSource.volume = Mathf.Lerp(targetVolume, sm.songSource.volume, Mathf.Pow(.5f, Time.deltaTime * 1));
     }

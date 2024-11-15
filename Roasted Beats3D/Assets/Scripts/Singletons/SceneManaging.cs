@@ -24,6 +24,7 @@ public class SceneManaging : Singleton<SceneManaging>
     public Transform posOut;
 
     private float timer;
+    public string currentLevel;
 
     public void OnContinue(SaveData saveData)
     {
@@ -38,6 +39,8 @@ public class SceneManaging : Singleton<SceneManaging>
 
         GameSave.Instance.OnLoad += OnContinue;
 
+        currentLevel = SceneManager.GetActiveScene().name;
+
         StartCoroutine(UpdateTransition());
     }
 
@@ -48,6 +51,8 @@ public class SceneManaging : Singleton<SceneManaging>
 
     public void OpenLvl(string name)
     {
+        currentLevel = name;
+
         StartCoroutine(LoadLevel(name));
     }
         

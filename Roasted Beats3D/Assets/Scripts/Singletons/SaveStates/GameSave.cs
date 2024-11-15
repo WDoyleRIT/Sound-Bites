@@ -14,6 +14,8 @@ public struct SaveData
     public CustomerData[] customers;
     public SongData songData;
     public int score;
+    public int notesPassed;
+    public int customersServed;
 }
 
 [Serializable]
@@ -82,6 +84,8 @@ public class GameSave : Singleton<GameSave>
         saveData = DataIO.Instance.LoadData<SaveData>(fullPath);
 
         StartCoroutine(SaveHeartBeat());
+
+        OnLoad += GlobalVar.Instance.LoadScore;
     }
 
     public void Continue()
@@ -108,13 +112,17 @@ public class GameSave : Singleton<GameSave>
         saveData.customers = customers;
     }
 
-    public void SaveScore(int currentScore)
+    public void SaveScore(int currentScore, int notesPassed, int customersServed)
     {
         saveData.score = currentScore;
+        saveData.notesPassed = notesPassed;
+        saveData.customersServed = customersServed;
     }
 
     public IEnumerator SaveHeartBeat()
     {
+        yield return new WaitForSeconds(10);
+
         while (true)
         {
             DataIO.Instance.SavaData<SaveData>(saveData, fullPath);
