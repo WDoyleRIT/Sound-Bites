@@ -7,10 +7,12 @@ using UnityEngine;
 /// </summary>
 public class GlobalVar : Singleton<GlobalVar>
 {
+    // To do: try lowering the cooldown and see how it affects the note spread -Will
     public float noteCoolDown = .45f;
     public int songDifficulty;
     public int streak = 0;
     public float noteSpdInSec = 5f;
+    public float noteSpdInSec2 = 2f;
     public int notesPassed = 0;
     public bool songIsPlaying = false;
 
@@ -25,6 +27,25 @@ public class GlobalVar : Singleton<GlobalVar>
     // Used to determine which control scheme to use
     public int controlScheme = 0;
 
+    public float sumAccuracy = 0f;
+
+    public int customersServed = 0;
+
+    //public int highScore = 0;
+
+    public int[] scores= new int[5];
+
+    // Volume Variables
+    public float masterVol = 1.0f;
+    public float musicVol = 1.0f;
+    public float SFXVol = 1.0f;
+
+    internal SaveData saveData = new SaveData();
+
+    protected override void OnAwake()
+    {
+        GameSave.Instance.OnLoad += LoadScore;
+    }
 
     private void Update()
     {
@@ -35,7 +56,28 @@ public class GlobalVar : Singleton<GlobalVar>
         }
         if (lifePercent <= 0)
         {
+            lifePercent = 100;
             SceneManaging.Instance.OpenLvl("LossScene");
         }
+        if (customersServed >= 2)
+        {
+            customersServed = 0;
+            SceneManaging.Instance.OpenLvl("WinScene");
+        }
+
+        GameSave.Instance.SaveScore(currentLvlPoints);
     }
+
+
+    private void LoadScore(SaveData data)
+    {
+        currentLvlPoints = data.score;
+    }
+
+    public void ResetLevel()
+    {
+        currentLvlPoints = 0;
+
+    }
+
 }

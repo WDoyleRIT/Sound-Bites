@@ -8,47 +8,112 @@ using UnityEngine.SceneManagement;
 public class SceneManaging : Singleton<SceneManaging>
 {
     
-    [SerializeField] private Animator transition;
+    [SerializeField] private RectTransform transitionPanel;
     [SerializeField] private float waitTime = 0;
 
     // Can't Assign the text of button to this in the inspector
-    [SerializeField] TextMeshPro controlText;
+    [SerializeField] TextMeshProUGUI controlText;
+
+    private Spring transitionSpring;
+    private float offset;
+    private AsyncOperation asyncLoad;
+    private bool inSceneTransition;
+
+    public Transform posStart;
+    public Transform posIn;
+    public Transform posOut;
+
+    private float timer;
+
+    public void OnContinue(SaveData saveData)
+    {
+        string sceneName = saveData.sceneName;
+
+        OpenLvl(sceneName);
+    }
+
+    protected override void OnAwake()
+    {
+        transitionSpring = new Spring(10, 2f, offset = transitionPanel.position.x, false);
+
+        GameSave.Instance.OnLoad += OnContinue;
+
+        StartCoroutine(UpdateTransition());
+    }
+
+    private void Update()
+    {
+        
+    }
 
     public void OpenLvl(string name)
     {
         StartCoroutine(LoadLevel(name));
     }
-
-    // Changes variable that determines the control scheme
-    public void ChangeControls()
-    {
-        // Can't figure out how to change the text for some reason, will sort it out in class
-
-        if(GlobalVar.Instance.controlScheme == 0)
-        {
-            GlobalVar.Instance.controlScheme = 1;
-            //controlText.text = "Controls: A/S/D/F";
-            Debug.Log("Controls: A/S/D/F");
-        }
-        else if (GlobalVar.Instance.controlScheme == 1)
-        {
-            GlobalVar.Instance.controlScheme = 0;
-            //controlText.text = "Controls: D/F/J/K";
-            Debug.Log("Controls: D/F/J/K");
-        }
-    }
         
     IEnumerator LoadLevel(string scene)
     {
         // Play animation
-        //transition.SetTrigger("start");
+        //transition.SetTrigger("TriggerSceneOut");
+
+        transitionPanel.gameObject.SetActive(true);
+
+        transitionSpring.RestPosition = posStart.position.x;
+        transitionSpring.Position = posStart.position.x;
+
+        transitionSpring.RestPosition = posIn.position.x;
 
         // Wait
         yield return new WaitForSeconds(waitTime);
 
         // LoadScene
+
         //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
-        SceneManager.LoadScene(scene);
+
+        asyncLoad = SceneManager.LoadSceneAsync(scene);
+
+        while (!asyncLoad.isDone)
+        {
+            inSceneTransition = true;
+            yield return null; // Wait for the next frame until the scene is fully loaded
+        }
+
+        transitionSpring.RestPosition = posOut.position.x;
+
+        GameSave.Instance.SaveScene(scene);
+
+        yield return new WaitForSeconds(.01f);
+        //transition.SetTrigger("TriggerSceneIn");
+        inSceneTransition = false;
+
+        yield return new WaitForSeconds(1);
+
+        transitionSpring.Position = posOut.position.x;
+
+        timer = 1;
+
+        transitionPanel.gameObject.SetActive(false);
     }
-    
+
+    private IEnumerator UpdateTransition()
+    {
+        while (true)
+        {
+            if (!inSceneTransition)
+            {
+                transitionSpring.Update();
+            }
+
+            timer -= Time.unscaledDeltaTime;
+
+            if (timer < 0)
+            {
+                transitionPanel.position = posOut.position;
+            }
+
+            transitionPanel.position = new Vector3(transitionSpring.Position, transitionPanel.position.y, transitionPanel.position.z);
+
+            yield return null;
+        }
+    }
 }

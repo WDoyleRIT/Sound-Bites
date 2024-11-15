@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RhythmManager : Singleton<RhythmManager>
 {
@@ -47,6 +48,8 @@ public class RhythmManager : Singleton<RhythmManager>
     {
         int songIndex = songIndicesForThisLevel[Random.Range(0, songIndicesForThisLevel.Count)];
 
+        songList.CreateDicts();
+
         sm.SetCurrentSong(songList.GetSongSO<int>(songIndex));
 
         GlobalVar.Instance.songIsPlaying = true;
@@ -60,6 +63,10 @@ public class RhythmManager : Singleton<RhythmManager>
 
         if (ratingText != null)
             ratingText.text = "";
+
+        if (GlobalVar.Instance.saveData.songData.songName == null) return;
+
+        sm.SetCurrentSong(songList.GetSongSO<string>(GlobalVar.Instance.saveData.songData.songName));
     }
 
     public void ChangeScoreBy(int score)
@@ -107,11 +114,22 @@ public class RhythmManager : Singleton<RhythmManager>
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "Cafe_Cooking")
+        {
+            SongData data = new SongData();
+
+            data.timeOfSong = sm.songSource.time;
+            data.songName = sm.currentSong.Name;
+
+            GameSave.Instance.SaveSong(data);
+        }
+
         GlobalVar.Instance.currentLvlPoints = levelScore;
         GlobalVar.Instance.streak = levelStreak;
 
         if (GlobalVar.Instance.notesPassed > 20)
         {
+            GlobalVar.Instance.customersServed++;
             GlobalVar.Instance.notesPassed = 0;
             SceneManaging.Instance.OpenLvl("Cafe_Orders");
         }

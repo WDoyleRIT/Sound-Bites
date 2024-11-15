@@ -12,17 +12,24 @@ public class BoardBar : MonoBehaviour
     [SerializeField] private Transform StartPos;
     [SerializeField] public Transform EndPos;
     [SerializeField] private Transform MissedPos;
+    [SerializeField] private ParticleSystem particles;
+
 
     private float noteCooldown;
     private float speed;
     private float travelDistance;
 
-    private List<GameObject> notes = new List<GameObject>();
+    public List<GameObject> notes = new List<GameObject>();
+
+    public int NoteAmount { get { return notes.Count; } }
+
+    private void Awake()
+    {
+        notes = new List<GameObject>();
+    }
 
     private void Start()
     {
-        notes = new List<GameObject>();
-
         // We get travel distance to know exactly how far we need the note to go before it gets pressed perfectly
         travelDistance = Vector3.Distance(StartPos.position, EndPos.position);
     }
@@ -54,7 +61,7 @@ public class BoardBar : MonoBehaviour
             StartCoroutine(SetRingTrue(.1f));
         }
             
-        Debug.Log(ring.activeSelf);
+        //Debug.Log(ring.activeSelf);
     }
 
     /// <summary>
@@ -112,6 +119,16 @@ public class BoardBar : MonoBehaviour
         noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
+    public void CreateNote(int prefabIndex, Vector3 position, float speed)
+    {
+        notes.Add(Instantiate(NotePrefabs[prefabIndex], position, transform.rotation, transform));
+
+        Vector3 direction = Vector3.Normalize(EndPos.position - StartPos.position);
+
+        notes[notes.Count - 1].GetComponent<Note>().CreateNote(speed, direction);
+        noteCooldown = GlobalVar.Instance.noteCoolDown;
+    }
+
     public void CheckNoteCollision()
     {
         //for (int i = 0; i < notes.Count; i++)
@@ -143,6 +160,16 @@ public class BoardBar : MonoBehaviour
 
         currentLvl.ChangeRating(rating);
 
+        float accuracy =
+            (distance <= .15) ? 100.00f : // Perfect!!
+            (distance < .25) ? 90.00f : // Great!
+            (distance < .35) ? 80.00f : // Good
+            (distance < .85) ? 70.00f : // OK
+            0.00f; // Miss
+
+        // Add the accuracy of current note to sum of accuracy
+        GlobalVar.Instance.sumAccuracy += accuracy;
+
         if (score > 0)
         {
             Destroy(notes[0]);
@@ -152,6 +179,7 @@ public class BoardBar : MonoBehaviour
 
             // Add point to score streak
             currentLvl.ChangeStreak(1);
+            particles.Play();
         }
         else
         {
@@ -162,4 +190,26 @@ public class BoardBar : MonoBehaviour
         currentLvl.ChangeScoreBy(score);
         //}
     }
+
+    public void ChangeParticleColor(int colorInt)
+    {
+        if (colorInt == 0)
+        {
+            particles.startColor = Color.magenta;
+        }
+        else if (colorInt == 1)
+        {
+            particles.startColor = Color.yellow;
+        }
+        else if(colorInt == 2)
+        {
+            particles.startColor = Color.green;
+        }
+        else if(colorInt == 3)
+        {
+            particles.startColor = Color.blue;
+        }
+    }
+
+
 }

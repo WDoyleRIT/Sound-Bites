@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GenerateCheckout : MonoBehaviour
@@ -10,10 +11,24 @@ public class GenerateCheckout : MonoBehaviour
     private List<GameObject> buttons;
     private List<float> noteCooldowns;
 
+    [SerializeField] private Guide guide;
+
+    [SerializeField] private TextMeshPro RatingText;
+
+    public void CheckTutorial()
+    {
+        if (!TutorialSaveInfo.Instance.GetDictValue("Checkout"))
+        {
+            StartCoroutine(guide.SetActive(true));
+            guide.SetDialogueList(1);
+        }
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        RhythmManager.Instance.ratingText = RatingText;
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.RemoveAllListeners();
         RhythmManager.Instance.sm.frequencyAveraging.OnSpawnBeat.AddListener(OnBeatUpdate);
 

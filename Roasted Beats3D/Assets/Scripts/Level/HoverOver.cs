@@ -25,6 +25,9 @@ public class HoverOver : MonoBehaviour
             GlobalVar.Instance.checkoutNotesPassed = 0; 
             checkout.DestroyNotes();
             //checkout.DeleteButtons();
+
+            GlobalVar.Instance.sumAccuracy = 0;
+
             SceneManaging.Instance.OpenLvl("Cafe_Cooking");
 
         }
@@ -37,7 +40,7 @@ public class HoverOver : MonoBehaviour
 
     public void OnClickTrue()
     {
-        if (GlobalVar.Instance.Ordering)
+        if (GlobalVar.Instance.Ordering && !popUp.gameObject.activeSelf)
         {
             popUp.SetActive(true);
             checkout.GenerateButtons();

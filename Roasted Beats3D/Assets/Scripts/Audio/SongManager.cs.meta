@@ -3,7 +3,12 @@ guid: 16a39930ba5345a48b34f003e63b294a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - frequencySource: {instanceID: 0}
+  - songSource: {instanceID: 0}
+  - frequencyAveraging: {instanceID: 0}
+  - frequencyData: {instanceID: 0}
+  - mixer: {fileID: 24100000, guid: c703a9e7f85d184489edc08077a8d3e9, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

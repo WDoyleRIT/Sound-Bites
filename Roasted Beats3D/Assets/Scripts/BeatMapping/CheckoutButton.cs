@@ -13,6 +13,8 @@ public class CheckoutButton : MonoBehaviour
     [SerializeField] private float xMaxScale;
     [SerializeField] private float yMaxScale;
 
+    [SerializeField] private ParticleSystem particles;
+
     private float noteCooldown;
     private bool noteOnButton;
 
@@ -54,8 +56,8 @@ public class CheckoutButton : MonoBehaviour
 
     public void CreateNote(int prefabIndex)
     {
-        xScaleSpeed = (0.5f - 0.1f) / GlobalVar.Instance.noteSpdInSec;
-        yScaleSpeed = (0.6f - 0.12f) / GlobalVar.Instance.noteSpdInSec;
+        xScaleSpeed = (1.0f-0.5f) / GlobalVar.Instance.noteSpdInSec;
+        yScaleSpeed = (1.2f-0.6f) / GlobalVar.Instance.noteSpdInSec;
 
 
         xMaxScale = 0.5f;
@@ -69,13 +71,13 @@ public class CheckoutButton : MonoBehaviour
 
        
 
-        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(0.1f,0.12f,1f));
+        notes[notes.Count - 1].GetComponent<CheckoutNote>().CreateNote(xScaleSpeed,yScaleSpeed,new Vector3(1.0f,1.2f,1f),0.01f);
         noteCooldown = GlobalVar.Instance.noteCoolDown;
     }
 
     public void OnUpdate()
     {
-
+        RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
         for (int i = 0; i < notes.Count; i++)
         {
             //RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
@@ -83,7 +85,7 @@ public class CheckoutButton : MonoBehaviour
             notes[i].GetComponent<CheckoutNote>().OnUpdate();
 
 
-            if (notes[i].transform.localScale.x > xMaxScale && notes[i].transform.localScale.y>yMaxScale)
+            if (notes[i].transform.localScale.x < xMaxScale && notes[i].transform.localScale.y<yMaxScale)
             {
                 Destroy(notes[i]);
                 notes.RemoveAt(i);
@@ -91,6 +93,7 @@ public class CheckoutButton : MonoBehaviour
                 noteOnButton = false;
                 GlobalVar.Instance.checkoutNotesPassed++;
                 GlobalVar.Instance.lifePercent -= 5;
+                currentLvl.ChangeStreak(0);
             }
         }
 
@@ -100,6 +103,50 @@ public class CheckoutButton : MonoBehaviour
     public void OnClick()
     {
         if (notes.Count <= 0) return;
+        
+        float size = xMaxScale - notes[0].transform.localScale.x;
+
+        RhythmManager currentLvl = GameManager.Instance.CurrentLevel;
+
+        int score =
+            (size <= .05) ? 1000 :
+            (size < .1) ? 500 :
+            (size < .2) ? 100 :
+            (size < .35) ? 50 :
+            0;
+
+
+
+
+        int rating =
+            (size <= .05) ? 4 :
+            (size < .1) ? 3 :
+            (size < .2) ? 2 :
+            (size < .35) ? 1 :
+            0;
+        currentLvl.ChangeRating(rating);
+
+
+        float accuracy=
+            (size <= .05) ? 100.00f :
+            (size < .1) ? 90.00f :
+            (size < .2) ? 80.00f :
+            (size < .35) ? 70.00f :
+            0.00f;
+
+
+        if (score > 0)
+        {
+            particles.Play();
+            currentLvl.ChangeStreak(1);
+        }
+        else
+        {
+            currentLvl.ChangeStreak(0);
+        }
+        currentLvl.ChangeScoreBy(score);
+
+
         Destroy(notes[0]);
         notes.RemoveAt(0);
         noteOnButton = false;

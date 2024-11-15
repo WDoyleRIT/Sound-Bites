@@ -10,7 +10,7 @@ public class Note : MonoBehaviour
     // Maybe use deltatime or fixedUpdate or both!
 
     // Float to determine how fast the note moves
-    [SerializeField] private float noteSpeed;
+    [SerializeField] public float noteSpeed;
     [SerializeField] private Vector3 direction;
 
     public void CreateNote(float speed, Vector3 dir)
