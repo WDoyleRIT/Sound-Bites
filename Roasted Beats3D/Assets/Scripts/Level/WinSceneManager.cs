@@ -11,10 +11,20 @@ public class WinSceneManager : MonoBehaviour
 
     public Button ReturnToSelect;
 
+    private bool loaded = false;
 
     // Start is called before the first frame update
     private void Start()
     {
+        if (!loaded)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                string value = "Score"+(i+1);
+                GlobalVar.Instance.scores[i]=HighScoreSaveInfo.Instance.GetDictValue(value);
+            }
+        }
+
 
         bool newScorePlaced = false;
         int goodScoreHold = 0;
@@ -22,6 +32,7 @@ public class WinSceneManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
+            string value = "Score" + (i + 1);
             if (GlobalVar.Instance.currentLvlPoints > GlobalVar.Instance.scores[i] && !newScorePlaced)
             {
                 newScorePlaced = true;
@@ -34,6 +45,7 @@ public class WinSceneManager : MonoBehaviour
                 GlobalVar.Instance.scores[i] = goodScoreHold;
                 goodScoreHold = badScoreHold;
             }
+            HighScoreSaveInfo.Instance.SetDictvalue(value, GlobalVar.Instance.scores[i]);
         }
 
         highScoreText.text = "High Score: " + GlobalVar.Instance.scores[0]
