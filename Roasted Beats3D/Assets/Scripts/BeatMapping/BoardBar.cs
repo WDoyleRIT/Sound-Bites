@@ -62,6 +62,7 @@ public class BoardBar : MonoBehaviour
 
         if (context.performed)
         {
+            Debug.Log("Performed");
             ring.SetActive(false);
             StartCoroutine(SetRingTrue(.1f));
         }
@@ -78,6 +79,7 @@ public class BoardBar : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
+        Debug.Log("Set Active");
         EndPos.gameObject.SetActive(true);
     }
 

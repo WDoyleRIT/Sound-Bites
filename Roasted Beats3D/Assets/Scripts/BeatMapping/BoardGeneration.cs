@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using QFSW.QC;
 
 public class BoardGeneration : MonoBehaviour
 {
@@ -103,34 +104,64 @@ public class BoardGeneration : MonoBehaviour
     // Input related methods
     #region Input
 
+    [Command]
+    public void PrintInputInfo()
+    {
+        var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+
+        foreach (var actionMap in InputManager.Instance.PlayerInput.actions.actionMaps)
+        {
+            foreach (var actions in actionMap.actions)
+            {
+                Debug.Log(actions);
+            }
+        }
+    }
+
     private void SubscribeActions()
     {
         // D/F/J/K Controls
-        if(GlobalVar.Instance.controlScheme == 0)
+        if (GlobalVar.Instance.controlScheme == 0)
         {
-            var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
+            try
+            {
+                var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note1");
 
-            action.Disable();
-            action.Enable();
-            action.performed += HitNote1;
+                action.Enable();
+                action.performed += HitNote1;
+            }
+            catch (Exception e) { Debug.Log(e); }
 
-            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
-            action.Disable();
-            action.Enable();
-            action.performed += HitNote2;
 
-            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
-            action.Disable();
-            action.Enable();
-            action.performed += HitNote3;
+            try
+            {
+                var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note2");
 
-            action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
-            action.Disable();
-            action.Enable();
-            action.performed += HitNote4;
+                action.Enable();
+                action.performed += HitNote2;
+            }
+            catch (Exception e) { Debug.Log(e); }
+
+            try
+            {
+                var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note3");
+
+                action.Enable();
+                action.performed += HitNote3;
+            }
+            catch (Exception e) { Debug.Log(e); }
+
+            try
+            {
+                var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note4");
+
+                action.Enable();
+                action.performed += HitNote4;
+            }
+            catch (Exception e) { Debug.Log(e); }
         }
         // A/S/D/F Controls
-        else if(GlobalVar.Instance.controlScheme == 1)
+        else if (GlobalVar.Instance.controlScheme == 1)
         {
             var action = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Hit Note5");
             action.Disable();
@@ -152,16 +183,22 @@ public class BoardGeneration : MonoBehaviour
             action.Enable();
             action.performed += HitNote4;
         }
-        
+
+    }
+
+    [Command]
+    public void Pause(bool pause)
+    {
+        Time.timeScale = pause ? 0 : 1;
     }
 
     private void ChangeRing(int i, InputAction.CallbackContext context)
     {
         //GameObject ring = bars[i].GetComponent<BoardBar>().EndPos.gameObject;
 
-            //Debug.Log(String.Format("Bar Press {0}", i));
-            // Checks collision of first bar
-            
+        Debug.Log(String.Format("Bar Press {0}", i));
+        // Checks collision of first bar
+
         //ring.GetComponent<SpriteRenderer>().sortingOrder = 0;
 
         if (context.performed)
@@ -225,7 +262,8 @@ public class BoardGeneration : MonoBehaviour
     /// Generates bars
     /// </summary>
     /// <param name="numBars"></param>
-    private void GenerateBars(int numBars) {
+    private void GenerateBars(int numBars)
+    {
 
         bars = new List<GameObject>();
 
@@ -237,7 +275,7 @@ public class BoardGeneration : MonoBehaviour
 
         // Float that represents half the width of entire notebar
         // This will have to be changed when we use actual assets for the notebar
-        float half = barPrefab.transform.localScale.x  * (float)numBars / 2 - (barPrefab.transform.localScale.x / 2);
+        float half = barPrefab.transform.localScale.x * (float)numBars / 2 - (barPrefab.transform.localScale.x / 2);
 
         // Create bars equal to the parameter
         for (int i = 0; i < numBars; i++)
@@ -252,7 +290,7 @@ public class BoardGeneration : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0;i < bars.Count;i++)
+        for (int i = 0; i < bars.Count; i++)
         {
             bars[i].GetComponent<BoardBar>().OnUpdate();
         }
@@ -264,9 +302,9 @@ public class BoardGeneration : MonoBehaviour
 
         save.songName = RhythmManager.Instance.sm.currentSong.Name;
 
-        while(true)
+        while (true)
         {
-            
+
             save.timeOfSong = RhythmManager.Instance.sm.songSource.time;
 
             int noteCount = 0;
@@ -284,8 +322,8 @@ public class BoardGeneration : MonoBehaviour
                 {
                     noteList.Add(
                         new NoteData(
-                            i, 
-                            note.transform.position, 
+                            i,
+                            note.transform.position,
                             note.GetComponent<Note>().noteSpeed)
                         );
                 }
@@ -315,6 +353,6 @@ public class BoardGeneration : MonoBehaviour
             {
                 bars[i].GetComponent<BoardBar>().CreateNote(i);
             }
-        } 
+        }
     }
 }

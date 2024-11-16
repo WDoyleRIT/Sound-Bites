@@ -103,6 +103,8 @@ public class RhythmManager : Singleton<RhythmManager>
     // Changes the text that tells the player how accurate their note press is
     public void ChangeRating(int rating)
     {
+        return;
+
         switch (rating)
         {
             case 0:
