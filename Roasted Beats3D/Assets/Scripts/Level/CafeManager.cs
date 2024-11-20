@@ -43,6 +43,18 @@ public class CafeManager : MonoBehaviour
 
         StartCoroutine(SaveHeartbeat());
 
+        if (GlobalVar.Instance.saveData.customers == null || GlobalVar.Instance.saveData.customers.Length == 0) return;
+
+        LoadCustomers(GlobalVar.Instance.saveData.customers);
+
+    }
+
+    private void LoadCustomers(CustomerData[] customers)
+    {
+        for (int i = 0; i < customers.Length; i++)
+        {
+
+        }
     }
 
     private IEnumerator SaveHeartbeat()
@@ -62,8 +74,6 @@ public class CafeManager : MonoBehaviour
 
             yield return new WaitForSecondsRealtime(2);
         }
-
-        yield return new WaitForSeconds(0);
     }
 
     /// <summary>
