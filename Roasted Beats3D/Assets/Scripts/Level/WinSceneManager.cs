@@ -48,7 +48,8 @@ public class WinSceneManager : MonoBehaviour
             HighScoreSaveInfo.Instance.SetDictvalue(value, GlobalVar.Instance.scores[i]);
         }
 
-        highScoreText.text = "High Score: " + GlobalVar.Instance.scores[0]
+        highScoreText.text = "Current Score: "+GlobalVar.Instance.currentLvlPoints
+            + "\n\n1st: " + GlobalVar.Instance.scores[0]
             + "\n2nd: " + GlobalVar.Instance.scores[1]
             + "\n3rd: " + GlobalVar.Instance.scores[2]
             + "\n4th: " + GlobalVar.Instance.scores[3]
