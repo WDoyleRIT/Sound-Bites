@@ -30,14 +30,14 @@ public class MoveMenus : MonoBehaviour
         transform.position = new Vector3(xSpring.Position * offsetDistance, transform.position.y, transform.position.z);
 
         // Was causing issues with settings menu, commenting out for now -Will D
-        //if (moved != 0 && !settingsHUD.activeSelf)
-        //{
-        //    openLvlButton.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    openLvlButton.gameObject.SetActive(false);
-        //}
+        if (moved == 0 && !settingsHUD.activeSelf)
+        {
+            openLvlButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            openLvlButton.gameObject.SetActive(false);
+        }
     }
 
     public void MoveRight()
