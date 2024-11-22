@@ -120,6 +120,27 @@ public class BoardGeneration : MonoBehaviour
 
     private void SubscribeActions()
     {
+        // Controller inputs
+        var controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Controller1");
+        controllerAction.Enable();
+        controllerAction.performed += HitNote1;
+
+        controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Controller2");
+        controllerAction.Enable();
+        controllerAction.performed += HitNote2;
+
+        controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Controller3");
+        controllerAction.Enable();
+        controllerAction.performed += HitNote3;
+
+        controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("Controller4");
+        controllerAction.Enable();
+        controllerAction.performed += HitNote4;
+
+        controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("ControllerStick");
+        controllerAction.Enable();
+        controllerAction.performed += LeftStick;
+
         // D/F/J/K Controls
         if (GlobalVar.Instance.controlScheme == 0)
         {
@@ -234,6 +255,12 @@ public class BoardGeneration : MonoBehaviour
     public void HitNote4(InputAction.CallbackContext context)
     {
         ChangeRing(3, context);
+    }
+
+    // Reads value of the left stick
+    public void LeftStick(InputAction.CallbackContext context)
+    {
+        Debug.Log(context.ReadValue<Vector2>());
     }
 
     #endregion

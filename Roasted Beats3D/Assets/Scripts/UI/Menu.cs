@@ -33,6 +33,11 @@ public class Menu : MonoBehaviour
         isSettings = false;
     }
 
+    public void Update()
+    {
+        // Empty for now
+    }
+
     private void SetupMenuItems()
     {
         rotationAngle = (360 / rotateMenu.menuItems.Count);
@@ -93,6 +98,7 @@ public class Menu : MonoBehaviour
             // Enable settings HUD
             settingsHUD.SetActive(true);
             settingsText.text = "Back";
+            Debug.Log("Settings Menu Opened");
         }
         else
         {
@@ -106,6 +112,7 @@ public class Menu : MonoBehaviour
             // Disable settings HUD
             settingsHUD.SetActive(false);
             settingsText.text = "Settings";
+            Debug.Log("Settings Menu Closed");
         }
     }
 }

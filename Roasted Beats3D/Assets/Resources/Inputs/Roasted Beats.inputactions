@@ -76,6 +76,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Controller1",
+                    "type": "Button",
+                    "id": "acb08685-113f-4d9c-aa18-c0902aed36ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Controller2",
+                    "type": "Button",
+                    "id": "b4f421ab-2329-46e3-8a8c-59dcc953d948",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Controller3",
+                    "type": "Button",
+                    "id": "675976af-71ff-428d-a7b5-5b08c335e5bc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Controller4",
+                    "type": "Button",
+                    "id": "301308ac-dc35-4f58-b8f9-702562932c6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ControllerStick",
+                    "type": "Value",
+                    "id": "d1c1783e-7efb-4983-9278-c13bedc23f59",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -164,6 +209,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Hit Note6",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a0b9f5a-7cc9-466b-ac73-3c5bc05f445f",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1daf21b1-6c9d-4f48-9448-d4bad0f4b328",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f825254c-f3d3-4b47-981a-ffbaeab7bf62",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a80a02a-a127-404c-a4cb-088e073e55a3",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Controller4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5adb1a97-97d3-4cb6-9d52-1984e7f229b2",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerStick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
