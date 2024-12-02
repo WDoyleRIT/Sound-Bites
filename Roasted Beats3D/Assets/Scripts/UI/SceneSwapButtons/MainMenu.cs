@@ -24,5 +24,8 @@ public class MainMenu : MonoBehaviour
         quitB.onClick.RemoveAllListeners();
         quitB.onClick.AddListener(() => Application.Quit());
         quitB.onClick.AddListener(() => quitB.GetComponent<SquishEffect>().OnClick());
+
+        // Creates the controller manager
+        ControllerManager controllerManager = ControllerManager.Instance;
     }
 }

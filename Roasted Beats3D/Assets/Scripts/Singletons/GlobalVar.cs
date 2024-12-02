@@ -43,6 +43,9 @@ public class GlobalVar : Singleton<GlobalVar>
 
     internal SaveData saveData = new SaveData();
 
+    // 0 When no controller, 1 when controller is connected
+    public int controllerStatus;
+
     protected override void OnAwake()
     {
         
