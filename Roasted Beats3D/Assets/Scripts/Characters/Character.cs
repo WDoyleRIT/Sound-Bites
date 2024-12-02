@@ -20,6 +20,11 @@ public class Character : MonoBehaviour
         this.orderList = order.GetOrder(orderList);
         OrderTaken = false;
     }
+    public void CreateCharacter(int[] order, OrderListSO orderList)
+    {
+        this.orderList = this.order.GetOrder(order, orderList);
+        OrderTaken = false;
+    }
 
     public IEnumerator SpawnCustomer()
     {

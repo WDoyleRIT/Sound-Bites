@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -53,7 +54,20 @@ public class CafeManager : MonoBehaviour
     {
         for (int i = 0; i < customers.Length; i++)
         {
+            Vector3 pos = customers[i].position;
+            string name = customers[i].name;
+            int[] order = customers[i].orderData;
 
+            characters.Add(Instantiate(characterPrefabs[int.Parse(name)], charStandPos.position, Quaternion.identity, transform));
+            Character temp = characters[characters.Count - 1].GetComponent<Character>();
+
+            temp.CreateCharacter(order, orderList);
+            temp.MIS.EndPos = charEndPos;
+            temp.MIS.StandPos = charStandPos;
+
+            StartCoroutine(temp.SpawnCustomer());
+
+            CharacterUpdate = true;
         }
     }
 
