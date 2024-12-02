@@ -37,6 +37,26 @@ public class Order : MonoBehaviour
         return foodItems;
     }
 
+    public List<FoodItem> GetOrder(int[] order, OrderListSO orderList)
+    {
+        this.orderList = orderList;
+
+        foodItems = new List<FoodItem> ();
+
+        foodOrderInt = new List<int> ();
+
+        for (int i = 0; i < itemCount; i++)
+        {
+            foodOrderInt.Add(order[i]);
+
+            foodItems.Add(orderList.items[foodOrderInt[i]]);
+        }
+
+        SetOrderItems();
+
+        return foodItems;
+    }
+
     private void SetOrderItems()
     {
         OrderBubble = Instantiate(OrderBubble, BubblePos);
