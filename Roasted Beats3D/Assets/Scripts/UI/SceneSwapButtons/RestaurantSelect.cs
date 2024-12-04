@@ -15,6 +15,8 @@ public class RestaurantSelect : MonoBehaviour
 
     [SerializeField] GameObject settingsHUD;
 
+    [SerializeField] private TextMeshProUGUI controllerText;
+
     private string[] levelNames = new string[]
     {
         "Cafe_Orders",
@@ -49,5 +51,14 @@ public class RestaurantSelect : MonoBehaviour
         //{
         //    levelButton.gameObject.SetActive(true);
         //}
+
+        if (!GlobalVar.Instance.isControllerConnected)
+        {
+            controllerText.text = "No Controller Connected";
+        }
+        else
+        {
+            controllerText.text = "Controller Connected";
+        }
     }
 }

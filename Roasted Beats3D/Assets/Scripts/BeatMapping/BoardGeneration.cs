@@ -137,10 +137,6 @@ public class BoardGeneration : MonoBehaviour
         controllerAction.Enable();
         controllerAction.performed += HitNote4;
 
-        controllerAction = InputManager.Instance.PlayerInput.actions.FindActionMap("Player").FindAction("ControllerStick");
-        controllerAction.Enable();
-        controllerAction.performed += LeftStick;
-
         // D/F/J/K Controls
         if (GlobalVar.Instance.controlScheme == 0)
         {
@@ -255,12 +251,6 @@ public class BoardGeneration : MonoBehaviour
     public void HitNote4(InputAction.CallbackContext context)
     {
         ChangeRing(3, context);
-    }
-
-    // Reads value of the left stick
-    public void LeftStick(InputAction.CallbackContext context)
-    {
-        Debug.Log(context.ReadValue<Vector2>());
     }
 
     #endregion

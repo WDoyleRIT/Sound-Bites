@@ -35,7 +35,7 @@ public class Menu : MonoBehaviour
 
     public void Update()
     {
-        // Empty for now
+       // Still nothing here
     }
 
     private void SetupMenuItems()

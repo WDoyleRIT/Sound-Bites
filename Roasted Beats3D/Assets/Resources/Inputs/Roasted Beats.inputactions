@@ -121,6 +121,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ControllerAButton",
+                    "type": "Button",
+                    "id": "67ff3b3e-2fbf-4367-8503-9b6d83b735ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -264,6 +273,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ControllerStick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b81d896e-e445-45c2-a1b5-2b19722f4d0f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerAButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

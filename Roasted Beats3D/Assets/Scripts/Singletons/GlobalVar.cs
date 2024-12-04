@@ -43,8 +43,11 @@ public class GlobalVar : Singleton<GlobalVar>
 
     internal SaveData saveData = new SaveData();
 
-    // 0 When no controller, 1 when controller is connected
-    public int controllerStatus;
+    // false when not connected, true when connected
+    public bool isControllerConnected = false;
+    public float stickX = 0.0f;
+    public float stickY = 0.0f;
+    public bool aButtonPressed = false;
 
     protected override void OnAwake()
     {
