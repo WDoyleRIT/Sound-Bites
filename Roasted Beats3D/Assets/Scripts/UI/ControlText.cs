@@ -24,13 +24,13 @@ public class ControlText : MonoBehaviour
         if (GlobalVar.Instance.isControllerConnected)
         {
             input1.text = "LT";
-            input1.fontSize = 60;
+            input1.fontSize = 48;
             input2.text = "LB";
-            input2.fontSize = 60;
+            input2.fontSize = 48;
             input3.text = "RB";
-            input3.fontSize = 60;
+            input3.fontSize = 48;
             input4.text = "RT";
-            input4.fontSize = 60;
+            input4.fontSize = 48;
         }
         else
         {

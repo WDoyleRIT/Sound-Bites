@@ -45,8 +45,8 @@ public class GlobalVar : Singleton<GlobalVar>
 
     // false when not connected, true when connected
     public bool isControllerConnected = false;
-    public float stickX = 0.0f;
-    public float stickY = 0.0f;
+    //public float stickX = 0.0f;
+    //public float stickY = 0.0f;
     public bool aButtonPressed = false;
 
     protected override void OnAwake()
