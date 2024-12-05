@@ -37,6 +37,7 @@ public class RestaurantSelect : MonoBehaviour
         levelButton.onClick.RemoveAllListeners();
         levelButton.onClick.AddListener(() => SceneManaging.Instance.OpenLvl(levelNames[currentLevel]));
         levelButton.onClick.AddListener(() => levelButton.GetComponent<SquishEffect>().OnClick());
+        levelButton.onClick.AddListener(()=>levelButton.interactable = false);
     }
 
     // Update is called once per frame

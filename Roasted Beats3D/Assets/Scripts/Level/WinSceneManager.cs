@@ -57,6 +57,7 @@ public class WinSceneManager : MonoBehaviour
 
         ReturnToSelect.onClick.RemoveAllListeners();
         ReturnToSelect.onClick.AddListener(() => SceneManaging.Instance.OpenLvl("RestaurantSelect"));
+        ReturnToSelect.onClick.AddListener(() => ReturnToSelect.interactable = false);
     }
 
     // Update is called once per frame
