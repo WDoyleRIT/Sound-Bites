@@ -30,7 +30,6 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         SetupMenuItems();
-        isSettings = false;
     }
 
     public void Update()
@@ -40,6 +39,9 @@ public class Menu : MonoBehaviour
 
     private void SetupMenuItems()
     {
+        settingsHUD.SetActive(false);
+        isSettings = false;
+
         rotationAngle = (360 / rotateMenu.menuItems.Count);
 
         rotateMenu.SetValues(pivot, rotationAngle);

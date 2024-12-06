@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5753320893347034015}
   - component: {fileID: 508578650599932043}
   - component: {fileID: 7046626433546020421}
+  - component: {fileID: 4529638870157937976}
   m_Layer: 0
   m_Name: BrennanCheckoutNote
   m_TagString: Untagged
@@ -99,3 +100,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xScaleSpeed: 0
   yScaleSpeed: 0
+--- !u!58 &4529638870157937976
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4652005239320610474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9

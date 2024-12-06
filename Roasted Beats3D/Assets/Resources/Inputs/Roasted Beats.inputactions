@@ -130,6 +130,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DPadUp",
+                    "type": "Button",
+                    "id": "af5d5760-bf1c-4c78-a099-6cc1f26e3974",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadDown",
+                    "type": "Button",
+                    "id": "d99d0961-ae96-4b42-b3d0-f356d6671826",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadLeft",
+                    "type": "Button",
+                    "id": "dbe39c7b-a7df-41f8-8034-b03045db818f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadRight",
+                    "type": "Button",
+                    "id": "e91ea9b2-67ac-4efc-a46e-bca46a156917",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StickDown",
+                    "type": "Button",
+                    "id": "713b6e28-f23f-4fbf-ae39-750fc95a40a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -159,6 +204,17 @@
                     "name": "",
                     "id": "ed2cfdce-5d3a-4cc1-8d87-b88d1f667993",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23d717b0-d043-4985-8492-d938a00bf137",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -284,6 +340,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "ControllerAButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "215b2b19-74b8-4d93-8d36-894540423972",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DPadUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be4c4ac1-7e37-42e7-812d-e8837ff0d2e3",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DPadDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48af6a05-989f-48b4-8a09-96fb55727bfb",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DPadLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b009396d-a7f4-45fa-940c-4b8209063044",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DPadRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08acb092-04ac-40af-bf44-5579dca8acf7",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StickDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
