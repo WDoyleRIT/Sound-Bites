@@ -151,6 +151,7 @@ public class ControllerManager : Singleton<ControllerManager>
         // Relocate the cursor
         //FindCursor();
 
+        // Known Bug! Will stay false until controller is turned off and on again
         // Detects if controller is connected or not
         if(Input.GetJoystickNames()[0] == "")
         {
