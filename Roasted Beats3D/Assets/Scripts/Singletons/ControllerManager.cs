@@ -38,6 +38,8 @@ public class ControllerManager : Singleton<ControllerManager>
     // The mouse
     private Mouse mouse = Mouse.current;
 
+    private float screenMod;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,6 +104,11 @@ public class ControllerManager : Singleton<ControllerManager>
         //gameCursor.SetActive(false);
 
         Debug.Log(Screen.width + " " + Screen.height);
+        // Test Width: 900
+        // Test Height: 500
+        screenMod = Screen.width / 900f;
+        screenMod = Mathf.Round(screenMod * 100f) / 100f;
+        Debug.Log("Screen multiplier: " + screenMod);
     }
 
     // Finds the cursor object in the scene
@@ -153,13 +160,16 @@ public class ControllerManager : Singleton<ControllerManager>
 
         // Known Bug! Will stay false until controller is turned off and on again
         // Detects if controller is connected or not
-        if(Input.GetJoystickNames()[0] == "")
+        if (Input.GetJoystickNames().Length != 0)
         {
-            GlobalVar.Instance.isControllerConnected = false;
-        }
-        else
-        {
-            GlobalVar.Instance.isControllerConnected = true;
+            if (Input.GetJoystickNames()[0] == "")
+            {
+                GlobalVar.Instance.isControllerConnected = false;
+            }
+            else
+            {
+                GlobalVar.Instance.isControllerConnected = true;
+            }
         }
 
         //Debug.Log(GlobalVar.Instance.isControllerConnected);
@@ -177,20 +187,20 @@ public class ControllerManager : Singleton<ControllerManager>
         // Reads movement from X value of stick
         if(stickX >= cursorSensitivity || isPadRight)
         {
-            cursorX += cursorSpeed;
+            cursorX += (cursorSpeed * screenMod);
             UpdateCursor();
         }
         
         if(stickX <= -cursorSensitivity || isPadLeft)
         {
-            cursorX -= cursorSpeed;
+            cursorX -= (cursorSpeed * screenMod);
             UpdateCursor();
         }
 
         // Reads movement from Y value of stick
         if(stickY >= cursorSensitivity || isPadUp)
         {
-            cursorY += cursorSpeed;
+            cursorY += (cursorSpeed * screenMod);
             UpdateCursor();
         }
 
@@ -198,7 +208,7 @@ public class ControllerManager : Singleton<ControllerManager>
         
         if(stickY <= -cursorSensitivity || isPadDown)
         {
-            cursorY -= cursorSpeed;
+            cursorY -= (cursorSpeed * screenMod);
             UpdateCursor();
         }
     }
@@ -259,8 +269,19 @@ public class ControllerManager : Singleton<ControllerManager>
                 menu.GetComponent<Menu>().ChangeWindow();
                 item.GetComponent<SquishEffect>().OnClick();
                 break;
+            // Notes in cash register game
             case "BrennanCheckoutNote(Clone)":
                 item.GetComponentInParent<CheckoutButton>().OnClick();
+                break;
+            // Cash register (Incomplete implementation)
+            case "CashRegister":
+                // Missing hover effects and calls to external methods
+                // Core funcionality still works, missing methods are in comments
+                // CafeManager.SetOrderTaken(false)
+                item.GetComponent<HoverOver>().OnClickTrue();
+                // (GenerateCheckout.CheckTutorial())
+                item.GetComponent<SquishEffect>().OnClick();
+                Debug.Log(item.name);
                 break;
         }
     }
